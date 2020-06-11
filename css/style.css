@@ -11,5 +11,11 @@ h3{
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
+    border-radius: 2px;
+  }
+
+  td{
+      text-align: center;
+      padding: 5px;
   }
 
