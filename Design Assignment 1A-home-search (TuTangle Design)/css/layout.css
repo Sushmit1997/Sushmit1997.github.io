@@ -140,13 +140,13 @@
 
 .left-part{
     float: left;
-    background-image: url(../images/Entries-bg-1.png) ;
+    background-image: url(../images/entriesbg-1.png) ;
     margin-right: 2px;
 }
 
 .right-part{
     float: left;
-    background-image: url(../images/Entries-bg-2.png);
+    background-image: url(../images/entriesbg-2.png);
 }
 
 .all-members{
@@ -156,6 +156,10 @@
     height: 28px;
     margin-top: 13px ;
     margin-left: 13px;
+    background-image: url(../images/all-members.png);
+}
+
+.entries-other:hover{
     background-image: url(../images/all-members.png);
 }
 
