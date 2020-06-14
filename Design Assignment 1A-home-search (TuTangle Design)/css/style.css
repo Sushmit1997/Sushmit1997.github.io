@@ -1,0 +1,196 @@
+.logo{
+    float: left;
+    margin-top: 20px ;
+}
+
+input[type="text"]{
+    width: 100%;
+    padding: 5px;
+    font-size: 12px;
+    background: none;
+    border: none;
+}
+
+.btn{
+    background: none;
+    border: none;
+    padding: 5px;
+    font-size: 12px;
+    color: white;
+}
+
+.link1, .link2 {
+    font-size: 12px;
+    border-right: 2px black solid;
+    padding: 3px;
+}
+
+.link3{
+    font-size: 12px;
+
+}
+
+
+/* Navigation Bar */
+
+.name-header{
+    margin-left: 55px;
+    font-size: 18px;
+}
+
+.nav-left{
+    font-size: 15px;
+    float: left;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-family: sans-serif;
+}
+
+.nav-right{
+    float: right;
+    padding-top: 10px;
+    padding-bottom: 13px;
+}
+
+.nav-items, .nav-items1{
+    margin-right: 28px;
+}
+
+.top-search-bar, .bottom-search-bar, .right-top-bar{
+    color: white;
+    
+    text-align: center;
+    background-color: #7dd9e8 ;
+    height: 40px;
+    font-size: 20px ;
+    padding: 20px 15px 5px 0px;
+}
+
+li{
+    list-style: none;
+    height: 30px;
+    padding: 5px;
+
+}
+
+.search-list{
+    font-size: 13px;
+
+}
+
+.search-list1{
+    font-size: 15px;
+}
+
+.optional{
+    background-color: rgb(235, 231, 231);
+}
+
+.search-items img{
+    float: right;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+
+/* Entries Section */
+
+.entries{
+    font-size: 14px;
+}
+
+.left-part{
+    text-align: center;
+    
+}
+
+.right-part{
+    text-align: center;
+}
+
+.entries-top{
+    border-bottom: 2px solid #7dd9e8;
+    margin-bottom: 0px;
+}
+
+
+/* Entries Bottom Section */
+
+.author{
+    color: #51bdce;
+    padding-right: 5px;
+    border-right: 2px solid black;
+}
+
+.lower-detail{
+    font-size: 13px;
+}
+
+.dates{
+    padding-left: 5px;
+    border-right: 2px solid black;
+    padding-right: 5px;
+}
+
+.dates2{
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.subscribe{
+    padding-left: 5px;
+    color: green;
+}
+
+.topic-detail{
+    color: #51bdce;
+}
+
+.post-title{
+    margin-bottom: 20px;
+    font: bold;
+}
+
+.post2, .post3 {
+    color: #51bdce;
+    font-size: 12px;
+}
+
+.detail{
+    line-height: 18px;
+}
+
+.post5{
+    font-size: 12px;
+    color: rgb(233, 52, 52);
+}
+
+
+/* Video Section */
+
+.video-lists{
+    font-size: 13px;
+}
+
+
+/* FOOTER */
+
+.footer li:first-child{
+    list-style: none;
+    margin-left: 0px;
+}
+
+.footer li {
+    margin-left: 25px;
+    list-style: disc;
+    float: left;
+    color: white;
+}
+
+.copyright{
+    float: right;
+    color: white;
+    padding: 8px;
+}
