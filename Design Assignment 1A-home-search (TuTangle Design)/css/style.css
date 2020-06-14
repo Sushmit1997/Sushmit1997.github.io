@@ -83,7 +83,7 @@ li{
 }
 
 .optional{
-    background-color: rgb(235, 231, 231);
+    background-color: #fff;
 }
 
 .search-items img{
@@ -110,7 +110,7 @@ li{
 }
 
 .entries-top{
-    border-bottom: 2px solid #7dd9e8;
+    border-bottom: 3px solid #7dd9e8;
     margin-bottom: 0px;
 }
 
@@ -167,12 +167,17 @@ li{
     color: rgb(233, 52, 52);
 }
 
+.more-info{
+    font-weight: bold;
+}
+
 
 /* Video Section */
 
 .video-lists{
     font-size: 13px;
 }
+
 
 
 /* FOOTER */
@@ -183,6 +188,7 @@ li{
 }
 
 .footer li {
+    font-size: 15px;
     margin-left: 25px;
     list-style: disc;
     float: left;
@@ -190,7 +196,8 @@ li{
 }
 
 .copyright{
+    font-size: 15px;
     float: right;
     color: white;
-    padding: 8px;
+    padding: 5apx;
 }
