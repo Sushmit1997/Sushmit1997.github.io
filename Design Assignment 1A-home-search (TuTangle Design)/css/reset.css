@@ -16,8 +16,13 @@
  a {
     color: inherit;
     text-decoration: inherit;
+    display: inline-block;
   }
 
 a:hover{
     text-decoration: underline;
+}
+
+.search-listopt a{
+    display: inline;
 }

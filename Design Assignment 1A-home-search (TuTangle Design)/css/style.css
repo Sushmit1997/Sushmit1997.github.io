@@ -20,9 +20,9 @@ input[type="text"]{
 }
 
 .link1, .link2 {
-    font-size: 12px;
-    border-right: 2px black solid;
-    padding: 3px;
+    font-size: 13px;
+    /* border-right: 2px black solid; */
+    
 }
 
 .link3{
@@ -57,16 +57,22 @@ input[type="text"]{
     padding-bottom: 13px;
 }
 
+.nav-items1{
+    margin-left: 10px;
+}
+
 .nav-items, .nav-items1{
     margin-right: 28px;
 }
 
+
+/* Main Section */
+
 .top-search-bar, .bottom-search-bar, .right-top-bar{
-    color: white;
-    
+    color: white; 
     text-align: center;
     background-color: #7dd9e8 ;
-    height: 40px;
+    height: 35px;
     font-size: 20px ;
     padding: 20px 15px 5px 0px;
 }
@@ -85,6 +91,10 @@ li{
 
 .search-list1{
     font-size: 15px;
+}
+
+.search-listopt{
+    font-size: 13px;
 }
 
 
@@ -128,7 +138,8 @@ li{
 .author{
     color: #51bdce;
     padding-right: 5px;
-    border-right: 2px solid black;
+    font-weight: bold;
+    border-right: 1px solid black;
 }
 
 .lower-detail{
@@ -137,7 +148,7 @@ li{
 
 .dates{
     padding-left: 5px;
-    border-right: 2px solid black;
+    border-right: 1px solid black;
     padding-right: 5px;
 }
 
@@ -154,6 +165,7 @@ li{
 
 .topic-detail{
     color: #51bdce;
+    font-weight: bold;
 }
 
 .post-title{
@@ -164,6 +176,7 @@ li{
 .post2, .post3 {
     color: #51bdce;
     font-size: 12px;
+    font-weight: bold;
 }
 
 .detail{
@@ -173,6 +186,7 @@ li{
 .post5{
     font-size: 12px;
     color: rgb(233, 52, 52);
+    font-weight: bold;
 }
 
 .more-info{
@@ -213,4 +227,5 @@ li{
     float: right;
     color: white;
     padding: 5px;
+    margin-right: 5px;
 }
