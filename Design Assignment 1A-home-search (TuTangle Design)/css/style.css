@@ -33,6 +33,11 @@ input[type="text"]{
 
 /* Navigation Bar */
 
+.link3{
+    margin-left: 3px;
+
+}
+
 .name-header{
     margin-left: 55px;
     font-size: 18px;
@@ -82,8 +87,11 @@ li{
     font-size: 15px;
 }
 
-.optional{
+
+
+.recent-searches li:hover{
     background-color: #fff;
+
 }
 
 .search-items img{
@@ -176,6 +184,11 @@ li{
 
 .video-lists{
     font-size: 13px;
+}
+
+.right-space li:hover{
+    background-color: #fff;
+
 }
 
 
