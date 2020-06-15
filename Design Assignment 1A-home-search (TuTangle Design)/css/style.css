@@ -33,6 +33,11 @@ input[type="text"]{
 
 /* Navigation Bar */
 
+.friendreq img{
+    width: 14px;
+    height: 15px;
+}
+
 .link3{
     margin-left: 3px;
 
@@ -53,7 +58,7 @@ input[type="text"]{
 
 .nav-right{
     float: right;
-    padding-top: 10px;
+    padding-top: 5px;
     padding-bottom: 13px;
 }
 
