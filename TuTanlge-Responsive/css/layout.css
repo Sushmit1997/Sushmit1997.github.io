@@ -79,6 +79,21 @@
 }
 
 /* Navigation Bar */
+
+.menu-container{
+    background-color: #f5f5f5;
+   min-width: 375px;
+   width: 100%;
+}
+
+.menu{
+    text-align: center;
+    padding:20px;
+}
+
+.menu img{
+    height: 15px;
+}
 .navbar-section{
     width: 100%;
     background-color: #f5f5f5;
@@ -314,6 +329,10 @@
 @media screen and (min-width:768px){
 
     /* MAIN HEADER */
+
+    .menu-container{
+        display: none;
+    }
 
     .clearfix::after{
         clear: unset;
