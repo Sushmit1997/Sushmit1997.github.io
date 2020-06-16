@@ -139,6 +139,10 @@ li{
 
 /* Entries Bottom Section */
 
+.author a:hover{
+    color: rgb(40, 40, 212);
+}
+
 .author{
     color: #51bdce;
     padding-right: 5px;
@@ -170,6 +174,11 @@ li{
 .topic-detail{
     color: #51bdce;
     font-weight: bold;
+}
+
+.topic-detail a:hover{
+    color: rgb(40, 40, 212);
+
 }
 
 .post-title{
