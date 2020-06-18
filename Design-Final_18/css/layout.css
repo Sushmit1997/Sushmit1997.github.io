@@ -1,0 +1,189 @@
+.main-content-wrapper{
+    min-width: 320px;
+    max-width: 768px;
+
+}
+
+
+/* ---------- TOP BAR -------------- */
+
+
+
+.top-bar{
+    padding: 10px; 
+    height: 40px;
+}
+
+
+.social img{
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #d2d2d2;
+}
+
+.top-text{
+    display: none;
+}
+
+
+/* ------------- HEADER ------- */
+
+.header{
+    padding: 20px ;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.header img{
+    max-width: 100%;
+}
+
+.search-form{
+    margin-top: 20px;
+    padding: 10px auto;
+}
+
+
+.top-nav #myLinks{
+    display: none;
+}
+
+
+
+/* ---------- SLIDER ------------- */
+
+
+.slider{
+    padding: 30px;
+}
+
+.slider-text h1{
+    margin-bottom: 5px;
+}
+
+
+/* SLIDER CONTAINER */
+
+.slideshow-container {
+    max-height: 100%;
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    margin-left: auto;
+	margin-right: auto;
+     max-width: 40em;
+    overflow: hidden;
+  }
+  
+  /* Next & previous buttons */
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  /* Caption text */
+  .text {
+    background-color: #adadadad ;
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    max-width: 100%;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+
+
+  /* ---------- CONTENT --------- */
+
+  .title{
+      margin-bottom: 20px;
+      text-align: center;
+  }
+
+  .content{
+      overflow: hidden;
+      padding: 30px;
+  }
+
+  .image-container{
+      float: left;
+  }
+
+  .words-title{
+      margin-bottom: 15px;
+  }
+
+  .post{
+      overflow: hidden;
+      margin: auto;
+    max-width: 320px;
+      margin-bottom: 25px;
+  }
+
+  .post img{
+      height: 64px;
+      width: 64px;
+  }
+
+  .words p{
+      margin-top: 5px;
+  }
+
+.words{
+    float: right;
+    width: 65% ;
+  }
+
+
