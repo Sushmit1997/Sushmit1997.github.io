@@ -35,6 +35,7 @@
     background-color: #97455f;
     color: white;
     padding: 5px;
+    border: none;
 }
 
 .search-form input[type="text"]{
@@ -125,3 +126,80 @@
   .words-title{
       color: #97455f ;
   }
+
+
+
+  /*------------- REVIEW SECTION ---------------*/
+
+  .review-title{
+      font-weight: bold;
+      
+
+  }
+
+  .additional{
+      color: #97455f;
+  }
+
+
+  blockquote{
+    padding: 2%;
+    font-style: italic;
+    line-height: 145% ;
+    position: relative;
+    margin-top: 40px;
+}
+
+blockquote:before{
+    content: "\201C";
+    font-size: 500%;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -3;
+}
+
+
+/* CONTACT SECTION */
+
+.contact{
+    border-radius: 10px;
+    background-color: #97455f;
+    padding: 20px ;
+}
+
+.contact-title{
+    
+    font-size: 30px;
+
+}
+
+
+/*---------- Footer Section ------------- */
+
+.footer{
+    background-color: #ebebeb ;
+}
+
+
+.inner-title{
+    color: #97455f;
+    font-size: 18px;
+}
+
+.form button{
+    background-color: #97455f;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+
+}
+
+
+/* ---------- Copy Right Section ------------- */
+
+.copyright{
+    background-color: #ebebeb ;
+
+}
