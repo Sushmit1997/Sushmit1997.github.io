@@ -17,3 +17,7 @@ a {
 a:hover{
     text-decoration: underline;
 }
+
+.top-nav a{
+    text-decoration: none;
+}
