@@ -17,6 +17,7 @@
 
 
 .social i{
+  margin-right: 10px;
    font-size: 15px;
     padding: 5px;
     border-radius: 50%;
@@ -53,6 +54,10 @@
 
 .top-nav{
   border-radius: 5px;
+}
+
+.toggle-container{
+  display: none;
 }
 
 
@@ -195,7 +200,7 @@
   }
 
   .words-title{
-      margin-bottom: 15px;
+      margin-bottom: 17px;
   }
 
   .post{
@@ -514,6 +519,8 @@
   float: right;
 }
 
+
+
 .header-main{
   margin-bottom: 40px;
   padding-bottom: 10px;
@@ -772,6 +779,14 @@
     border-bottom: 0px;
   }
 
+  .social i{
+    margin-right: 10px;
+     font-size: 16px;
+      padding: 8px;
+      border-radius: 50%;
+      
+  }
+
  
 
   .top-text{
@@ -782,10 +797,33 @@
 
  /* Header Section */
 
+ .toggle-container{
+   display: inline-block;
+   min-width: 980px;
+   min-height: 20px;
+ }
+ .toggle{
+   float: right;
+   border-radius: 0px 0px 5px 5px;
+   margin-right: 40px;
+   padding-top: 3px;
+   color: white;
+   width: 30px;
+   height: 25px;
+   background-color: #97455f;
+   margin-right: 20px;
+ }
+
+ .toggle button{
+   border: none;
+
+ }
+
  .header-main{
    overflow: hidden;
    margin: 0px;
-   padding-top: 30px;
+   padding-top: 10px;
+   margin-left: 30px;
    padding-bottom: 30px;
  }
 
@@ -800,6 +838,7 @@
 }
 
 .header{
+  padding-top: 0px;
   max-width: 1000px;
   margin: auto;
 }
@@ -869,9 +908,19 @@
 }
 
 .text{
-  margin-left: 620px;
-  height:113px ;
-  width: 450px;
+  text-align: left;
+  margin-left: 420px;
+  margin-bottom: 15px;
+  min-width: 500px;
+  height:120px ;
+  width: 500px;
+  padding: 10px 30px;
+
+}
+
+.text h1{
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
 /* Content Section */
@@ -880,6 +929,10 @@
   max-width: 1000px;
   margin: auto;
   padding-left: 50px;
+}
+
+.words-title{
+  margin-bottom: 17px;
 }
 
 .post{
@@ -934,6 +987,10 @@
   width: 63%;
 }
 
+.review-left{
+  margin-top: 10px;
+}
+
 
 
 .review-left, .review-right{
@@ -963,7 +1020,7 @@
 
 .contact{
   overflow: hidden;
-  height: 106px;
+  height: 110px;
 }
 
 .contact-title{
@@ -972,7 +1029,7 @@
 
 .contact-word{
   text-align: left;
-  width: 55%;
+  width: 60%;
 }
 
 .contact-box{
@@ -981,14 +1038,14 @@
 }
 
 .contact-subtext{
-  font-size: 18px;
+  font-size: 16px;
   padding-bottom:  20px;
 }
 
 
 .contact-button button{
   height: 60px;
-  width: 280px;
+  width: 270px;
   font-weight: normal;
   font-family: serif;
   color: #97455f;
@@ -1068,6 +1125,10 @@
   padding: 5px;
   border: none;
   margin-top: 5px;
+}
+
+.footer{
+  margin-top: 40px;
 }
 
 .footer-img-container{

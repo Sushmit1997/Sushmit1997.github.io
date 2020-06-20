@@ -76,21 +76,15 @@
     list-style: none;
 }
 
+.top-nav li{
+    font-size: 12px;
+}
+
 /* NAV ITEMS */
 
 
 /* Sticky Navigation */
 
-
-/* .sticky-bg{
-    background-color: #97455f;
-    position: fixed;
-    top:0;
-    width: 100%;
-    background-color: #97455f;
-    box-shadow: 0 2px 2px rgba(134, 134, 134, 0.801);
-    z-index: 9999;
-} */
 
 
 
@@ -129,6 +123,10 @@
     color: white;
 }
 
+.text{
+    background-color: #adadad;
+}
+
 
   /* ---------- CONTENT --------- */
 
@@ -143,10 +141,10 @@
   
   .title-text:before,
   .title-text:after {
-    background-color: #000;
+    background-color: #d2d2d2;
     content: "";
     display: inline-block;
-    height: 1px;
+    height: 5px;
     position: relative;
     vertical-align: middle;
     width: 50%;
@@ -167,33 +165,25 @@
       color: #97455f ;
   }
 
+  .words p{
+      font-size: 13px;
+      color: #999999;
+  }
+
 
 
   /*------------- REVIEW SECTION ---------------*/
 
-
+ .review-text, .cite{
+     font-size: 13px;
+     color: #999999;
+ }
 
   .additional{
+      font-size: 13px;
       color: #97455f;
   }
 
-
-  blockquote{
-    padding: 2%;
-    font-style: italic;
-    line-height: 145% ;
-    position: relative;
-    margin-top: 40px;
-}
-
-blockquote:before{
-    content: "\201C";
-    font-size: 500%;
-    display: block;
-    position: absolute;
-    top: -5px;
-    left: -3;
-}
 
 
 /* CONTACT SECTION */
@@ -247,10 +237,30 @@ blockquote:before{
     list-style: none;
 }
 
+.inner-detail{
+    font-size: 13px;
+    color: #999999;
+}
+
+.detail1, .detail2, .detail3{
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #999999;
+
+}
+
+.form input, textarea{
+    font-size: 13px;
+    color: #999999;
+}
+
+
 
 /* ---------- Copy Right Section ------------- */
 
 .copyright{
     background-color: #ebebeb ;
+     font-size: 13px;
+    color: #999999;;
 
 }
