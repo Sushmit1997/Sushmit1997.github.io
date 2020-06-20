@@ -1,23 +1,17 @@
 /* TOP BAR */
 
-
+.top-bar{
+    border-bottom: 1px solid purple;
+}
 
 .social li{
     margin-left: 2px;
     float: left;
     list-style: none;
-    color: white;
 }
 
-.social i{
+.social img{
     background-color: #d2d2d2;
-    transition: background-color 0.2s;
-
-}
-
-.social i:hover{
-    background-color: #ee802f;
-
 }
 
 
@@ -49,15 +43,7 @@
     height: 29px;
     border: none;
     border-radius: 5px;
-    transition: border 0.2s;
 }
-
-.search-form input[type="text"]:focus{
-    border: 1px solid rgb(168, 116, 19);
-}
-
-
-
 
 
 .nav-icon i{
@@ -70,6 +56,7 @@
 
 .top-nav{
     padding: 10px 0px;
+    margin-top: 10px;
     background-color: #97455f ;
 }
 .top-nav li{
@@ -77,25 +64,6 @@
 }
 
 /* NAV ITEMS */
-
-
-/* Sticky Navigation */
-
-
-/* .sticky-bg{
-    background-color: #97455f;
-    position: fixed;
-    top:0;
-    width: 100%;
-    background-color: #97455f;
-    box-shadow: 0 2px 2px rgba(134, 134, 134, 0.801);
-    z-index: 9999;
-} */
-
-
-
-
-
 
 .nav-list{
     color: white;
@@ -105,17 +73,9 @@
     width: 100%;
 }
 
-.nav-list li{
-    transition: background-color 0.2s;
-}
-
-.nav-list li:hover{
+.nav-item:hover{
     background-color: #6a3144;
-
-
 }
-
-
 
 /* .img{
     position: relative;
@@ -171,7 +131,11 @@
 
   /*------------- REVIEW SECTION ---------------*/
 
+  .review-title{
+      font-weight: bold;
+      
 
+  }
 
   .additional{
       color: #97455f;
@@ -198,23 +162,17 @@ blockquote:before{
 
 /* CONTACT SECTION */
 
-.contact-button button{
-    font-weight: bold;
-    font-family: serif;
-    color: #97455f;
-    padding: 10px;
-    border: none;
+.contact{
     border-radius: 10px;
-    transition: background-color 0.2s, color 0.2s;
-  
-  }
+    background-color: #97455f;
+    padding: 20px ;
+}
 
-  .contact-button button:hover{
-      background-color: #c90101c5;
-      color: white;
-  }
+.contact-title{
+    
+    font-size: 30px;
 
-
+}
 
 
 /*---------- Footer Section ------------- */
@@ -235,16 +193,7 @@ blockquote:before{
     padding: 5px;
     border: none;
     border-radius: 5px;
-    transition: background-color 0.2s;
 
-}
-
-.form button:hover{
-    background-color: #e20000c5;
-}
-
-.form li{
-    list-style: none;
 }
 
 
