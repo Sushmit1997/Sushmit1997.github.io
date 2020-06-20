@@ -42,13 +42,19 @@
     color: white;
     padding: 5px;
     border: none;
+    transition: background-color 0.2s;
 }
+
+.search-form button:hover{
+   background-color: #e20000c5; 
+}
+
 
 .search-form input[type="text"]{
     padding: 5px;
     height: 29px;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px 0px 0px 5px;
     transition: border 0.2s;
 }
 
