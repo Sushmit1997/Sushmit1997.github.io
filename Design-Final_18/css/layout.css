@@ -41,6 +41,9 @@
     text-align: center;
     margin-bottom: 10px;
 }
+.header{
+  padding-bottom: 0px;
+}
 
 .header img{
     max-width: 100%;
@@ -529,18 +532,23 @@
 }
 
 .main-logo{
+  margin-top: 10px;
   float: left;
 }
+
 
 .search-form{
   float: right;
 }
 
-
+.header{
+  padding-bottom: 0px;
+}
 
 .header-main{
+  margin-top: 0px;
   margin-bottom: 40px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 .search-form{
   margin: 0px;
@@ -824,6 +832,10 @@
 
  /* Header Section */
 
+ .main-logo{
+   float: left;
+ }
+
  .toggle-container{
    display: inline-block;
    min-width: 980px;
@@ -832,13 +844,12 @@
  .toggle{
    float: right;
    border-radius: 0px 0px 5px 5px;
-   margin-right: 40px;
+   margin-right: 30px;
    padding-top: 3px;
    color: white;
    width: 30px;
    height: 25px;
    background-color: #97455f;
-   margin-right: 20px;
  }
 
  .toggle button{
@@ -846,11 +857,15 @@
 
  }
 
+ .header{
+   padding-bottom: 0px;
+ }
+
  .header-main{
    overflow: hidden;
    margin: 0px;
    padding-top: 10px;
-   margin-left: 30px;
+   margin-left: 0px;
    padding-bottom: 30px;
  }
 
@@ -872,6 +887,12 @@
   padding-top: 0px;
   max-width: 1000px;
   margin: auto;
+}
+
+.search-form{
+  float: right;
+  margin-top: 10px;
+  padding-bottom: 0px;
 }
 
 .search-form input{
@@ -913,6 +934,10 @@
 .top-nav li{
     overflow: hidden;
     list-style: none;
+}
+
+.nav-item{
+  margin-right: 10px;
 }
 
 /* Sliders */
