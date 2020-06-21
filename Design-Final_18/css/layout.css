@@ -122,7 +122,12 @@
 
 .mobilenav-top{
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+}
+
+.mobilenav-top .main-logo img{
+  margin-top: 5px;
+ width: 220px;
 }
 
 .nav-list-mobile ul li{
@@ -132,6 +137,10 @@
 
 .mobile-nav #myLinks{
   display: none;
+}
+
+.mobile-nav .search-form{
+  margin-top: 10px;
 }
 
 .nav-icon{
@@ -217,7 +226,7 @@
     background-color: #adadadad ;
     color: #f2f2f2;
     font-size: 15px;
-    padding: 8px 12px;
+    padding: 8px 5px;
     position: absolute;
     bottom: 8px;
     max-width: 100%;
