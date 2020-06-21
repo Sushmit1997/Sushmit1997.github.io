@@ -110,8 +110,8 @@
 }
 
 .mobile-nav .nav-icon i{
-  margin-right: 15px;
-  margin-top: 5px;
+  align-self: center;
+  /* margin-right: 15px; */
   font-size: 20px;
   color:#97455f;
 }
@@ -127,6 +127,19 @@
 
 .nav-list-mobile ul li{
   margin-bottom: 5px;
+}
+
+.mobile-nav #myLinks{
+  display: none;
+}
+
+.nav-icon{
+  text-align: center;
+}
+
+.nav-icon button{
+  border: none;
+  padding: 5px;
 }
 
 
