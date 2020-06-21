@@ -88,6 +88,47 @@
 }
 
 
+/* Mobile Navigation */
+
+.header-main{
+  display: none;
+}
+
+.top-nav{
+  display: none;
+}
+
+.mobile-nav{
+  margin: auto;
+  max-width: 320px;
+  overflow: hidden;
+}
+
+.mobile-nav .main-logo{
+  margin-left: 10px;
+  float: left;
+}
+
+.mobile-nav .nav-icon i{
+  margin-right: 15px;
+  margin-top: 5px;
+  font-size: 20px;
+  color:#97455f;
+}
+
+.mobile-nav .nav-icon{
+  float: right;
+}
+
+.mobilenav-top{
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.nav-list-mobile ul li{
+  margin-bottom: 5px;
+}
+
 
 
 
@@ -556,6 +597,20 @@
 
 
 /* Navigation Bar */
+
+.top-nav{
+  display: block;
+}
+
+.header-main{
+  display: block;
+}
+
+.mobile-nav{
+  display: none;
+}
+
+
 .sticky{
   position: fixed;
   top:0;
@@ -938,6 +993,14 @@
 
 .nav-item{
   margin-right: 10px;
+}
+
+.header-main{
+  display: block;
+}
+
+.mobile-nav{
+  display: none;
 }
 
 /* Sliders */

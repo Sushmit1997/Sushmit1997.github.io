@@ -48,12 +48,46 @@
 
                 </div>
                 <br>
+
+                <div class="mobile-nav">
+                    <div class="mobilenav-top">
+                        <div class="main-logo">
+                            <a href="#"><img src="./images/IMAGINATIVE-single.png" alt="main logo"></a> 
+                         </div>
+                         <div class="mobile-navigation">
+                            <div class="nav-icon" onclick="myFunction()">
+                                <a href="javascript:void(0);"><i class="fa fa-bars"  aria-hidden="true"></i></a>
+                            </div>
+
+                         </div>
+                        
+                     
+
+                        </div>
+                    <div class="nav-list-mobile" id="myLinks">
+                        <ul>
+                            <li class="home-nav"> <a href=""><div class="nav-item"> HOME</div></a></li>
+                            <li> <a href=""><div class="nav-item"> STYLE DEMO</div></a></li>
+                            <li> <a href=""><div class="nav-item"> FULL WIDTH</div></a></li>
+                            <li> <a href=""><div class="nav-item"> DROPDOWN</div></a></li>
+                            <li> <a href=""><div class="nav-item"> PORTFOLIO</div></a></li>
+                            <li> <a href=""><div class="nav-item"> GALLERY</div></a></li>
+                            <li> <a href=""><div class="nav-item"> LONG TEXT LINK</div></a></li>
+                        </ul>
+            
+                    </div>
+                   
+                     <div class="search-form">
+                         <input type="text" name="searchbox" placeholder="Search our Website.."> <button> SUBMIT</button>
+                     </div>
+
+                </div>
                 
             
                
                 <div class="header-main">
                     <div class="main-logo">
-                       <a href="#"><img src="./images/IMAGINATIVE.png" alt=""></a> 
+                       <a href="#"><img src="./images/IMAGINATIVE.png" alt="main logo"></a> 
                     </div>
                     <div class="search-form">
                         <input type="text" name="searchbox" placeholder="Search our Website.."> <button> SUBMIT</button>
@@ -67,7 +101,7 @@
         
                     </div>
                    
-                    <div class="nav-list" id="myLinks">
+                    <div class="nav-list" >
                         <ul>
                             <li class="home-nav"> <a href=""><div class="nav-item"> HOME</div></a></li>
                             <li> <a href=""><div class="nav-item"> STYLE DEMO</div></a></li>
@@ -450,10 +484,8 @@
         $('.js-section-slider').waypoint(function(direction){
             if(direction == "down"){
                 $('nav').addClass('sticky');
-                $('navbg').addClass('sticky-bg');
             }else{
                 $('nav').removeClass('sticky');
-                $('navbg').removeClass('sticky-bg');
             }
         },{
             offset: '100px;'
