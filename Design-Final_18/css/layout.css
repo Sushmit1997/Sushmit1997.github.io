@@ -138,7 +138,9 @@
 }
 
 .nav-icon button{
+  background-color: inherit;
   border: none;
+  border-radius: 5px;
   padding: 5px;
 }
 
