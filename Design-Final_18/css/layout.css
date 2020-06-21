@@ -127,6 +127,7 @@
 
 .nav-list-mobile ul li{
   margin-bottom: 5px;
+  list-style: none;
 }
 
 .mobile-nav #myLinks{
