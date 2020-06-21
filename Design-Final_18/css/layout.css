@@ -276,7 +276,7 @@
 
   .review-title{
     font-size: 18px;
-    font-weight: 700;
+    font-weight: normal;
     margin-bottom: 6px;
   }
 
@@ -656,6 +656,7 @@
 }
 
 .review-title{
+  font-weight: normal;
   float: left;
 }
 
@@ -858,6 +859,10 @@
    height: 46px;
  }
 
+ .main-logo img{
+   margin-top: 10px;
+ }
+
 .header-container{
   background-color: #ebebeb;
   width: 100%;
@@ -955,6 +960,8 @@
 }
 
 /* Content Section */
+
+
 
 .content{
   max-width: 1000px;
@@ -1167,11 +1174,13 @@
 }
 
 .footer-img-container{
-  width: 95px;
-  height: 95px;
+  width: 100px;
+  height: 100px;
 }
 
 .footer-img-container img{
+  padding: 5px;
+  border: 1px solid #adadad;;
   height: 95px;
   width: 95px;
 }
