@@ -1,0 +1,134 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Js Exercises 2-7</title>
+  </head>
+  <body>
+    <h2>Code 2</h2>
+    <pre>
+        function renderPattern(rows) {
+            for (i = rows; i >= 0; i--) {
+              char = "";
+              for (j = 1; j <= i; j++) {
+                char += "* ";
+              }
+              console.log(char);
+            }
+          }
+          
+          renderPattern(5);
+          
+    </pre>
+    <h2>Code 3</h2>
+    <pre>
+        var information = {
+            name: "Sushmit Rajaure",
+            address: "Kuleshwor",
+            emails: "sushmit.rajaure@gmail.com",
+            interests: "Football, Games",
+            education: [
+              { name: "Gyankunj School", enrolledDate: "2069 B.S" },
+              { name: "Kathmandu Model College", enrolledDate: "2012 A.D" },
+              { name: "Pulchowk Engineering College", enrolledDate: "2019 A.D" },
+            ],
+          };
+          
+          information.education.forEach(function (institution, value = 0) {
+            console.log(
+              "Name:",
+              institution.name,
+              ",",
+              "Date:",
+              institution.enrolledDate
+            );
+          });
+          
+          
+    </pre>
+    <h2>Code 4</h2>
+    <pre>
+                    var fruits = [
+            { id: 1, name: "Banana", color: "Yellow" },
+            { id: 2, name: "Apple", color: "Red" },
+            { id: 3, name: "Orange", color: "Orange" },
+                ];
+
+            console.log(fruits[2]["name"]);
+
+            function searchbyName(array, name) {
+            array.forEach(function (info) {
+                if (info.name.toLowerCase() === name.toLowerCase()) {
+                console.log(info);
+                }
+            });
+            }
+
+            function searchbyKey(array, key, value) {
+            array.forEach(function (info) {
+                if (info[key].toLowerCase() === value.toLowerCase()) {
+                console.log(info);
+                }
+            });
+            }
+
+            searchbyName(fruits, "orange");
+
+            searchbyKey(fruits, "color", "red");
+
+          
+        </pre
+    >
+    <h2>Code 5</h2>
+    <pre>
+        var numbers = [1, 2, 3, 4];
+
+            function transform(collection, transFunc) {
+            var data = collection.map(transFunc);
+            console.log(data);
+            }
+
+            transform(numbers, function (num) {
+            return num * 2;
+            });
+
+                
+    
+              
+        </pre
+    >
+
+    <h2>Code 6</h2>
+    <pre>
+        function sortBy(array, key) {
+            var tempArray = array.slice();
+            for (var i = 0; i < tempArray.length; i++) {
+              var lowest = i;
+              for (var j = i; j < tempArray.length; j++) {
+                if (arr[j][key] < arr[lowest][key]) lowest = j;
+              }
+          
+              if (lowest !== i) {
+                var temp = tempArray[lowest];
+                tempArray[lowest] = tempArray[i];
+                tempArray[i] = temp;
+              }
+            }
+            return tempArray;
+          }
+          
+          var sorted = sortBy(arr, "name");
+          
+          console.log(sorted);
+    
+                    
+        
+                  
+            </pre
+    >
+  </body>
+</html>
