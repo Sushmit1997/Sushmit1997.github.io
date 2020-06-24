@@ -34,17 +34,6 @@ function mainFunction(h, w, containerColor, top, left, speed, ballColour) {
     this.animateUpDown();
   };
 
-  //   this.renderAnimation = function () {
-  //       if
-
-  //   };
-
-  //   this.renderContainer = function () {
-  //     document.body.appendChild(this.container);
-  //     this.container.appendChild(this.ball);
-  //     this.animatey();
-  //   };
-
   this.animateUpDown = function () {
     let ballPos = parseInt(this.ball.style.top);
     ballPos += this.speed;
@@ -52,7 +41,7 @@ function mainFunction(h, w, containerColor, top, left, speed, ballColour) {
     if (ballPos <= 0 || ballPos >= this.maxPos) {
       this.speed = -this.speed;
     }
-    window.requestAnimationFrame(this.animateUpDown);
+    requestAnimationFrame(this.animateUpDown);
   }.bind(this);
 }
 
@@ -65,7 +54,7 @@ var drawAnimation = function () {
   data2.createContainer();
   data2.createBall();
 
-  var data3 = new mainFunction(400, 400, "grey", 150, 50, 15, "green");
+  var data3 = new mainFunction(350, 300, "grey", 150, 50, 15, "green");
   data3.createContainer();
   data3.createBall();
 };
