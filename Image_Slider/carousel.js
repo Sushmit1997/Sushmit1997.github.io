@@ -2,12 +2,24 @@ const mainContainer = document.querySelector('.carousel-container');
 
 const leftButton = document.createElement('div');
 const rightButton = document.createElement('div');
-var imgWidth = 400;
+
 
 var imageWidth = 400;
 var imageWrapper = document.querySelector('.carousel-image-wrapper');
 var currentIndex = 0;
-var slide = true;
+
+var animateBtn = document.createElement('button');
+
+animateBtn.setAttribute('onClick','addAnimation()');
+animateBtn.style.position ='absolute';
+animateBtn.style.left = '46%';
+animateBtn.style.top = '40%';
+animateBtn.style.background ='grey'
+animateBtn.style.padding = '10px'
+animateBtn.style.borderRadius ='10px'
+animateBtn.innerText = ('Enable Animation');
+
+document.body.appendChild(animateBtn);
 
 leftButton.setAttribute('class', 'prev');
 rightButton.setAttribute('class', 'next');
@@ -31,7 +43,7 @@ var imgLength = images.length;
 var index = 0;
 
 images.forEach((el, index) => {
-  el.style.left = index * imgWidth + 'px';
+  el.style.left = index * imageWidth + 'px';
   var indicator = document.createElement('span');
   indicator.classList.add('span-wrapper');
   indicatorContainer.appendChild(indicator);
@@ -86,6 +98,9 @@ function slideRight() {
 
 
 function slideLeft() {
+   indicators.forEach(function (el) {
+        el.style.background = 'white';
+      });
   if (parseInt(imageWrapper.style.left) !== 0) {
     currentIndex--;
     imageWrapper.style.left = currentIndex * imageWidth + 'px';
@@ -93,6 +108,13 @@ function slideLeft() {
   if (parseInt(imageWrapper.style.left) > 0) {
     imageWrapper.style.left = 0 + 'px';
   }
+   indicators[currentIndex].style.background = 'grey';
 }
+
+function addAnimation(){
+    imageWrapper.style.transition = '500ms';
+    alert('Animation Enabled!');
+}
+
 
 
