@@ -57,6 +57,7 @@
 }
 
 .span-wrapper{
+    cursor: pointer;
     height: 15px;
     width: 15px;
     border-radius: 50%;
