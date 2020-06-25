@@ -1,0 +1,66 @@
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  } 
+
+ 
+
+
+.carousel-container{
+    left: 35%;
+    position: relative;
+    width: 400px;
+    height: 225px;
+    overflow: hidden;
+    
+}
+
+.carousel-image-wrapper{
+    width: 1600px;
+    position: absolute;
+    left: 0px;
+    top: 0px;   
+}
+
+.carousel-image-wrapper img{
+    float: left;
+}
+
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 0 3px 3px 0;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .indicator-container{
+    position:absolute;
+    bottom: 10px;
+    left: 40%;
+    height: 15px;
+    width: 800px;
+   
+}
+
+.span-wrapper{
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 2px;
+    display: inline-block;
+}
