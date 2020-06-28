@@ -203,16 +203,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
     }
   };
 
-  // this.disableButtons = function(disable = true) {
-  //   this.leftArrow.element.disabled = disable;
-  //   this.rightArrow.element.disabled = disable;
-
-  //   buttons = this.indicatorsContainer.element.children;
-  //   for (var i = 0; i < buttons.length; i++) {
-  //     var button = buttons[i].children[0];
-  //     button.disabled = disable;
-  //   }
-  // };
+ 
 
   //For animating slides by giving direction and sliding value
   this.slideWrapper = function(direction, value) {
