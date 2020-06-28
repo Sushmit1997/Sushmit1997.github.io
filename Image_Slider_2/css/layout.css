@@ -1,5 +1,7 @@
 .main-container {
   text-align: center;
+  width: 900px;
+  margin-left: 13%;
 }
 
 .carousel-container {
@@ -9,11 +11,7 @@
   
 }
 
-.main-container{
-  width: 900px;
-  margin-left: 13%;
 
-}
 
 .span-wrapper{
   cursor: pointer;
@@ -33,3 +31,12 @@
   }
 
 }
+
+
+@media screen and (max-width:320px){
+  .main-container{
+    width: 100%;
+  }
+
+}
+

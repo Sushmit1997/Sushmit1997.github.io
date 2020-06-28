@@ -13,7 +13,7 @@ function Indicators(wrapper) {
     this.setIndicators();
 
     this.element.style.position = 'absolute';
-    this.element.style.left = '35%';
+    this.element.style.left = '40%';
     this.element.style.bottom = '0';
     
   };
@@ -49,9 +49,9 @@ function ArrowButton(isLeft) {
   this.setStyles = function() {
     this.element.style.border = 'none';
     this.element.style.position = 'absolute';
-    this.element.style.width = '14px';
-    this.element.style.width = '14px';
-    this.element.style.height = '22px';
+    this.element.style.width = '20px';
+    this.element.style.fontSize = '20px';
+    this.element.style.height = '40px';
     this.element.style.top = '50%';
     this.element.style.border = 'none';
   };
@@ -60,12 +60,12 @@ function ArrowButton(isLeft) {
     var imgLink;
     if (this.isLeft) {
       this.element.style.left = 0;
-      imgLink = 'url(./images/left.png)';
+      code = '&#10094;'
     } else {
       this.element.style.right = 0;
-      imgLink = 'url(./images/right.png)';
+      code = '&#10095;'
     }
-    this.element.style.background = imgLink + ' no-repeat';
+    this.element.innerHTML = code;
   };
 }
 
@@ -147,7 +147,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
 
     this.element.appendChild(this.leftArrow.element);
     this.element.appendChild(this.rightArrow.element);
-    console.log(this.leftArrow.element);
+    // console.log(this.leftArrow.element);
   };
 
   this.setOnClick = function(arrow) {
@@ -186,9 +186,9 @@ function Carousel(carouselContainer, animationTime, holdTime) {
 
     for (let i = 0; i < buttons.length; i++) {
       if (i == this.currentIndex) {
-        buttons[i].style.backgroundColor = 'grey';
+        buttons[i].style.backgroundColor = '#696969';
       } else {
-        buttons[i].style.backgroundColor = '#aaa';
+        buttons[i].style.backgroundColor = '#aaaaaa';
       }
 
       // Indicators clickable functionality
@@ -221,9 +221,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
       function() {
         stopAnimation = true;
         wrapper.style.marginLeft =
-          parseInt(previousMargin) + direction * value + 'px';
-
-       
+          parseInt(previousMargin) + direction * value + 'px'; 
         this.setIndicatorsClick();
         this.autoSlide();
       }.bind(this),
