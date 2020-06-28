@@ -1,0 +1,35 @@
+.main-container {
+  text-align: center;
+}
+
+.carousel-container {
+  display: inline-block;
+
+
+  
+}
+
+.main-container{
+  width: 900px;
+  margin-left: 13%;
+
+}
+
+.span-wrapper{
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 2px;
+  display: inline-block;
+}
+
+
+
+@media screen and (max-width:768px){
+  .main-container{
+    width: 100%;
+  }
+
+}
