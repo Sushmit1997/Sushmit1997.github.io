@@ -1,5 +1,4 @@
-
-var IMAGE_SIZE = 400;
+var IMAGE_WIDTH = 400;
 var IMAGE_HEIGHT = 225;
 
 
@@ -11,23 +10,23 @@ function Indicators(wrapper) {
 
   this.init = function() {
     this.setIndicators();
-
     this.element.style.position = 'absolute';
     this.element.style.left = '40%';
-    this.element.style.bottom = '0';
+    this.element.style.bottom = '0%';
     
   };
 
   this.setIndicators = function() {
     for (var i = 0; i < this.images.length; i++) {
       var indicator = document.createElement('li');
-      var dots = document.createElement('span');
+      var dots = document.createElement('button');
       dots.setAttribute('class', 'span-wrapper');
 
       indicator.appendChild(dots);
 
       indicator.style.listStyle = 'none';
       indicator.style.float = 'left';
+      indicator.style.padding ='4px';
 
       this.element.appendChild(indicator);
     }
@@ -55,7 +54,7 @@ function ArrowButton(isLeft) {
     this.element.style.top = '50%';
     this.element.style.border = 'none';
     this.element.style.color = '#ffffff';
-    this.element.style.backgroundColor = 'black'
+    this.element.style.backgroundColor = 'rgba(0, 0, 0, 0.473)'
   };
 
   this.setDirection = function() {
@@ -75,11 +74,10 @@ function ArrowButton(isLeft) {
 
 // Wrapper Section
 
-// Images Wrapper class
 function Wrapper(wrapperElement) {
   this.element = wrapperElement;
   this.images = wrapperElement.children;
-  this.width = (this.images.length) * IMAGE_SIZE; // * (IMAGE_SIZE + MARGIN * 2);
+  this.width = (this.images.length) * IMAGE_WIDTH; 
 
   this.init = function() {
     this.setStyles();
@@ -106,9 +104,9 @@ function Wrapper(wrapperElement) {
 function Carousel(carouselContainer, animationTime, holdTime) {
   this.element = carouselContainer;
   this.animationTime = animationTime ;
-  this.holdTime = holdTime * 1000;
+  this.holdTime = holdTime;
 
-  this.width = IMAGE_SIZE;
+  this.width = IMAGE_WIDTH;
   this.height = IMAGE_HEIGHT;
   
   this.wrapper = carouselContainer.children[0];
@@ -160,18 +158,18 @@ function Carousel(carouselContainer, animationTime, holdTime) {
 
       var imagesCount = this.wrapper.children.length;
       if (!arrow.isLeft && this.currentIndex >= imagesCount - 1) {
-        this.slideWrapper(1, IMAGE_SIZE * (imagesCount - 1));
+        this.slideWrapper(1, IMAGE_WIDTH * (imagesCount - 1));
         this.currentIndex = 0;
       } else if (arrow.isLeft && this.currentIndex <= 0) {
-        this.slideWrapper(-1, IMAGE_SIZE * (imagesCount - 1));
+        this.slideWrapper(-1, IMAGE_WIDTH * (imagesCount - 1));
         this.currentIndex = imagesCount - 1;
       } else {
         this.currentIndex -= direction;
-        this.slideWrapper(direction, IMAGE_SIZE);
+        this.slideWrapper(direction, IMAGE_WIDTH);
       }
 
 
-      // this.animateWrapper(direction, IMAGE_SIZE);
+      // this.slideWrapper(direction, IMAGE_WIDTH);
     }.bind(this);
   };
 
@@ -185,6 +183,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
 
   this.setIndicatorsClick = function() {
     buttons = this.indicatorsContainer.element.children;
+    // console.log(buttons)
 
     for (let i = 0; i < buttons.length; i++) {
       if (i == this.currentIndex) {
@@ -200,22 +199,36 @@ function Carousel(carouselContainer, animationTime, holdTime) {
         direction = difference >= 0 ? 1 : -1;
         if (difference != 0) {
           this.currentIndex = i;
-          this.slideWrapper(direction, IMAGE_SIZE * direction * difference);
+          this.slideWrapper(direction, IMAGE_WIDTH * direction * difference);
         }
       }.bind(this);
     }
   };
 
+  this.disableButtons = function(disable = true) {
+    buttons = this.indicatorsContainer.element.children;
+    for (var i = 0; i < buttons.length; i++) {
+      var button = buttons[i].children[0];
+      button.disabled = disable;
+    }
+
+    this.leftArrow.element.disabled = disable;
+    this.rightArrow.element.disabled = disable;
+
+    
+  }.bind(this);
 
 
   // For animating slides by giving direction and sliding value
+
   this.slideWrapper = function(direction, value) {
     var wrapper = this.wrapper;
-    var offset = 10 * (value / IMAGE_SIZE);
+    var offset =  (value / IMAGE_WIDTH) * 10;
     var runningPos = 0;
     var previousMargin = wrapper.style.marginLeft;
 
     var stopAnimation = false;
+    this.disableButtons(true);
     
     clearInterval(this.autoSlideInterval);
 
@@ -223,7 +236,8 @@ function Carousel(carouselContainer, animationTime, holdTime) {
       function() {
         stopAnimation = true;
         wrapper.style.marginLeft =
-          parseInt(previousMargin) + direction * value + 'px'; 
+        parseInt(previousMargin) + direction * value + 'px'; 
+        this.disableButtons(false);
         this.setIndicatorsClick();
         this.autoSlide();
       }.bind(this),
@@ -244,16 +258,15 @@ function Carousel(carouselContainer, animationTime, holdTime) {
       function() {
         var imagesCount = this.wrapper.children.length;
         if (this.currentIndex >= imagesCount - 1) {
-          this.slideWrapper(1, IMAGE_SIZE * (imagesCount - 1));
+          this.slideWrapper(1, IMAGE_WIDTH * (imagesCount - 1));
           this.currentIndex = 0;
         } else {
-          this.slideWrapper(-1, IMAGE_SIZE);
+          this.slideWrapper(-1, IMAGE_WIDTH);
           this.currentIndex++;
         }
       }.bind(this),this.holdTime);
   };
 }
-
 
 
 // Getting carousel container using DOM manipulation
@@ -263,6 +276,6 @@ var carousels = document.getElementsByClassName('carousel-container');
 for (let i = 0; i < carousels.length; i++) {
   const carousel = carousels[i];
 
-  var carouselObject = new Carousel(carousel, 18, i + 2);
+  var carouselObject = new Carousel(carousel, 20, (i + 2) * 1000);
   carouselObject.init();
 }
