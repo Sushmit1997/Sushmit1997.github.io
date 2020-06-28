@@ -3,7 +3,39 @@ var IMAGE_SIZE = 400;
 var IMAGE_HEIGHT = 225;
 
 
-// Arrow buttons class
+
+// Indicators Section
+function Indicators(wrapper) {
+  this.element = document.createElement('ul');
+  this.images = wrapper.children;
+
+  this.init = function() {
+    this.setIndicators();
+
+    this.element.style.position = 'absolute';
+    this.element.style.left = '35%';
+    this.element.style.bottom = '0';
+    
+  };
+
+  this.setIndicators = function() {
+    for (var i = 0; i < this.images.length; i++) {
+      var indicator = document.createElement('li');
+      var dots = document.createElement('span');
+      dots.setAttribute('class', 'span-wrapper');
+
+      indicator.appendChild(dots);
+
+      indicator.style.listStyle = 'none';
+      indicator.style.float = 'left';
+
+      this.element.appendChild(indicator);
+    }
+  };
+}
+
+
+// Arrow buttons Section
 function ArrowButton(isLeft) {
   this.element = document.createElement('button');
   this.arrowDirection;
@@ -28,49 +60,18 @@ function ArrowButton(isLeft) {
     var imgLink;
     if (this.isLeft) {
       this.element.style.left = 0;
-      imgLink = 'url(./images/left-arrow.png)';
+      imgLink = 'url(./images/left.png)';
     } else {
       this.element.style.right = 0;
-      imgLink = 'url(./images/right-arrow.png)';
+      imgLink = 'url(./images/right.png)';
     }
     this.element.style.background = imgLink + ' no-repeat';
   };
 }
 
-// Indicators class
-function Indicators(wrapper) {
-  this.element = document.createElement('ul');
-  this.images = wrapper.children;
 
-  this.init = function() {
-    this.setIndicators();
 
-    this.element.style.position = 'absolute';
-    this.element.style.left = '35%';
-    this.element.style.bottom = '0';
-    
-  };
-
-  this.setIndicators = function() {
-    for (var i = 0; i < this.images.length; i++) {
-      var indicator = document.createElement('li');
-      var dots = document.createElement('span');
-      // button.style.padding = '5px';
-      // button.style.margin = '5px';
-      // button.style.border = 'none';
-      dots.setAttribute('class', 'span-wrapper');
-
-      indicator.appendChild(dots);
-
-      indicator.style.listStyle = 'none';
-      indicator.style.float = 'left';
-
-      this.element.appendChild(indicator);
-    }
-  };
-}
-
-//
+// Wrapper Section
 
 // Images Wrapper class
 function Wrapper(wrapperElement) {
@@ -87,7 +88,6 @@ function Wrapper(wrapperElement) {
     this.element.style.width = this.width + 'px';
     this.element.style.float = 'left';
     this.element.style.marginLeft = '0px';
-    this.element.style.backgroundColor = '#292';
   };
 
   this.setImages = function() {
@@ -214,7 +214,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
   //   }
   // };
 
-  // Function for animating slides by giving direction and sliding value
+  //For animating slides by giving direction and sliding value
   this.slideWrapper = function(direction, value) {
     var wrapper = this.wrapper;
     var offset = 10 * (value / IMAGE_SIZE);
@@ -222,7 +222,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
     var previousMargin = wrapper.style.marginLeft;
 
     var stopAnimation = false;
-    // this.disableButtons(true);
+    
     clearInterval(this.autoSlideInterval);
 
     setTimeout(
@@ -231,7 +231,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
         wrapper.style.marginLeft =
           parseInt(previousMargin) + direction * value + 'px';
 
-        // this.disableButtons(false);
+       
         this.setIndicatorsClick();
         this.autoSlide();
       }.bind(this),
