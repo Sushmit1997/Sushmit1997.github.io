@@ -192,6 +192,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
       }
 
       // Indicators clickable functionality
+      
       buttons[i].onclick = function() {
         var difference = this.currentIndex - i;
         direction = difference >= 0 ? 1 : -1;
@@ -205,7 +206,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
 
 
 
-  //For animating slides by giving direction and sliding value
+  // For animating slides by giving direction and sliding value
   this.slideWrapper = function(direction, value) {
     var wrapper = this.wrapper;
     var offset = 10 * (value / IMAGE_SIZE);
@@ -252,6 +253,10 @@ function Carousel(carouselContainer, animationTime, holdTime) {
       }.bind(this),this.holdTime);
   };
 }
+
+
+
+// Getting carousel container using DOM manipulation
 
 var carousels = document.getElementsByClassName('carousel-container');
 
