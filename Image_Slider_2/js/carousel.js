@@ -203,7 +203,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
     }
   };
 
- 
+
 
   //For animating slides by giving direction and sliding value
   this.slideWrapper = function(direction, value) {
