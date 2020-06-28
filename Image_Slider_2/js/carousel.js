@@ -50,10 +50,12 @@ function ArrowButton(isLeft) {
     this.element.style.border = 'none';
     this.element.style.position = 'absolute';
     this.element.style.width = '20px';
-    this.element.style.fontSize = '20px';
+    this.element.style.fontSize = '30px';
     this.element.style.height = '40px';
     this.element.style.top = '50%';
     this.element.style.border = 'none';
+    this.element.style.color = '#ffffff';
+    this.element.style.backgroundColor = 'black'
   };
 
   this.setDirection = function() {
@@ -77,7 +79,7 @@ function ArrowButton(isLeft) {
 function Wrapper(wrapperElement) {
   this.element = wrapperElement;
   this.images = wrapperElement.children;
-  this.width = (this.images.length + 1) * IMAGE_SIZE; // * (IMAGE_SIZE + MARGIN * 2);
+  this.width = (this.images.length) * IMAGE_SIZE; // * (IMAGE_SIZE + MARGIN * 2);
 
   this.init = function() {
     this.setStyles();
