@@ -1,0 +1,17 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+.wrapper {
+  width: 600px;
+  min-height: 400px;
+  position: relative;
+  background: grey;
+  border: 5px black solid;
+}
+
+.container {
+  margin-left: 300px;
+}
+

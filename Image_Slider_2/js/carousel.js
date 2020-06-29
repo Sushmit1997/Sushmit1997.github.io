@@ -259,7 +259,6 @@ function Carousel(carouselContainer, animationTime, holdTime) {
   };
 }
 
-
 // Getting carousel container using DOM manipulation
 
 var carousels = document.getElementsByClassName('carousel-container');
