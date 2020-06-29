@@ -147,15 +147,12 @@ function Carousel(carouselContainer, animationTime, holdTime) {
 
     this.element.appendChild(this.leftArrow.element);
     this.element.appendChild(this.rightArrow.element);
-    // console.log(this.leftArrow.element);
+    
   };
 
   this.setOnClick = function(arrow) {
       arrow.element.onclick = function() {
       var direction = arrow.isLeft ? 1 : -1;
-
-      // this.currentImageIndex -= direction;
-
       var imagesCount = this.wrapper.children.length;
       if (!arrow.isLeft && this.currentIndex >= imagesCount - 1) {
         this.slideWrapper(1, IMAGE_WIDTH * (imagesCount - 1));
@@ -166,10 +163,7 @@ function Carousel(carouselContainer, animationTime, holdTime) {
       } else {
         this.currentIndex -= direction;
         this.slideWrapper(direction, IMAGE_WIDTH);
-      }
-
-
-      // this.slideWrapper(direction, IMAGE_WIDTH);
+      }    
     }.bind(this);
   };
 
@@ -177,14 +171,11 @@ function Carousel(carouselContainer, animationTime, holdTime) {
     this.indicatorsContainer = new Indicators(this.wrapper);
     this.indicatorsContainer.init();
     this.element.appendChild(this.indicatorsContainer.element);
-
     this.setIndicatorsClick();
   };
 
   this.setIndicatorsClick = function() {
     buttons = this.indicatorsContainer.element.children;
-    // console.log(buttons)
-
     for (let i = 0; i < buttons.length; i++) {
       if (i == this.currentIndex) {
         buttons[i].style.backgroundColor = '#696969';
