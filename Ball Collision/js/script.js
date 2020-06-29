@@ -17,7 +17,7 @@ function generateRandomNumbers(lowerLimit, higherLimit ){
 }
 
 
-var Ball = function(wrapper){
+var Ball = function(wrapper,isantSmash){
   this.wrapper = wrapper;
   this.element = document.createElement('div');
   this.radius = Math.floor(Math.random()* (MAX_RADIUS - MIN_RADIUS)) + MIN_RADIUS;
@@ -25,7 +25,9 @@ var Ball = function(wrapper){
   this.y = Math.floor(Math.random() * (CONTAINER_HEIGHT - 2 * this.radius));
  
 
-
+  if(isantSmash){
+    this.ant = document.createElement('img');
+  }
 
   this.velocity = generateRandomNumbers(1,4) * VELOCITY;
   
@@ -45,11 +47,19 @@ var Ball = function(wrapper){
 
   this.create = function(){
     var color = COLORS[generateRandomNumbers(0, COLORS.length)];
+    if (!isantSmash){
+      this.element.style.backgroundColor = color;
+    }
     this.element.style.backgroundColor = color;
     this.element.style.position = 'absolute';
     this.element.style.borderRadius = '50%';
     this.element.style.height = (this.radius * 2) + 'px';
     this.element.style.width = (this.radius * 2) + 'px';
+
+    if (isantSmash){
+      this.ant.style.width = '100%';
+      this.ant.style.height = 'auto';
+    }
     this.wrapper.appendChild(this.element);
 
     this.draw();
