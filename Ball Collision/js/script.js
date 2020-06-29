@@ -5,6 +5,7 @@ const CONTAINER_WIDTH = 600;
 const CONTAINER_HEIGHT = 400;
 const TOTAL_BALLS = 20;
 const COLORS = ['blue','red','green','yellow'];
+const VELOCITY = 1;
 
 
 
@@ -18,14 +19,19 @@ function generateRandomNumbers(lowerLimit, higherLimit ){
 
 var Ball = function(wrapper){
   this.wrapper = wrapper;
-  this.ball = document.createElement('div');
-  
-
+  this.element = document.createElement('div');
+  this.radius = Math.floor(Math.random()* (MAX_RADIUS - MIN_RADIUS)) + MIN_RADIUS;
   this.x = Math.floor(Math.random() * (CONTAINER_WIDTH - 2 * this.radius ));
   this.y = Math.floor(Math.random() * (CONTAINER_HEIGHT - 2 * this.radius));
-  this.radius = Math.floor(Math.random()* (MAX_RADIUS - MIN_RADIUS)) + MIN_RADIUS;
+ 
 
-  this.velocity = 1;
+
+
+  this.velocity = generateRandomNumbers(1,4) * VELOCITY;
+  
+  // console.log(this.radius, this.velocity);
+
+
 
   this.direction = {
     x: generateRandomNumbers(-2,2),
@@ -33,18 +39,18 @@ var Ball = function(wrapper){
   }
 
   this.draw = function(){
-    this.ball.style.left = this.x + 'px';
-    this.ball.style.top = this.y + 'px';
+    this.element.style.left = this.x + 'px';
+    this.element.style.top = this.y + 'px';
   }
 
   this.create = function(){
     var color = COLORS[generateRandomNumbers(0, COLORS.length)];
-    this.ball.style.backgroundColor = color;
-    this.ball.style.position = 'absolute';
-    this.ball.style.borderRadius = '50%';
-    this.ball.style.height = (this.radius * 2) + 'px';
-    this.ball.style.width = (this.radius * 2) + 'px';
-    this.wrapper.appendChild(this.ball);
+    this.element.style.backgroundColor = color;
+    this.element.style.position = 'absolute';
+    this.element.style.borderRadius = '50%';
+    this.element.style.height = (this.radius * 2) + 'px';
+    this.element.style.width = (this.radius * 2) + 'px';
+    this.wrapper.appendChild(this.element);
 
     this.draw();
 
@@ -55,6 +61,8 @@ var Ball = function(wrapper){
     // Update x and y
     this.x += this.velocity * this.direction.x;
     this.y += this.velocity * this.direction.y;
+    
+
 
     // Check collision with boundary
     this.checkCollisionWithBoundary();
@@ -84,13 +92,16 @@ var Ball = function(wrapper){
 
   }
 
+
+
   this.checkCollision = function(balls) {
     for (var i = 0; i < balls.length; i++) {
         var ball = balls[i];
 
-        //check collision with other balls than current ball
+        // checking collision with other balls than current ball
         var currentBall = this.element;
         var otherBalls = ball.element;
+        
 
         if (currentBall != otherBalls) {
             
