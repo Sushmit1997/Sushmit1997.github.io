@@ -12,6 +12,9 @@ class Road{
     this.currentRoadPosition = 0;
 
     this.setStyles();
+    this.change();
+
+    this.addScore(0);
 
 
   }
@@ -19,14 +22,14 @@ class Road{
 setStyles(){
   this.element.style.width = '100%';
   this.element.style.background = 'url("./images/asphalt.png")';
-  this.element.style.backgroundAttachment = 'fixed';
+  // this.element.style.backgroundAttachment = 'fixed';
   this.element.style.backgroundSize = '50%';
   this.element.style.height = '100%';
 
   this.scoreBox.style.position = 'absolute';
   this.scoreBox.style.color = '#FFD700';
-  this.scoreBox.style.fontSize = '28px';
-  this.scoreBox.style.left = '5%';
+  this.scoreBox.style.fontSize = '20px';
+  this.scoreBox.style.right = '10%';
   this.scoreBox.style.zIndex = '10';
 
 
@@ -45,7 +48,7 @@ change(){
 
 addScore(score){
   this.currentScore += score;
-  this.scoreBox.innerHTML = this.currentScore;
+  this.scoreBox.innerHTML = Math.floor(this.currentScore);
 
 }
 

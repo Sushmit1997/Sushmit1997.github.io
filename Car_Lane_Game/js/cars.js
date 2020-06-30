@@ -1,6 +1,8 @@
 var GAME_VIEW_SIZE = 1/1.5;
 var GAME_WIDTH = 350;
+var FPS = 60;
 
+var CAR_RATIO = 0.8;
 var CAR_SIZE = 50;
 
 var carLocations = [12.5, 12.5 + 25, 12.5 + 25*2, 12.5 + 25*3] // Centering position of cars in lanes
@@ -9,15 +11,19 @@ function generateRandomNumbers(lowerLimit, upperLimit){
   return Math.floor( Math.random() * (upperLimit-lowerLimit) + lowerLimit);
 }
 
+
+
+var typeOfCars = [ './images/GreenCar.png','./images/Ambulance.png' ,'./images/taxi.png']
+
 class Car{
   constructor(mainElement){
     this.mainElement = mainElement;
     this.element = document.createElement('div');
 
     this.height = CAR_SIZE;
-    this.width = 50;
+    this.width =  this.height * CAR_RATIO;
     this.xPos = carLocations[generateRandomNumbers(0,4)];
-    this.yPos = 5;
+    this.yPos = 10;
 
     this.heightPercent = (100 * this.height)/(GAME_WIDTH /GAME_VIEW_SIZE);
 
@@ -33,7 +39,7 @@ class Car{
     this.element.style.transform = 'translate(-50%,0)';
     this.element.style.display = this.carImage = document.createElement('img');
 
-    this.carImage.setAttribute('src','./images/GreenCar.png');
+    this.carImage.setAttribute('src','./images/RedCar.png');
     this.carImage.style.width = '100%';
     this.carImage.style.height = 'auto';
 
@@ -47,6 +53,7 @@ class Car{
   }
 
   switchLeft(){
+    console.log(this.xPos);
     if(this.xPos > 15){
       this.xPos -= 25;
     }
@@ -56,10 +63,10 @@ class Car{
     if(this.xPos < 85){
       this.xPos += 25;
     }
-  }
+  }a
 
   checkCollision(cars){
-    for (var i = 0; i < cars.length; i++){
+    for (let i = 0; i < cars.length; i++){
       const c = cars[i];
     }
   }
@@ -71,7 +78,7 @@ class RivalCar extends Car{
     super(mainElement);
     this.speed = generateRandomNumbers(5,10) * 0.1;
     this.yPos = 100;
-    this.carImage.setAttribute('src','./images/RedCar.png');
+    this.carImage.setAttribute('src',typeOfCars[generateRandomNumbers(0,3)]);
 
     this.render();
   }

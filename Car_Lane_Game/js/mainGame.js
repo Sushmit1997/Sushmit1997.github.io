@@ -1,5 +1,5 @@
 var GAME_VIEW_SIZE = 1/1.5;
-var GAME_WIDTH = 200;
+var GAME_WIDTH = 350;
 var FPS = 60;
 
 var CARS_SPAWN_INTERVAL = 1000;
@@ -52,7 +52,7 @@ class Game{
   playerControl(){
     document.onkeypress = function(event){
       var pressedKey = event.key;
-      if( pressedKey == 'a'){
+      if( pressedKey == 'a' ){
         this.player.switchLeft();
       } else if (pressedKey == 'd'){
         this.player.switchRight();
@@ -128,7 +128,9 @@ function startGame(){
   highScoreBoard.style.display = 'block';
 
   var highScoreText = (hs = localStorage.getItem('highScore')) ? hs : 0;
-  highScoreBoard.innerHTML = ` High Score: ${highScoreText}`;
+  highScoreBoard.innerHTML = `High Score: ${highScoreText}`;
+
+  mainWrapper.appendChild(highScoreBoard)
 
   var startButton = document.createElement('img');
   startButton.setAttribute('src','./images/start.png');
