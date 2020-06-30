@@ -29,7 +29,7 @@ var Ball = function(wrapper,isAntSmash){
     this.ant = document.createElement('img');
   }
 
-  this.velocity = generateRandomNumbers(1,4) * VELOCITY;
+  this.velocity = generateRandomNumbers(1,3) * VELOCITY;
   
   // console.log(this.radius, this.velocity);
 
@@ -47,7 +47,7 @@ var Ball = function(wrapper,isAntSmash){
     //  console.log(this.style.top)
 
     if (isAntSmash){
-      if(this.direction.x === 1){
+      if(this.direction.x == 1){
         this.ant.setAttribute('src', './images/ant-right.gif');
       }else {
         this.ant.setAttribute('src','./images/ant-left.gif')
@@ -77,22 +77,35 @@ var Ball = function(wrapper,isAntSmash){
 
   } 
 
-    if(isAntSmash){
+  
+       
       this.smashAnt = function(ants) {
+        
         var self = this;
         self.element.onclick = function() {
-            self.wrapper.removeChild(this.element);
+            
+            self.wrapper.removeChild(self.element);
+            
 
             for (var i = 0; i < ants.length; i++) {
                 var ant = ants[i];
-                if (ant.element === self.element) {
-                    ants.splice(i, 1);
+                if (ant.element === self.element) {    
+                    ants.splice(i, 1);  
+                           
                 }
+               
             }
+            
+            
         };
+        
     }
 
-    }
+ 
+
+    
+
+    
   
 
 
@@ -210,7 +223,7 @@ var Start = function(wrapper,isAntSmash){
       var overLapped = true;
       //Dont return if newly created ball overlaps with other.
       while(overLapped){
-        ball = new Ball(this.element);
+        ball = new Ball(this.element,isAntSmash);
 
         if(this.checkIfOverLap(ball)){
           overLapped = false;
