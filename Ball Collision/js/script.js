@@ -4,7 +4,7 @@ const MAX_RADIUS = 15;
 const CONTAINER_WIDTH = 600;
 const CONTAINER_HEIGHT = 400;
 const TOTAL_BALLS = 20;
-const COLORS = ['blue','red','green','yellow'];
+const COLORS = ['red','green','yellow','pink'];
 const VELOCITY = 1;
 
 
@@ -17,7 +17,7 @@ function generateRandomNumbers(lowerLimit, higherLimit ){
 }
 
 
-var Ball = function(wrapper,isantSmash){
+var Ball = function(wrapper,isAntSmash){
   this.wrapper = wrapper;
   this.element = document.createElement('div');
   this.radius = Math.floor(Math.random()* (MAX_RADIUS - MIN_RADIUS)) + MIN_RADIUS;
@@ -25,7 +25,7 @@ var Ball = function(wrapper,isantSmash){
   this.y = Math.floor(Math.random() * (CONTAINER_HEIGHT - 2 * this.radius));
  
 
-  if(isantSmash){
+  if(isAntSmash){
     this.ant = document.createElement('img');
   }
 
@@ -43,28 +43,60 @@ var Ball = function(wrapper,isantSmash){
   this.draw = function(){
     this.element.style.left = this.x + 'px';
     this.element.style.top = this.y + 'px';
+    // console.log(this.element.style.left)
+    //  console.log(this.style.top)
+
+    if (isAntSmash){
+      if(this.direction.x === 1){
+        this.ant.setAttribute('src', './images/ant-right.gif');
+      }else {
+        this.ant.setAttribute('src','./images/ant-left.gif')
+      }
+    }
   }
 
   this.create = function(){
     var color = COLORS[generateRandomNumbers(0, COLORS.length)];
-    if (!isantSmash){
+    if (!isAntSmash){
       this.element.style.backgroundColor = color;
     }
-    this.element.style.backgroundColor = color;
+    
     this.element.style.position = 'absolute';
     this.element.style.borderRadius = '50%';
     this.element.style.height = (this.radius * 2) + 'px';
     this.element.style.width = (this.radius * 2) + 'px';
 
-    if (isantSmash){
+    if (isAntSmash){
       this.ant.style.width = '100%';
       this.ant.style.height = 'auto';
+      this.element.appendChild(this.ant);
     }
     this.wrapper.appendChild(this.element);
 
     this.draw();
 
   } 
+
+    if(isAntSmash){
+      this.smashAnt = function(ants) {
+        var self = this;
+        self.element.onclick = function() {
+            self.wrapper.removeChild(this.element);
+
+            for (var i = 0; i < ants.length; i++) {
+                var ant = ants[i];
+                if (ant.element === self.element) {
+                    ants.splice(i, 1);
+                }
+            }
+        };
+    }
+
+    }
+  
+
+
+  
 
   this.animateAndCheckCollision = function(balls){
 
@@ -147,7 +179,7 @@ var Ball = function(wrapper,isantSmash){
   }
 }
 
-var Start = function(wrapper){
+var Start = function(wrapper,isAntSmash){
   console.log(wrapper);
   this.balls = [];
   this.wrapper = wrapper;
@@ -174,7 +206,7 @@ var Start = function(wrapper){
   this.createBalls = function(){
     for(var i = 0; i < TOTAL_BALLS; i++){
       var ball;
-
+      //considering ball is always overlapped with ball already existing
       var overLapped = true;
       //Dont return if newly created ball overlaps with other.
       while(overLapped){
@@ -185,6 +217,9 @@ var Start = function(wrapper){
         }
       }
          ball.create();
+
+         if(isAntSmash){ball.smashAnt(this.balls);}
+
         this.balls.push(ball);
     }
   }
@@ -210,7 +245,8 @@ var Start = function(wrapper){
 
 
 function startGame(){
-  var box = new Start(document.getElementsByClassName('container')[0]);
+  var box = new Start(document.getElementsByClassName('container')[0],false);
+  var box2 = new Start(document.getElementsByClassName('container-antsmash')[0],true);
 }
 
 startGame();
