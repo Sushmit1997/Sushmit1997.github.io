@@ -1,0 +1,10 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.main-container{
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+}
