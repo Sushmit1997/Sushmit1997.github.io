@@ -9,6 +9,7 @@ class Game{
     this.mainElement = mainElement;
     this.element = document.createElement('div');
     this.road = new Road(this.element);
+    
 
     this.gameOver = false;
     this.intervals = [];
@@ -27,8 +28,12 @@ class Game{
     this.element.style.height = GAME_WIDTH / GAME_VIEW_SIZE + 'px';
     this.element.style.overflow = 'hidden';
 
+  
+    
+
     this.element.style.position = 'relative';
     this.mainElement.appendChild(this.element);
+    
     
   }
 
@@ -76,12 +81,14 @@ class Game{
     if(this.gameOver){
       clearInterval(this.gameLoopInterval);
       clearInterval(this.createRivalsInterval);
+      this.road.gameOverScreen();
 
       if(this.road.currentScore > localStorage.getItem('high_score')){
         localStorage.setItem('highScore', this.road.currentScore);
       }
+      this.element
 
-      setTimeout('location.reload(true);',500);
+      setTimeout('location.reload(true);',2000);
     }
   }
 
@@ -126,6 +133,9 @@ function startGame(){
   var highScoreBoard = document.createElement('span');
   highScoreBoard.style.color = 'red';
   highScoreBoard.style.display = 'block';
+  highScoreBoard.style.marginTop = '30px';
+  highScoreBoard.style.marginBottom = '20px';
+  highScoreBoard.style.fontSize = '30px';
 
   var highScoreText = (hs = localStorage.getItem('highScore')) ? hs : 0;
   highScoreBoard.innerHTML = `High Score: ${highScoreText}`;
@@ -141,6 +151,7 @@ function startGame(){
 
   startButton.onclick = function(){
     startButton.style.display = 'none';
+    document.getElementsByClassName('instruction').display = 'none';
 
     var start = new Game(mainWrapper);
   }

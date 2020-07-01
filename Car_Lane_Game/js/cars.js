@@ -13,7 +13,7 @@ function generateRandomNumbers(lowerLimit, upperLimit){
 
 
 
-var typeOfCars = [ './images/GreenCar.png','./images/Ambulance.png' ,'./images/taxi.png']
+var typeOfCars = [ './images/GreenCar.png','./images/Ambulance.png' ,'./images/taxi.png','./images/bike.png']
 
 class Car{
   constructor(mainElement){
@@ -78,16 +78,12 @@ class RivalCar extends Car{
     super(mainElement);
     this.speed = generateRandomNumbers(5,10) * 0.1;
     this.yPos = 100;
-    this.carImage.setAttribute('src',typeOfCars[generateRandomNumbers(0,3)]);
+    this.carImage.setAttribute('src',typeOfCars[generateRandomNumbers(0,4)]);
 
     this.render();
   }
 
-  setLanes(){
-    if (this.xPos < 50){
-      this.carImage.style.transform = 'scaleY(-1)';
-    }
-  }
+
 
   moveCarDown(){
     this.yPos -= this.speed;
