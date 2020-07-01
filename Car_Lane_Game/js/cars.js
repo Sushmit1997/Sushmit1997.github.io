@@ -63,7 +63,7 @@ class Car{
     if(this.xPos < 85){
       this.xPos += 25;
     }
-  }a
+  }
 
   checkCollision(cars){
     for (let i = 0; i < cars.length; i++){
