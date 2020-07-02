@@ -6,9 +6,9 @@ var Foreground = function(context){
   this.currentXpos = 0;
   this.velocity = 2;
 
-  this.move = function(){
+  this.move = function( gameWidth){
     this.currentXpos -= this.velocity;
-    if ( this.currentXpos + this.gameWidth <= 0) this.currentXpos = 0;
+    if ( this.currentXpos + gameWidth <= 0) this.currentXpos = 0;
   }
   
   this.detectCollision = function(bird, gameHeight){

@@ -15,4 +15,4 @@ class main {
   }
 }
 
-main = new main(1);
+main = new main(2);

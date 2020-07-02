@@ -5,7 +5,7 @@ class mainGame{
     this.gameWidth = 288;
     this.gameHeight = 512;
 
-    this.canvas = document.getElementById('myCanvas');
+    this.canvas = document.createElement('canvas');
     this.context = this.canvas.getContext('2d');
 
     this.gravity = 10;
@@ -48,13 +48,13 @@ class mainGame{
   checkInputs(){
     this.canvas.onclick = function(event){
       event.preventDefault();
-      if (this.state = 'MainMenu'){
+      if (this.state == 'MainMenu'){
         this.state = 'Playing';
         this.bird.moveUp();
       } else if ( this.state == 'Playing'){
         this.spacePressed = 'true';
       }
-      if ( this.state = 'GameOver'){
+      if ( this.state == 'GameOver'){
         this.state = 'MainMenu';
         this.reset();
       }
@@ -153,11 +153,11 @@ class mainGame{
   }
 
   showScore(){
-    this.context.font = 50 + 'px';
+    this.context.font = 40 + 'px Arial';
     this.context.fillStyle = '#fff';
     this.context.fillText(
       this.currentScore,
-      this.gameWidth / 2 - 50 / 2,
+      130,
       75
     );
   }
