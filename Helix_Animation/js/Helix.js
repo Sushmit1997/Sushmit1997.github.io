@@ -9,6 +9,9 @@ function Helix(canvasId, width, height, rows, columns, color1 ,color2){
     this.color1 = color1;
     this.color2 = color2;
 
+    this.originX = 0;
+    this.originY = 0;
+
     this.canvas = document.createElement('canvas');
     this.canvas.setAttribute('id', canvasId);
     this.canvas.width = this.width;
