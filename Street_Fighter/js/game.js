@@ -1,8 +1,4 @@
 var Game = {
-  showHadouken: false,
-  showKikouken: false,
-  canvas: undefined,
-  ctx: undefined,
   fps: 60,
   keys: {
     player1left: 65,
