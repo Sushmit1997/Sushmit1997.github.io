@@ -91,12 +91,6 @@ var Game = {
       ) {
         this.player1.states.right = true;
       }
-      // if(e.keyCode === this.keys.player1hadouken) {
-      //   this.player1.states.hadouken = true
-      // }
-      // if(e.keyCode === this.keys.player2hadouken) {
-      //   this.player2.states.hadouken = true
-      // }
     });
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === this.keys.player2left) {
@@ -145,6 +139,6 @@ var Game = {
   },
 };
 
-setTimeout(function () {
-  Game.init('ken', 'mike');
-}, 1000);
+// setTimeout(function () {
+//   Game.init('ken', 'mike');
+// }, 1000);

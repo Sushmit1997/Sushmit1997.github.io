@@ -29,11 +29,6 @@ class Player1 {
       right: false,
       punch: false,
     };
-    if (this.player === 'mike') {
-      setInterval(() => {
-        this.states.hadouken = false;
-      }, 100);
-    }
     this.startPointX = 200;
     this.startPointY = 150;
     this.separator = 65;

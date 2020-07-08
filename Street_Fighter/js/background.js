@@ -4,6 +4,9 @@ class Background {
     this.img = new Image();
     this.img.src = '../images/bg.jpg';
 
+    // this.imgred = new Image();
+    // this.imgred.src = "./images/bg/kenbg1200.png"
+
     // this.x = 0;
     // this.y = 0;
   }
