@@ -3,4 +3,4 @@
 Assignments and projects completed during Internship at LeapFrog Technology. 
 
 You can find all these projects hosted at:
-sushmit1997.github.io
+https://sushmit1997.github.io/
