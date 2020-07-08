@@ -4,8 +4,8 @@ var Game = {
     player1left: 65,
     player1right: 68,
 
-    player2left: 74,
-    player2right: 76,
+    player2left: 37,
+    player2right: 39,
   },
 
   init: function (player1Select, player2Select) {
