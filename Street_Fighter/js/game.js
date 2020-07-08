@@ -60,7 +60,7 @@ var Game = {
   },
 
   drawAll: function () {
-    this.background.draw();
+    this.background.draw(this.framesCounter);
     this.player2.draw(this.framesCounter);
     this.player1.draw(this.framesCounter);
   },

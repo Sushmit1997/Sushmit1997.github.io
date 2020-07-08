@@ -1,7 +1,7 @@
 var Player1_source = {
   ken: {
-    walk: '../images/ken_assets/ken_walk.png',
-    idle: '../images/ken_assets/ken_idle.png',
+    walk: './images/ken_assets/ken_walk.png',
+    idle: './images/ken_assets/ken_idle.png',
 
     values: {
       w: {

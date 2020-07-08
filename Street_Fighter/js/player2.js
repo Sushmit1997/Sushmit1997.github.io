@@ -16,7 +16,7 @@ class Player2 {
 
     // Idle Image
     this.imgIdlep2 = new Image();
-    this.imgIdlep2.src = '../images/chunli_assets/chun_idle.png';
+    this.imgIdlep2.src = './images/chunli_assets/chun_idle.png';
     this.chunIdleX = 188;
     this.chunIdleY = 92;
     this.imgIdlep2.frames = 4;
@@ -24,7 +24,7 @@ class Player2 {
 
     // Walk Image
     this.imgWalkp2 = new Image();
-    this.imgWalkp2.src = '../images/chunli_assets/chun_walk.png';
+    this.imgWalkp2.src = './images/chunli_assets/chun_walk.png';
     this.chunWalkX = 424;
     this.chunWalkY = 92;
     this.imgWalkp2.frames = 8;
