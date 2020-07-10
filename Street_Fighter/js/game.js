@@ -3,6 +3,8 @@ var Game = {
   keys: {
     player1left: 65,
     player1right: 68,
+    player1block: 69,
+    player1punch: 88,
 
     player2left: 37,
     player2right: 39,
@@ -74,6 +76,13 @@ var Game = {
       if (e.keyCode === this.keys.player2right) {
         this.player2.states.right = true;
       }
+      if (e.keyCode === this.keys.player1punch) {
+        this.player1.states.punch = true;
+      }
+      if (e.keyCode === this.keys.player1block) {
+        this.player1.states.block = true;
+      }
+
       if (e.keyCode === this.keys.player1left) {
         this.player1.states.left = true;
         if (this.player1.startPointX < 0) {
@@ -92,12 +101,19 @@ var Game = {
       if (e.keyCode === this.keys.player2left) {
         this.player2.states.left = false;
       }
+      if (e.keyCode === this.keys.player1punch) {
+        this.player1.states.punch = false;
+      }
+      if (e.keyCode === this.keys.player2punch) {
+        this.player2.states.punch = false;
+      }
       if (e.keyCode === this.keys.player2right) {
         this.player2.states.right = false;
       }
       if (e.keyCode === this.keys.player1left) {
         this.player1.states.left = false;
       }
+
       if (e.keyCode === this.keys.player1right) {
         this.player1.states.right = false;
       }
