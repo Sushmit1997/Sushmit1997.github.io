@@ -1,12 +1,74 @@
+var Player2_resource = {
+  chun: {
+    walk: './images/chunli_assets/chun_walk.png',
+    idle: './images/chunli_assets/chun_idle.png',
+    punch: './images/chunli_assets/chun_punch2.png',
+    block: './images/chunli_assets/chun_block.png',
+    haduoken: './images/chunli_assets/chun_hadouken.png',
+    die: './images/chunli_assets/chun_die.png',
+    victory: './images/chunli_assets/chun_victory.png',
+    values: {
+      w: {
+        x: 424,
+        y: 92,
+        f: 8,
+        frameIndex: 0,
+      },
+      i: {
+        x: 188,
+        y: 92,
+        f: 4,
+        frameIndex: 0,
+      },
+      p: {
+        x: 171,
+        y: 92,
+        f: 2,
+        frameIndex: 1,
+      },
+      b: {
+        x: 132,
+        y: 92,
+        f: 2,
+        frameIndex: 1,
+      },
+      v: {
+        x: 988,
+        y: 142,
+        f: 19,
+        frameIndex: 18,
+      },
+      d: {
+        x: 415,
+        y: 92,
+        f: 5,
+        frameIndex: 4,
+      },
+      h: {
+        x: 288,
+        y: 107,
+        f: 4,
+        frameIndex: 4,
+      },
+    },
+  },
+};
+
 class Player2 {
   constructor(ctx, keys, selected) {
-    var player = selected;
-    console.log(player);
+    this.player = selected;
+    console.log(this.player);
     this.ctx = ctx;
     this.keys = keys;
     this.states = {
       left: false,
       right: false,
+      kick: false,
+      hadouken: false,
+      block: false,
+      jump: false,
+      hit: false,
+      idle: true,
     };
 
     this.startPointX = 660;
@@ -19,11 +81,12 @@ class Player2 {
 
     // Idle Image
     this.imgIdlep2 = new Image();
-    this.imgIdlep2.src = './images/chunli_assets/chun_idle.png';
-    this.imgIdleX = 188;
-    this.imgIdleY = 92;
-    this.imgIdlep2.frames = 4;
-    this.imgIdlep2.frameIndex = 0;
+    this.imgIdlep2.src = Player2_resource[this.player].idle;
+    this.imgIdleX = Player2_resource[this.player].values.i.x;
+    this.imgIdleY = Player2_resource[this.player].values.i.y;
+    this.imgIdlep2.frames = Player2_resource[this.player].values.i.f;
+    this.imgIdlep2.frameIndex =
+      Player2_resource[this.player].values.i.frameIndex;
 
     // Walk Image
     this.imgWalkp2 = new Image();
