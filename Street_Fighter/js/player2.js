@@ -13,6 +13,9 @@ class Player2 {
     this.startPointY = 150;
     this.yFrameAdjuster = 2.5;
     this.separator = this.startPointX - 50;
+    this.life = 100;
+    this.lose = false;
+    this.victory = false;
 
     // Idle Image
     this.imgIdlep2 = new Image();

@@ -83,6 +83,15 @@ class Player1 {
     this.imgBlockp1.frameIndex = 0;
   }
 
+  detectPunch(player1, player2) {
+    if (
+      player2.startPointX - player1.startPointX < 120 &&
+      this.states.punch == true
+    ) {
+      return true;
+    }
+  }
+
   draw(framesCounter) {
     if (this.states.left || this.states.right) {
       this.drawWalk(framesCounter);

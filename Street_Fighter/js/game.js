@@ -9,6 +9,8 @@ var Game = {
     player2left: 37,
     player2right: 39,
   },
+  fullLifeBar: 'blue',
+  emptyLifeBar: 'red',
 
   init: function (player1Select, player2Select) {
     this.player1Select = player1Select;
@@ -49,6 +51,22 @@ var Game = {
     this.background = new Background(this.ctx);
     this.player1 = new Player1(this.ctx, this.keys, player1Select);
     this.player2 = new Player2(this.ctx, this.keys, player2Select);
+    this.healthBar1r = new HealthBarRed(
+      this.ctx,
+      80,
+      15,
+      this.emptyLifeBar,
+      100
+    );
+    this.healthBar1b = new HealthBar(this.ctx, 80, 15, this.fullLifeBar, 100);
+    this.healthBar2r = new HealthBarRed(
+      this.ctx,
+      600,
+      15,
+      this.emptyLifeBar,
+      100
+    );
+    this.healthBar2b = new HealthBar(this.ctx, 600, 15, this.fullLifeBar, 100);
 
     this.framesCounter = 0;
   },
@@ -61,6 +79,20 @@ var Game = {
     this.background.draw(this.framesCounter);
     this.player2.draw(this.framesCounter);
     this.player1.draw(this.framesCounter);
+    this.healthBar1r.draw();
+    this.healthBar1b.draw();
+
+    this.healthBar2r.draw();
+    this.healthBar2b.draw();
+
+    //Punch Impact Conditions
+    if (this.player1.detectPunch(this.player1, this.player2)) {
+      console.log(true);
+      this.player1.states.punch = false;
+      this.player2.life -= 5;
+      this.healthBar2b.reduceLife(5);
+      playHit();
+    }
   },
 
   moveAll: function () {
