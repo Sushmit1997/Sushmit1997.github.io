@@ -65,6 +65,7 @@ class Player2 {
       right: false,
       kick: false,
       hadouken: false,
+      punch: false,
       block: false,
       jump: false,
       hit: false,
@@ -95,11 +96,33 @@ class Player2 {
     this.imgWalkY = 92;
     this.imgWalkp2.frames = 8;
     this.imgWalkp2.frameIndex = 0;
+
+    //Punch Image
+    this.imgPunchp2 = new Image();
+    this.imgPunchp2.src = Player2_resource[this.player].punch;
+    this.imgPunchX = Player2_resource[this.player].values.p.x;
+    this.imgPunchY = Player2_resource[this.player].values.p.y;
+    this.imgPunchp2.frames = Player2_resource[this.player].values.p.f;
+    this.imgPunchp2.frameIndex =
+      Player2_resource[this.player].values.p.frameIndex;
+
+    //Block Image
+    this.imgBlockp2 = new Image();
+    this.imgBlockp2.src = Player2_resource[this.player].block;
+    this.imgBlockX = Player2_resource[this.player].values.b.x;
+    this.imgBlockY = Player2_resource[this.player].values.b.y;
+    this.imgBlockp2.frames = Player2_resource[this.player].values.b.f;
+    this.imgBlockp2.frameIndex =
+      Player2_resource[this.player].values.b.frameIndex;
   }
 
   draw(framesCounter) {
     if (this.states.left || this.states.right) {
       this.drawWalk(framesCounter);
+    } else if (this.states.punch) {
+      this.drawPunch(framesCounter);
+    } else if (this.states.block) {
+      this.drawBlock(framesCounter);
     } else {
       this.drawIdle(framesCounter);
     }
@@ -151,6 +174,52 @@ class Player2 {
       this.imgWalkp2.frameIndex += 1;
 
       if (this.imgWalkp2.frameIndex > 7) this.imgWalkp2.frameIndex = 0;
+    }
+  }
+
+  drawPunch(framesCounter) {
+    this.ctx.drawImage(
+      this.imgPunchp2,
+      this.imgPunchp2.frameIndex *
+        Math.floor(this.imgPunchX / this.imgPunchp2.frames),
+      0,
+      Math.floor(this.imgPunchX / this.imgPunchp2.frames),
+      this.imgPunchY,
+      this.startPointX,
+      this.startPointY,
+      this.imgPunchX / 0.8,
+      this.imgPunchY * this.yFrameAdjuster
+    );
+    this.animateImgPunch(framesCounter);
+  }
+
+  animateImgPunch(framesCounter) {
+    if (framesCounter % 20 === 0) {
+      this.imgPunchp2.frameIndex -= 1;
+
+      if (this.imgPunchp2.frameIndex < 0) this.imgPunchp2.frameIndex = 0;
+    }
+  }
+
+  drawBlock(framesCounter) {
+    this.ctx.drawImage(
+      this.imgBlockp2,
+      this.imgBlockp2.frameIndex *
+        Math.floor(this.imgBlockX / this.imgBlockp2.frames),
+      0,
+      Math.floor(this.imgBlockX / this.imgBlockp2.frames),
+      this.imgBlockY,
+      this.startPointX,
+      this.startPointY,
+      this.imgBlockX / 0.8,
+      this.imgBlockY * this.yFrameAdjuster
+    );
+    this.animateImgBlock(framesCounter);
+  }
+
+  animateImgBlock(framesCounter) {
+    if (framesCounter % 30 === 0) {
+      if (this.imgBlockp2.frameIndex > 1) this.imgBlockp2.frameIndex = 0;
     }
   }
 

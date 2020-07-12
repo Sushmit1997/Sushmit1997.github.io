@@ -8,6 +8,8 @@ var Game = {
 
     player2left: 37,
     player2right: 39,
+    player2block: 80,
+    player2punch: 79,
   },
   fullLifeBar: 'blue',
   emptyLifeBar: 'red',
@@ -114,6 +116,12 @@ var Game = {
       if (e.keyCode === this.keys.player1block) {
         this.player1.states.block = true;
       }
+      if (e.keyCode === this.keys.player2punch) {
+        this.player2.states.punch = true;
+      }
+      if (e.keyCode === this.keys.player2block) {
+        this.player2.states.block = true;
+      }
 
       if (e.keyCode === this.keys.player1left) {
         this.player1.states.left = true;
@@ -139,8 +147,15 @@ var Game = {
       if (e.keyCode === this.keys.player2punch) {
         this.player2.states.punch = false;
       }
+      if (e.keyCode === this.keys.player2block) {
+        this.player2.states.block = false;
+      }
+
       if (e.keyCode === this.keys.player2right) {
         this.player2.states.right = false;
+      }
+      if (e.keyCode === this.keys.player1block) {
+        this.player1.states.block = false;
       }
       if (e.keyCode === this.keys.player1left) {
         this.player1.states.left = false;
