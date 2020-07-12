@@ -5,11 +5,13 @@ var Game = {
     player1right: 68,
     player1block: 69,
     player1punch: 88,
+    player1jump: 87,
 
-    player2left: 37,
-    player2right: 39,
+    player2left: 74,
+    player2right: 76,
     player2block: 80,
     player2punch: 79,
+    player2jump: 73,
   },
   fullLifeBar: 'blue',
   emptyLifeBar: 'red',
@@ -89,11 +91,25 @@ var Game = {
 
     //Punch Impact Conditions
     if (this.player1.detectPunch(this.player1, this.player2)) {
-      console.log(true);
-      this.player1.states.punch = false;
-      this.player2.life -= 5;
-      this.healthBar2b.reduceLife(5);
-      playHit();
+      if (this.player2.states.block) {
+        this.player1.states.punch = false;
+      } else {
+        this.player1.states.punch = false;
+        this.player2.life -= 5;
+        this.healthBar2b.reduceLife(5);
+      }
+    }
+
+    if (this.player2.detectPunch(this.player1, this.player2)) {
+      if (this.player1.states.block) {
+        this.player2.states.punch = false;
+      } else {
+        console.log(true);
+        this.player1.states.hit = true;
+        this.player2.states.punch = false;
+        this.player1.life -= 5;
+        this.healthBar1b.reduceLife(5);
+      }
     }
   },
 
@@ -104,6 +120,9 @@ var Game = {
 
   buttonslistener: function () {
     document.addEventListener('keydown', (e) => {
+      if (e.keyCode === this.keys.player1jump) {
+        this.player1.states.jump = true;
+      }
       if (e.keyCode === this.keys.player2left) {
         this.player2.states.left = true;
       }
@@ -138,6 +157,9 @@ var Game = {
       }
     });
     document.addEventListener('keyup', (e) => {
+      if (e.keyCode === this.keys.player1jump) {
+        this.player1.states.jump = false;
+      }
       if (e.keyCode === this.keys.player2left) {
         this.player2.states.left = false;
       }

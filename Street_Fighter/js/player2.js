@@ -59,12 +59,12 @@ class Player2 {
     this.player = selected;
     console.log(this.player);
     this.ctx = ctx;
+    this.life = 100;
     this.keys = keys;
     this.states = {
       left: false,
       right: false,
       kick: false,
-      hadouken: false,
       punch: false,
       block: false,
       jump: false,
@@ -125,6 +125,15 @@ class Player2 {
       this.drawBlock(framesCounter);
     } else {
       this.drawIdle(framesCounter);
+    }
+  }
+
+  detectPunch(player1, player2) {
+    if (
+      player2.startPointX - player1.startPointX < 120 &&
+      this.states.punch == true
+    ) {
+      return true;
     }
   }
 

@@ -4,6 +4,8 @@ var Player1_source = {
     idle: './images/ken_assets/ken_idle.png',
     punch: './images/ken_assets/ken_punch4.png',
     block: './images/ken_assets/ken_block.png',
+    hit: './images/ken_assets/ken_hit.png',
+    jump: './images/ken_assets/ken_jump2.png',
     values: {
       w: {
         x: 235,
@@ -25,6 +27,16 @@ var Player1_source = {
         y: 92,
         f: 2,
       },
+      hit: {
+        x: 118,
+        y: 92,
+        f: 2,
+      },
+      j: {
+        x: 76,
+        y: 92,
+        f: 2,
+      },
     },
   },
 };
@@ -40,6 +52,8 @@ class Player1 {
       right: false,
       punch: false,
       block: false,
+      jump: false,
+      hit: false,
     };
     this.startPointX = 200;
     this.startPointY = 150;
@@ -66,6 +80,14 @@ class Player1 {
     this.imgWalkp1.frames = Player1_source[this.player].values.w.f;
     this.imgWalkp1.frameIndex = 0;
 
+    //Jump Image
+    this.imgJumpp1 = new Image();
+    this.imgJumpp1.src = Player1_source[this.player].jump;
+    this.imgJumpX = Player1_source[this.player].values.j.x;
+    this.imgJumpY = Player1_source[this.player].values.j.y;
+    this.imgJumpp1.frames = Player1_source[this.player].values.j.f;
+    this.imgJumpp1.frameIndex = 0;
+
     //Punch Image
     this.imgPunchp1 = new Image();
     this.imgPunchp1.src = Player1_source[this.player].punch;
@@ -81,6 +103,14 @@ class Player1 {
     this.imgBlockY = Player1_source[this.player].values.b.y;
     this.imgBlockp1.frames = Player1_source[this.player].values.b.f;
     this.imgBlockp1.frameIndex = 0;
+
+    //Hit Image
+    this.imgHitp1 = new Image();
+    this.imgHitp1.src = Player1_source[this.player].hit;
+    this.imgHitX = Player1_source[this.player].values.hit.x;
+    this.imgHitY = Player1_source[this.player].values.hit.y;
+    this.imgHitp1.frames = Player1_source[this.player].values.hit.f;
+    this.imgHitp1.frameIndex = 0;
   }
 
   detectPunch(player1, player2) {
@@ -95,6 +125,22 @@ class Player1 {
   draw(framesCounter) {
     if (this.states.left || this.states.right) {
       this.drawWalk(framesCounter);
+    } else if (this.states.hit) {
+      console.log('Hit');
+      this.states.idle = false;
+      this.drawHit(framesCounter);
+      setTimeout(() => {
+        this.states.idle = true;
+        this.states.hit = false;
+      }, 350);
+    } else if (this.states.jump) {
+      console.log('jump');
+      this.drawJump(framesCounter);
+      // setTimeout(() => {
+      //
+      //   this.imgJumpp1.frameIndex = 0;
+      //   this.startPointY = 150;
+      // }, 400);
     } else if (this.states.punch) {
       this.drawPunch(framesCounter);
       // setTimeout(() => {
@@ -103,10 +149,10 @@ class Player1 {
       // }, 300);
     } else if (this.states.block) {
       this.drawBlock(framesCounter);
-      setTimeout(() => {
-        this.states.block = false;
-        this.imgBlockp1.frameIndex = 0;
-      }, 200);
+      // setTimeout(() => {
+      //   this.states.block = false;
+      //   this.imgBlockp1.frameIndex = 0;
+      // }, 200);
     } else {
       this.drawIdle(framesCounter);
     }
@@ -162,6 +208,31 @@ class Player1 {
     }
   }
 
+  drawJump(framesCounter) {
+    this.ctx.drawImage(
+      this.imgJumpp1,
+      this.imgJumpp1.frameIndex *
+        Math.floor(this.imgJumpX / this.imgJumpp1.frames) *
+        3,
+      0,
+      Math.floor(this.imgJumpX / this.imgJumpp1.frames),
+      this.imgJumpY,
+      this.startPointX,
+      (this.startPointY -= 35),
+      this.imgJumpX / 0.8,
+      this.imgJumpY * this.yFrameAdjuster
+    );
+    this.animateImgJump(framesCounter);
+  }
+
+  animateImgJump(framesCounter) {
+    this.startPointY = 10;
+    setTimeout(() => {
+      this.startPointY = 150;
+      this.states.jump = false;
+    }, 300);
+  }
+
   drawPunch(framesCounter) {
     this.ctx.drawImage(
       this.imgPunchp1,
@@ -206,6 +277,37 @@ class Player1 {
     if (framesCounter % 30 === 0) {
       // Si el frame es el último, se vuelve al primero
       if (this.imgBlockp1.frameIndex > 1) this.imgBlockp1.frameIndex = 0;
+    }
+  }
+
+  animateImgJump(framesCounter) {
+    this.startPointY = 10;
+    setTimeout(() => {
+      this.startPointY = 150;
+      this.states.jump = false;
+    }, 300);
+  }
+
+  drawHit(framesCounter) {
+    this.ctx.drawImage(
+      this.imgHitp1,
+      this.imgHitp1.frameIndex *
+        Math.floor(this.imgHitX / this.imgHitp1.frames),
+      0,
+      Math.floor(this.imgHitX / this.imgHitp1.frames),
+      this.imgHitY,
+      this.startPointX,
+      this.startPointY,
+      this.imgHitX / 0.8,
+      this.imgHitY * this.yFrameAdjuster
+    );
+    this.animateHit(framesCounter);
+  }
+
+  animateHit(framesCounter) {
+    if (framesCounter % 20 === 0) {
+      this.imgHitp1.frameIndex += 1;
+      if (this.imgHitp1.frameIndex > 2) this.imgHitp1.frameIndex = 0;
     }
   }
 
