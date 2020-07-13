@@ -6,6 +6,7 @@ var Game = {
     player1block: 69,
     player1punch: 88,
     player1jump: 87,
+    player1hadouken: 81,
 
     player2left: 74,
     player2right: 76,
@@ -120,9 +121,13 @@ var Game = {
 
   buttonslistener: function () {
     document.addEventListener('keydown', (e) => {
+      if (e.keyCode === this.keys.player2jump) {
+        this.player2.states.jump = true;
+      }
       if (e.keyCode === this.keys.player1jump) {
         this.player1.states.jump = true;
       }
+
       if (e.keyCode === this.keys.player2left) {
         this.player2.states.left = true;
       }
@@ -159,6 +164,9 @@ var Game = {
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === this.keys.player1jump) {
         this.player1.states.jump = false;
+      }
+      if (e.keyCode === this.keys.player2jump) {
+        this.player2.states.jump = false;
       }
       if (e.keyCode === this.keys.player2left) {
         this.player2.states.left = false;
@@ -201,15 +209,33 @@ var Game = {
     if (this.player2.startPointX > 840) {
       this.player2.startPointX = 840;
     }
+    // if (this.player1.states.jump) {
+    //   this.player1.states.left = false;
+    //   this.player1.states.right = false;
+    // }
+    // if (this.player2.states.jump) {
+    //   this.player2.left = false;
+    //   this.player2.right = false;
+    //   this.player2.states.idle = false;
+    // }
     if (this.player2.life <= 0) {
       this.player1.states.left = false;
       this.player1.states.right = false;
+      this.player1.states.punch = false;
+      this.player2.states.punch = false;
       this.player1.states.hadouken = false;
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
     }
     if (this.player1.life <= 0) {
       this.player2.states.left = false;
+      this.player2.states.punch = false;
       this.player2.states.right = false;
       this.player2.states.hadouken = false;
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
     }
     // if (this.player2.lose) {
     //   clearInterval(intervalID);

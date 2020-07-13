@@ -5,8 +5,7 @@ var Player2_resource = {
     punch: './images/chunli_assets/chun_punch2.png',
     block: './images/chunli_assets/chun_block.png',
     haduoken: './images/chunli_assets/chun_hadouken.png',
-    die: './images/chunli_assets/chun_die.png',
-    victory: './images/chunli_assets/chun_victory.png',
+    jump: './images/chunli_assets/chun_jump.png',
     values: {
       w: {
         x: 424,
@@ -21,10 +20,11 @@ var Player2_resource = {
         frameIndex: 0,
       },
       p: {
-        x: 171,
+        x: 95,
         y: 92,
-        f: 2,
+        f: 1,
         frameIndex: 1,
+        offsetX: 0.4,
       },
       b: {
         x: 132,
@@ -49,6 +49,11 @@ var Player2_resource = {
         y: 107,
         f: 4,
         frameIndex: 4,
+      },
+      j: {
+        x: 40,
+        y: 92,
+        f: 1,
       },
     },
   },
@@ -91,11 +96,19 @@ class Player2 {
 
     // Walk Image
     this.imgWalkp2 = new Image();
-    this.imgWalkp2.src = './images/chunli_assets/chun_walk.png';
-    this.imgWalkX = 424;
-    this.imgWalkY = 92;
-    this.imgWalkp2.frames = 8;
+    this.imgWalkp2.src = Player2_resource[this.player].walk;
+    this.imgWalkX = Player2_resource[this.player].values.w.x;
+    this.imgWalkY = Player2_resource[this.player].values.w.y;
+    this.imgWalkp2.frames = Player2_resource[this.player].values.w.f;
     this.imgWalkp2.frameIndex = 0;
+
+    //Jump Image
+    this.imgJumpp2 = new Image();
+    this.imgJumpp2.src = Player2_resource[this.player].jump;
+    this.imgJumpX = Player2_resource[this.player].values.j.x;
+    this.imgJumpY = Player2_resource[this.player].values.j.y;
+    this.imgJumpp2.frames = Player2_resource[this.player].values.j.f;
+    this.imgJumpp2.frameIndex = 0;
 
     //Punch Image
     this.imgPunchp2 = new Image();
@@ -117,10 +130,16 @@ class Player2 {
   }
 
   draw(framesCounter) {
+    if (this.startPointY < 150) {
+      this.states.jump = true;
+    }
     if (this.states.left || this.states.right) {
       this.drawWalk(framesCounter);
     } else if (this.states.punch) {
       this.drawPunch(framesCounter);
+    } else if (this.states.jump) {
+      console.log('jump2');
+      this.drawJump(framesCounter);
     } else if (this.states.block) {
       this.drawBlock(framesCounter);
     } else {
@@ -196,7 +215,7 @@ class Player2 {
       this.imgPunchY,
       this.startPointX,
       this.startPointY,
-      this.imgPunchX / 0.8,
+      this.imgPunchX / Player2_resource[this.player].values.p.offsetX,
       this.imgPunchY * this.yFrameAdjuster
     );
     this.animateImgPunch(framesCounter);
@@ -204,7 +223,7 @@ class Player2 {
 
   animateImgPunch(framesCounter) {
     if (framesCounter % 20 === 0) {
-      this.imgPunchp2.frameIndex -= 1;
+      this.imgPunchp2.frameIndex = 0;
 
       if (this.imgPunchp2.frameIndex < 0) this.imgPunchp2.frameIndex = 0;
     }
@@ -230,6 +249,32 @@ class Player2 {
     if (framesCounter % 30 === 0) {
       if (this.imgBlockp2.frameIndex > 1) this.imgBlockp2.frameIndex = 0;
     }
+  }
+
+  drawJump(framesCounter) {
+    this.ctx.drawImage(
+      this.imgJumpp2,
+      this.imgJumpp2.frameIndex *
+        Math.floor(this.imgJumpX / this.imgJumpp2.frames) *
+        3,
+      0,
+      Math.floor(this.imgJumpX / this.imgJumpp2.frames),
+      this.imgJumpY,
+      this.startPointX,
+      (this.startPointY -= 35),
+      this.imgJumpX / 0.4,
+      this.imgJumpY * this.yFrameAdjuster
+    );
+    this.animateImgJump(framesCounter);
+  }
+
+  animateImgJump(framesCounter) {
+    // this.startPointY = 40;
+    this.startPointY = 40;
+    setTimeout(() => {
+      this.startPointY = 150;
+      this.states.jump = false;
+    }, 200);
   }
 
   move() {

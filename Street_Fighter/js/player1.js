@@ -6,6 +6,7 @@ var Player1_source = {
     block: './images/ken_assets/ken_block.png',
     hit: './images/ken_assets/ken_hit.png',
     jump: './images/ken_assets/ken_jump2.png',
+
     values: {
       w: {
         x: 235,
@@ -46,6 +47,7 @@ class Player1 {
     this.player = selected;
     console.log(this.player);
     this.ctx = ctx;
+    this.life = 100;
     this.keys = keys;
     this.states = {
       left: false,
@@ -123,6 +125,9 @@ class Player1 {
   }
 
   draw(framesCounter) {
+    if (this.startPointY < 150) {
+      this.states.jump = true;
+    }
     if (this.states.left || this.states.right) {
       this.drawWalk(framesCounter);
     } else if (this.states.hit) {
@@ -134,7 +139,7 @@ class Player1 {
         this.states.hit = false;
       }, 350);
     } else if (this.states.jump) {
-      console.log('jump');
+      console.log('jump1');
       this.drawJump(framesCounter);
       // setTimeout(() => {
       //
@@ -226,11 +231,11 @@ class Player1 {
   }
 
   animateImgJump(framesCounter) {
-    this.startPointY = 10;
+    this.startPointY = 40;
     setTimeout(() => {
       this.startPointY = 150;
       this.states.jump = false;
-    }, 300);
+    }, 200);
   }
 
   drawPunch(framesCounter) {
@@ -281,7 +286,7 @@ class Player1 {
   }
 
   animateImgJump(framesCounter) {
-    this.startPointY = 10;
+    this.startPointY = 40;
     setTimeout(() => {
       this.startPointY = 150;
       this.states.jump = false;
