@@ -6,7 +6,8 @@ var Game = {
     player1block: 69,
     player1punch: 88,
     player1jump: 87,
-    player1hadouken: 81,
+    player1crouch: 83,
+    player1kick: 67,
 
     player2left: 74,
     player2right: 76,
@@ -114,6 +115,32 @@ var Game = {
         this.healthBar1b.reduceLife(5);
       }
     }
+
+    //Kick Impact Detection
+
+    if (this.player1.detectKick(this.player1, this.player2)) {
+      if (this.player2.states.block) {
+        this.player1.states.kick = false;
+      } else {
+        console.log('p1 hit');
+        this.player2.states.hit = true;
+        this.player1.states.kick = false;
+        this.player2.life -= 5;
+        this.healthBar2b.reduceLife(5);
+      }
+    }
+
+    if (this.player2.detectPunch(this.player1, this.player2)) {
+      if (this.player1.states.block) {
+        this.player2.states.punch = false;
+      } else {
+        console.log(true);
+        this.player1.states.hit = true;
+        this.player2.states.punch = false;
+        this.player1.life -= 5;
+        this.healthBar1b.reduceLife(5);
+      }
+    }
   },
 
   moveAll: function () {
@@ -128,6 +155,12 @@ var Game = {
       }
       if (e.keyCode === this.keys.player1jump) {
         this.player1.states.jump = true;
+      }
+      if (e.keyCode === this.keys.player1kick) {
+        this.player1.states.kick = true;
+      }
+      if (e.keyCode === this.keys.player1crouch) {
+        this.player1.states.crouch = true;
       }
 
       if (e.keyCode === this.keys.player2left) {
@@ -167,6 +200,13 @@ var Game = {
       if (e.keyCode === this.keys.player1jump) {
         this.player1.states.jump = false;
       }
+      if (e.keyCode === this.keys.player1kick) {
+        this.player1.states.kick = false;
+      }
+      if (e.keyCode === this.keys.player1crouch) {
+        this.player1.states.crouch = false;
+      }
+
       if (e.keyCode === this.keys.player2jump) {
         this.player2.states.jump = false;
       }

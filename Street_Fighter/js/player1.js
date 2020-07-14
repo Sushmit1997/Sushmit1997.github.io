@@ -6,7 +6,8 @@ var Player1_source = {
     block: './images/ken_assets/ken_block.png',
     hit: './images/ken_assets/ken_hit.png',
     jump: './images/ken_assets/ken_jump2.png',
-
+    kick: './images/ken_assets/ken_kick.png',
+    crouch: './images/ken_assets/ken_crouch1.png',
     values: {
       w: {
         x: 235,
@@ -22,6 +23,7 @@ var Player1_source = {
         x: 77,
         y: 94,
         f: 1,
+        offsetX: 0.4,
       },
       b: {
         x: 104,
@@ -37,6 +39,16 @@ var Player1_source = {
         x: 76,
         y: 92,
         f: 2,
+      },
+      k: {
+        x: 75,
+        y: 92,
+        f: 1,
+      },
+      c: {
+        x: 50,
+        y: 72,
+        f: 1,
       },
     },
   },
@@ -57,11 +69,14 @@ class Player1 {
       jump: false,
       hit: false,
       idle: true,
+      crouch: false,
+      kick: false,
     };
     this.startPointX = 200;
     this.startPointY = 150;
     this.separator = 65;
     this.yFrameAdjuster = 2.5;
+    this.victory = false;
 
     if (this.startPointX === 0) {
       this.startPoint += 1;
@@ -114,6 +129,22 @@ class Player1 {
     this.imgHitY = Player1_source[this.player].values.hit.y;
     this.imgHitp1.frames = Player1_source[this.player].values.hit.f;
     this.imgHitp1.frameIndex = 0;
+
+    //Kick Image
+    this.imgKickp1 = new Image();
+    this.imgKickp1.src = Player1_source[this.player].kick;
+    this.imgKickX = Player1_source[this.player].values.k.x;
+    this.imgKickY = Player1_source[this.player].values.k.y;
+    this.imgKickp1.frames = Player1_source[this.player].values.k.f;
+    this.imgKickp1.frameIndex = 0;
+
+    //Crouch Image
+    this.imgCrouchp1 = new Image();
+    this.imgCrouchp1.src = Player1_source[this.player].crouch;
+    this.imgCrouchX = Player1_source[this.player].values.c.x;
+    this.imgCrouchY = Player1_source[this.player].values.c.y;
+    this.imgCrouchp1.frames = Player1_source[this.player].values.c.f;
+    this.imgCrouchp1.frameIndex = 0;
   }
 
   detectPunch(player1, player2) {
@@ -125,12 +156,25 @@ class Player1 {
     }
   }
 
+  detectKick(player1, player2) {
+    if (
+      player2.startPointX - player1.startPointX < 120 &&
+      this.states.kick == true
+    ) {
+      return true;
+    }
+  }
+
   draw(framesCounter) {
     if (this.startPointY < 150) {
       this.states.jump = true;
     }
     if (this.states.left || this.states.right) {
       this.drawWalk(framesCounter);
+    } else if (this.states.crouch) {
+      this.drawCrouch(framesCounter);
+    } else if (this.states.kick) {
+      this.drawKick(framesCounter);
     } else if (this.states.hit) {
       console.log('Hit');
       this.states.idle = false;
@@ -292,6 +336,54 @@ class Player1 {
       this.startPointY = 150;
       this.states.jump = false;
     }, 300);
+  }
+
+  drawKick(framesCounter) {
+    this.ctx.drawImage(
+      this.imgKickp1,
+      this.imgKickp1.frameIndex *
+        Math.floor(this.imgKickX / this.imgKickp1.frames),
+      0,
+      Math.floor(this.imgKickX / this.imgKickp1.frames),
+      this.imgKickY,
+      this.startPointX,
+      this.startPointY,
+      this.imgKickX / Player1_source[this.player].values.p.offsetX,
+      this.imgKickY * this.yFrameAdjuster
+    );
+    this.animateImgKick(framesCounter);
+  }
+
+  animateImgKick(framesCounter) {
+    if (framesCounter % 20 === 0) {
+      this.imgKickp1.frameIndex += 1;
+
+      if (this.imgKickp1.frameIndex > 0) this.imgKickp1.frameIndex = 0;
+    }
+  }
+
+  drawCrouch(framesCounter) {
+    this.ctx.drawImage(
+      this.imgCrouchp1,
+      this.imgCrouchp1.frameIndex *
+        Math.floor(this.imgCrouchX / this.imgCrouchp1.frames),
+      0,
+      Math.floor(this.imgCrouchX / this.imgCrouchp1.frames),
+      this.imgKickY,
+      this.startPointX,
+      this.startPointY + 60,
+      this.imgCrouchX / Player1_source[this.player].values.p.offsetX,
+      this.imgCrouchY * 3.1
+    );
+    this.animateImgCrouch(framesCounter);
+  }
+
+  animateImgCrouch(framesCounter) {
+    if (framesCounter % 20 === 0) {
+      this.imgCrouchp1.frameIndex += 1;
+
+      if (this.imgCrouchp1.frameIndex > 0) this.imgCrouchp1.frameIndex = 0;
+    }
   }
 
   drawHit(framesCounter) {

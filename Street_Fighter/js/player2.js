@@ -82,6 +82,8 @@ class Player2 {
       jump: false,
       hit: false,
       idle: true,
+      crouch: false,
+      kick: false,
     };
 
     this.startPointX = 660;

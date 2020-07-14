@@ -68,11 +68,11 @@ class HealthBarRed {
   }
 }
 
-class KenWins {
+class Player1Wins {
   constructor(ctx) {
     this.ctx = ctx;
     this.winImg = new Image();
-    this.winImg.src = './img/Ken_wins.png';
+    this.winImg.src = './images/ken.png';
   }
 
   draw() {
@@ -80,11 +80,11 @@ class KenWins {
   }
 }
 
-class ChunWins {
+class Player2Wins {
   constructor(ctx) {
     this.ctx = ctx;
     this.winImg = new Image();
-    this.winImg.src = './img/chun_wins.png';
+    this.winImg.src = './images/chun.png';
   }
 
   draw() {
