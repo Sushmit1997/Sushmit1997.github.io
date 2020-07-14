@@ -95,6 +95,8 @@ var Game = {
       if (this.player2.states.block) {
         this.player1.states.punch = false;
       } else {
+        console.log('p1 hit');
+        this.player2.states.hit = true;
         this.player1.states.punch = false;
         this.player2.life -= 5;
         this.healthBar2b.reduceLife(5);

@@ -1,4 +1,4 @@
-var Player2_resource = {
+var Player2_source = {
   chun: {
     walk: './images/chunli_assets/chun_walk.png',
     idle: './images/chunli_assets/chun_idle.png',
@@ -6,6 +6,7 @@ var Player2_resource = {
     block: './images/chunli_assets/chun_block.png',
     haduoken: './images/chunli_assets/chun_hadouken.png',
     jump: './images/chunli_assets/chun_jump.png',
+    hit: './images/chunli_assets/chun_hit.png',
     values: {
       w: {
         x: 424,
@@ -55,6 +56,12 @@ var Player2_resource = {
         y: 92,
         f: 1,
       },
+      hit: {
+        x: 165,
+        y: 92,
+        f: 2,
+        offsetX: 1,
+      },
     },
   },
 };
@@ -87,51 +94,66 @@ class Player2 {
 
     // Idle Image
     this.imgIdlep2 = new Image();
-    this.imgIdlep2.src = Player2_resource[this.player].idle;
-    this.imgIdleX = Player2_resource[this.player].values.i.x;
-    this.imgIdleY = Player2_resource[this.player].values.i.y;
-    this.imgIdlep2.frames = Player2_resource[this.player].values.i.f;
-    this.imgIdlep2.frameIndex =
-      Player2_resource[this.player].values.i.frameIndex;
+    this.imgIdlep2.src = Player2_source[this.player].idle;
+    this.imgIdleX = Player2_source[this.player].values.i.x;
+    this.imgIdleY = Player2_source[this.player].values.i.y;
+    this.imgIdlep2.frames = Player2_source[this.player].values.i.f;
+    this.imgIdlep2.frameIndex = Player2_source[this.player].values.i.frameIndex;
 
     // Walk Image
     this.imgWalkp2 = new Image();
-    this.imgWalkp2.src = Player2_resource[this.player].walk;
-    this.imgWalkX = Player2_resource[this.player].values.w.x;
-    this.imgWalkY = Player2_resource[this.player].values.w.y;
-    this.imgWalkp2.frames = Player2_resource[this.player].values.w.f;
+    this.imgWalkp2.src = Player2_source[this.player].walk;
+    this.imgWalkX = Player2_source[this.player].values.w.x;
+    this.imgWalkY = Player2_source[this.player].values.w.y;
+    this.imgWalkp2.frames = Player2_source[this.player].values.w.f;
     this.imgWalkp2.frameIndex = 0;
 
     //Jump Image
     this.imgJumpp2 = new Image();
-    this.imgJumpp2.src = Player2_resource[this.player].jump;
-    this.imgJumpX = Player2_resource[this.player].values.j.x;
-    this.imgJumpY = Player2_resource[this.player].values.j.y;
-    this.imgJumpp2.frames = Player2_resource[this.player].values.j.f;
+    this.imgJumpp2.src = Player2_source[this.player].jump;
+    this.imgJumpX = Player2_source[this.player].values.j.x;
+    this.imgJumpY = Player2_source[this.player].values.j.y;
+    this.imgJumpp2.frames = Player2_source[this.player].values.j.f;
     this.imgJumpp2.frameIndex = 0;
 
     //Punch Image
     this.imgPunchp2 = new Image();
-    this.imgPunchp2.src = Player2_resource[this.player].punch;
-    this.imgPunchX = Player2_resource[this.player].values.p.x;
-    this.imgPunchY = Player2_resource[this.player].values.p.y;
-    this.imgPunchp2.frames = Player2_resource[this.player].values.p.f;
+    this.imgPunchp2.src = Player2_source[this.player].punch;
+    this.imgPunchX = Player2_source[this.player].values.p.x;
+    this.imgPunchY = Player2_source[this.player].values.p.y;
+    this.imgPunchp2.frames = Player2_source[this.player].values.p.f;
     this.imgPunchp2.frameIndex =
-      Player2_resource[this.player].values.p.frameIndex;
+      Player2_source[this.player].values.p.frameIndex;
 
     //Block Image
     this.imgBlockp2 = new Image();
-    this.imgBlockp2.src = Player2_resource[this.player].block;
-    this.imgBlockX = Player2_resource[this.player].values.b.x;
-    this.imgBlockY = Player2_resource[this.player].values.b.y;
-    this.imgBlockp2.frames = Player2_resource[this.player].values.b.f;
+    this.imgBlockp2.src = Player2_source[this.player].block;
+    this.imgBlockX = Player2_source[this.player].values.b.x;
+    this.imgBlockY = Player2_source[this.player].values.b.y;
+    this.imgBlockp2.frames = Player2_source[this.player].values.b.f;
     this.imgBlockp2.frameIndex =
-      Player2_resource[this.player].values.b.frameIndex;
+      Player2_source[this.player].values.b.frameIndex;
+
+    //Hit Image
+    this.imgHitp2 = new Image();
+    this.imgHitp2.src = Player2_source[this.player].hit;
+    this.imgHitX = Player2_source[this.player].values.hit.x;
+    this.imgHitY = Player2_source[this.player].values.hit.y;
+    this.imgHitp2.frames = Player2_source[this.player].values.hit.f;
+    this.imgHitp2.frameIndex = 2;
   }
 
   draw(framesCounter) {
     if (this.startPointY < 150) {
       this.states.jump = true;
+    }
+    if (this.states.hit) {
+      this.states.idle = false;
+      this.drawHit(framesCounter);
+      setTimeout(() => {
+        this.states.idle = true;
+        this.states.hit = false;
+      }, 200);
     }
     if (this.states.left || this.states.right) {
       this.drawWalk(framesCounter);
@@ -142,7 +164,7 @@ class Player2 {
       this.drawJump(framesCounter);
     } else if (this.states.block) {
       this.drawBlock(framesCounter);
-    } else {
+    } else if (this.states.idle) {
       this.drawIdle(framesCounter);
     }
   }
@@ -215,7 +237,7 @@ class Player2 {
       this.imgPunchY,
       this.startPointX,
       this.startPointY,
-      this.imgPunchX / Player2_resource[this.player].values.p.offsetX,
+      this.imgPunchX / Player2_source[this.player].values.p.offsetX,
       this.imgPunchY * this.yFrameAdjuster
     );
     this.animateImgPunch(framesCounter);
@@ -248,6 +270,29 @@ class Player2 {
   animateImgBlock(framesCounter) {
     if (framesCounter % 30 === 0) {
       if (this.imgBlockp2.frameIndex > 1) this.imgBlockp2.frameIndex = 0;
+    }
+  }
+
+  drawHit(framesCounter) {
+    this.ctx.drawImage(
+      this.imgHitp2,
+      this.imgHitp2.frameIndex *
+        Math.floor(this.imgHitX / this.imgHitp2.frames),
+      0,
+      Math.floor(this.imgHitX / this.imgHitp2.frames),
+      this.imgHitY,
+      this.startPointX,
+      this.startPointY,
+      this.imgHitX / Player2_source[this.player].values.hit.offsetX,
+      this.imgHitY * this.yFrameAdjuster
+    );
+    this.animateHit(framesCounter);
+  }
+
+  animateHit(framesCounter) {
+    if (framesCounter % 20 === 0) {
+      this.imgHitp2.frameIndex -= 1;
+      if (this.imgHitp2.frameIndex < 1) this.imgHitp2.frameIndex = 1;
     }
   }
 

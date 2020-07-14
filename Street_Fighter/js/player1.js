@@ -56,6 +56,7 @@ class Player1 {
       block: false,
       jump: false,
       hit: false,
+      idle: true,
     };
     this.startPointX = 200;
     this.startPointY = 150;
@@ -137,7 +138,7 @@ class Player1 {
       setTimeout(() => {
         this.states.idle = true;
         this.states.hit = false;
-      }, 350);
+      }, 200);
     } else if (this.states.jump) {
       console.log('jump1');
       this.drawJump(framesCounter);
@@ -158,7 +159,7 @@ class Player1 {
       //   this.states.block = false;
       //   this.imgBlockp1.frameIndex = 0;
       // }, 200);
-    } else {
+    } else if (this.states.idle) {
       this.drawIdle(framesCounter);
     }
   }
