@@ -57,10 +57,10 @@ var Player2_source = {
         f: 1,
       },
       hit: {
-        x: 165,
-        y: 92,
-        f: 2,
-        offsetX: 1,
+        x: 74,
+        y: 91,
+        f: 1,
+        offsetX: 0.6,
       },
     },
   },
@@ -142,7 +142,7 @@ class Player2 {
     this.imgHitX = Player2_source[this.player].values.hit.x;
     this.imgHitY = Player2_source[this.player].values.hit.y;
     this.imgHitp2.frames = Player2_source[this.player].values.hit.f;
-    this.imgHitp2.frameIndex = 2;
+    this.imgHitp2.frameIndex = 0;
   }
 
   draw(framesCounter) {
@@ -293,8 +293,7 @@ class Player2 {
 
   animateHit(framesCounter) {
     if (framesCounter % 20 === 0) {
-      this.imgHitp2.frameIndex -= 1;
-      if (this.imgHitp2.frameIndex < 1) this.imgHitp2.frameIndex = 1;
+      this.imgHitp2.frameIndex = 0;
     }
   }
 

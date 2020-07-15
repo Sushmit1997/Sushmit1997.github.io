@@ -50,6 +50,15 @@ var Game = {
       this.buttonslistener();
       this.drawAll();
       this.moveAll();
+
+      if (this.player2.life <= 0) {
+        this.drawPlayer1Win();
+        setTimeout(() => {}, 1000);
+      }
+      if (this.player1.life <= 0) {
+        this.drawPlayer2Win();
+        setTimeout(() => {}, 1000);
+      }
     }, 1000 / this.fps);
   },
 
@@ -73,6 +82,8 @@ var Game = {
       100
     );
     this.healthBar2b = new HealthBar(this.ctx, 600, 15, this.fullLifeBar, 100);
+    this.OneWinImg = new Player1Wins(this.ctx, player1Select);
+    this.TwoWinImg = new Player2Wins(this.ctx, player2Select);
 
     this.framesCounter = 0;
   },
@@ -146,6 +157,14 @@ var Game = {
   moveAll: function () {
     this.player2.move();
     this.player1.move();
+  },
+
+  drawPlayer1Win: function () {
+    console.log('player1 wins');
+    this.OneWinImg.draw();
+  },
+  drawPlayer2Win: function () {
+    this.TwoWinImg.draw();
   },
 
   buttonslistener: function () {
@@ -268,7 +287,7 @@ var Game = {
       this.player1.states.hadouken = false;
       setTimeout(() => {
         location.reload();
-      }, 2000);
+      }, 4000);
     }
     if (this.player1.life <= 0) {
       this.player2.states.left = false;

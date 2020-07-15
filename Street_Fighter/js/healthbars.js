@@ -1,3 +1,17 @@
+var win_images1 = {
+  ken: './images/ken.png',
+  chun: './images/chun.png',
+  blanka: './images/blanka.png',
+  ryu: './images/ryu.png',
+};
+
+var win_images2 = {
+  ken: './images/ken.png',
+  chun: './images/chun.png',
+  blanka: './images/blanka.png',
+  ryu: './images/ryu.png',
+};
+
 class HealthBar {
   maxWidth = 300;
   totalLifePoints = 100;
@@ -69,25 +83,27 @@ class HealthBarRed {
 }
 
 class Player1Wins {
-  constructor(ctx) {
+  constructor(ctx, playerSelect) {
+    this.player = playerSelect;
     this.ctx = ctx;
     this.winImg = new Image();
-    this.winImg.src = './images/ken.png';
+    this.winImg.src = win_images1[this.player];
   }
 
   draw() {
-    this.ctx.drawImage(this.winImg, 0, 0, 600, 286, 360, 70, 600, 286);
+    this.ctx.drawImage(this.winImg, 0, 0, 600, 286, 360, 70, 500, 286);
   }
 }
 
 class Player2Wins {
-  constructor(ctx) {
+  constructor(ctx, playerSelect) {
+    this.player = playerSelect;
     this.ctx = ctx;
     this.winImg = new Image();
-    this.winImg.src = './images/chun.png';
+    this.winImg.src = win_images2[this.player];
   }
 
   draw() {
-    this.ctx.drawImage(this.winImg, 0, 0, 600, 286, 340, 70, 600, 286);
+    this.ctx.drawImage(this.winImg, 0, 0, 600, 286, 340, 70, 500, 286);
   }
 }
