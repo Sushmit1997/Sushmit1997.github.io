@@ -160,7 +160,6 @@ var Game = {
   },
 
   drawPlayer1Win: function () {
-    console.log('player1 wins');
     this.OneWinImg.draw();
   },
   drawPlayer2Win: function () {
