@@ -13,6 +13,9 @@ var Player1_source = {
         x: 235,
         y: 92,
         f: 5,
+        offsetX: 2,
+        offsetIndex: 4,
+        offsetStartY: 0,
       },
       i: {
         x: 188,
@@ -29,26 +32,196 @@ var Player1_source = {
         x: 104,
         y: 92,
         f: 2,
+        offsetX: 0.8,
       },
       hit: {
         x: 118,
         y: 92,
         f: 2,
+        offsetX: 0.8,
       },
       j: {
         x: 76,
         y: 92,
         f: 2,
+        offsetX: 0.8,
       },
       k: {
         x: 75,
         y: 92,
         f: 1,
+        offsetStartY: 0,
+        offsetX: 0.4,
       },
       c: {
         x: 50,
         y: 72,
         f: 1,
+        offsetStartY: 60,
+        offsetX: 0.4,
+      },
+    },
+  },
+  blanka: {
+    yFrameAdjuster: 2.5,
+    walk: './images/blanka_assets/blanka_walk.png',
+    idle: './images/blanka_assets/blanka_idle.png',
+    die: './images/blanka_assets/blanka_die.png',
+    victory: './images/blanka_assets/blanka_victory.png',
+    hadouken: './images/blanka_assets/ken_hadouken.png',
+    punch: './images/blanka_assets/blanka_punch.png',
+    block: './images/blanka_assets/blanka_block.png',
+    jump: './images/blanka_assets/blanka_jump.png',
+    hit: './images/blanka_assets/blanka_hit.png',
+    kick: './images/blanka_assets/blanka_kick.png',
+    crouch: './images/blanka_assets/blanka_crouch.png',
+    values: {
+      w: {
+        x: 355,
+        y: 73,
+        f: 5,
+        offsetX: 2,
+        offsetIndex: 4,
+        offsetStartY: 40,
+      },
+      i: {
+        x: 281,
+        y: 95,
+        f: 4,
+      },
+      d: {
+        x: 442,
+        y: 91,
+        f: 5,
+      },
+      h: {
+        x: 288,
+        y: 92,
+        f: 4,
+        offsetStartY: 0,
+      },
+      p: {
+        x: 103,
+        y: 98,
+        f: 1,
+        offsetX: 0.4,
+      },
+      b: {
+        x: 72,
+        y: 93,
+        f: 1,
+        offsetX: 0.4,
+      },
+      j: {
+        x: 72,
+        y: 112,
+        f: 1,
+        offsetX: 0.3,
+      },
+      hit: {
+        x: 65,
+        y: 100,
+        f: 1,
+        offsetX: 0.6,
+      },
+      k: {
+        x: 105,
+        y: 110,
+        f: 1,
+        offsetStartY: 30,
+        offsetX: 0.4,
+      },
+      c: {
+        x: 57,
+        y: 57,
+        f: 1,
+        offsetStartY: 120,
+        offsetX: 0.3,
+      },
+    },
+  },
+  ryu: {
+    yFrameAdjuster: 2.5,
+    walk: './images/ryu_assets/ryu_walk.png',
+    idle: './images/ryu_assets/ryu_idle.png',
+    die: './images/ryu_assets/ryu_die.png',
+    victory: './images/ryu_assets/ryu_victory.png',
+    hadouken: './images/ryu_assets/ryu_haduoken.png',
+    punch: './images/ryu_assets/ryu_punch.png',
+    block: './images/ryu_assets/ryu_block.png',
+    jump: './images/ryu_assets/ryu_jump.png',
+    hit: './images/ryu_assets/ryu_hit.png',
+    kick: './images/ryu_assets/ryu_kick.png',
+    crouch: './images/ryu_assets/ryu_crouch.png',
+    values: {
+      w: {
+        x: 235,
+        y: 92,
+        f: 5,
+        offsetX: 2,
+        offsetIndex: 4,
+        offsetStartY: 0,
+      },
+      i: {
+        x: 193,
+        y: 92,
+        f: 4,
+      },
+      d: {
+        x: 379,
+        y: 80,
+        f: 5,
+      },
+      v: {
+        x: 125,
+        y: 92,
+        f: 3,
+        offsetStartY: 0,
+        offsetX: 1.5,
+      },
+      h: {
+        x: 288,
+        y: 92,
+        f: 4,
+        offsetStartY: 0,
+      },
+      p: {
+        x: 77,
+        y: 94,
+        f: 1,
+        offsetX: 0.4,
+      },
+      b: {
+        x: 104,
+        y: 92,
+        f: 2,
+        offsetX: 0.8,
+      },
+      j: {
+        x: 76,
+        y: 92,
+        f: 2,
+        offsetX: 0.8,
+      },
+      hit: {
+        x: 118,
+        y: 92,
+        f: 2,
+        offsetX: 0.8,
+      },
+      k: {
+        x: 75,
+        y: 92,
+        f: 1,
+        offsetStartY: 0,
+        offsetX: 0.4,
+      },
+      c: {
+        x: 50,
+        y: 72,
+        f: 1,
+        offsetStartY: 80,
+        offsetX: 0.4,
       },
     },
   },
@@ -57,7 +230,6 @@ var Player1_source = {
 class Player1 {
   constructor(ctx, keys, selected) {
     this.player = selected;
-    console.log(this.player);
     this.ctx = ctx;
     this.life = 100;
     this.keys = keys;
@@ -242,8 +414,8 @@ class Player1 {
       Math.floor(this.kenWalkX / this.imgWalkp1.frames),
       this.kenWalkY,
       this.startPointX,
-      this.startPointY,
-      this.kenWalkX / 2,
+      this.startPointY + Player1_source[this.player].values.w.offsetStartY,
+      this.kenWalkX / Player1_source[this.player].values.w.offsetX,
       this.kenWalkY * this.yFrameAdjuster
     );
 
@@ -254,7 +426,11 @@ class Player1 {
     if (framesCounter % 10 === 0) {
       this.imgWalkp1.frameIndex += 1;
 
-      if (this.imgWalkp1.frameIndex > 4) this.imgWalkp1.frameIndex = 0;
+      if (
+        this.imgWalkp1.frameIndex >
+        Player1_source[this.player].values.w.offsetIndex
+      )
+        this.imgWalkp1.frameIndex = 0;
     }
   }
 
@@ -269,7 +445,7 @@ class Player1 {
       this.imgJumpY,
       this.startPointX,
       (this.startPointY -= 35),
-      this.imgJumpX / 0.8,
+      this.imgJumpX / Player1_source[this.player].values.j.offsetX,
       this.imgJumpY * this.yFrameAdjuster
     );
     this.animateImgJump(framesCounter);
@@ -293,7 +469,7 @@ class Player1 {
       this.imgPunchY,
       this.startPointX,
       this.startPointY,
-      this.imgPunchX / 0.4,
+      this.imgPunchX / Player1_source[this.player].values.p.offsetX,
       this.imgPunchY * this.yFrameAdjuster
     );
     this.animateImgPunch(framesCounter);
@@ -317,7 +493,7 @@ class Player1 {
       this.imgBlockY,
       this.startPointX,
       this.startPointY,
-      this.imgBlockX / 0.8,
+      this.imgBlockX / Player1_source[this.player].values.b.offsetX,
       this.imgBlockY * this.yFrameAdjuster
     );
     this.animateImgBlock(framesCounter);
@@ -347,8 +523,8 @@ class Player1 {
       Math.floor(this.imgKickX / this.imgKickp1.frames),
       this.imgKickY,
       this.startPointX,
-      this.startPointY,
-      this.imgKickX / Player1_source[this.player].values.p.offsetX,
+      this.startPointY - Player1_source[this.player].values.k.offsetStartY,
+      this.imgKickX / Player1_source[this.player].values.k.offsetX,
       this.imgKickY * this.yFrameAdjuster
     );
     this.animateImgKick(framesCounter);
@@ -371,8 +547,8 @@ class Player1 {
       Math.floor(this.imgCrouchX / this.imgCrouchp1.frames),
       this.imgKickY,
       this.startPointX,
-      this.startPointY + 60,
-      this.imgCrouchX / Player1_source[this.player].values.p.offsetX,
+      this.startPointY + Player1_source[this.player].values.c.offsetStartY,
+      this.imgCrouchX / Player1_source[this.player].values.c.offsetX,
       this.imgCrouchY * 3.1
     );
     this.animateImgCrouch(framesCounter);
