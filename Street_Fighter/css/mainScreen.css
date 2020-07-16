@@ -1,0 +1,125 @@
+.startScreen {
+  top: 5%;
+  padding: 15px;
+  position: relative;
+  margin: auto;
+  text-align: center;
+  width: 1000px;
+  height: 500px;
+  border: 2px solid rgb(163, 6, 6);
+  background: linear-gradient(0deg, rgba(19, 1, 11, 0.63), rgba(0, 0, 0, 0.774)),
+    url('../mainScreen_assets/maxresdefault.jpg');
+  /* background-color: white;
+    background-image: url('./maxresdefault.jpg'); */
+}
+
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(138, 138, 19);
+}
+
+.left-part {
+  float: left;
+}
+
+.right-part {
+  float: right;
+}
+
+.img1_container img,
+.img2_container img {
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  width: 100px;
+  height: 120px;
+  transition: border 0.2s;
+}
+
+.img1_container,
+.img2_container {
+  max-width: 280px;
+  background-color: rgba(20, 3, 70, 0.801);
+  border: 1px solid red;
+  border-radius: 10px;
+}
+
+.img1_container img:hover,
+.img2_container img:hover {
+  border: 2px solid rgb(240, 7, 7);
+  border-radius: 10px;
+}
+
+.player1,
+.player2 {
+  border-radius: 10px;
+}
+
+.vs_container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.player-name {
+  text-transform: capitalize;
+  color: white;
+}
+
+.sound-icon {
+  position: absolute;
+  width: 40px;
+  left: 2%;
+}
+
+.instruction-container,
+.instruction-container2 {
+  display: none;
+  color: white;
+  text-align: left;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(2, 0, 0, 0.699);
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 10;
+}
+
+.info-icon {
+  right: 2%;
+  position: absolute;
+  width: 45px;
+}
+
+.cross-icon,
+.cross-icon2 {
+  float: right;
+}
+
+.start_button {
+  transition: transform 0.2s;
+}
+
+.start_button:hover {
+  transform: scale(1.2);
+}
+
+.sf_logo {
+  transition: transform 0.2s;
+}
+
+.sf_logo:hover {
+  transform: scale(1.1);
+}
+
+.info_button,
+.reload_button {
+  transition: 0.2s;
+}
+
+.info_button:hover,
+.reload_button:hover {
+  transform: scale(1.3);
+}

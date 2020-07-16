@@ -3,29 +3,183 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/mainScreen.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <title>Street Fighter</title>
   </head>
   <body>
-    <div class="game">
-      <div class="mainMenu">
-        For player1: Press A to move left D to move right,S to crouch, W to Jump
-        X to Punch, C to kick, E to block <br />
-        For player2: Press J to move left L to move right, I to Jump O to Punch,
-        P to block
-
-        <br />
-        Select Player 1
-        <select id="player1select" class="selector">
-          <option value="ken">Ken</option>
-          <option value="blanka">Blanka</option>
-          <option value="chun">Chun Li</option>
-        </select>
-        <br />
-        <button id="gameStarter">Click to Start</button>
+    <div class="startScreen">
+      <img class="info-icon" src="./mainScreen_assets/info.png" alt="" />
+      <img
+        class="sf_logo"
+        src="./mainScreen_assets/street-fighter-2-arcade-png-1-original.png"
+        height="150px"
+        style="margin-bottom: 20px;"
+      />
+      <br />
+      <div class="container2">
+        <div class="left-part">
+          <div class="player1" style="float: left;">
+            <img
+              src="./mainScreen_assets/1p.png"
+              width="40px"
+              style="float: left; margin-top: 100px;"
+              alt="1p Symbol"
+            />
+            <div onclick="setName(`player1-name`)" class="img1_container">
+              <img
+                name="Ryu"
+                class="player1_select"
+                src="./mainScreen_assets/ryu_select.png"
+                alt=""
+              />
+              <img
+                name="Ken"
+                class="player1_select"
+                src="./mainScreen_assets/ken_select.png"
+                alt=""
+              />
+              <img
+                name="Blanka"
+                class="player1_select"
+                src="./mainScreen_assets/blanka_select.png"
+                alt=""
+              />
+              <img
+                name="Chun Li"
+                class="player1_select"
+                src="./mainScreen_assets/chun_select.png"
+                alt=""
+              />
+            </div>
+            <h2 id="player1-name" class="player-name">Ken</h2>
+          </div>
+        </div>
+        <div class="vs_container">
+          <img
+            src="./mainScreen_assets/vs.png"
+            width="150px"
+            style="margin-top: 100px; margin-bottom: 20px;"
+          />
+          <br />
+          <img
+            id="gameStart"
+            class="start_button"
+            src="./mainScreen_assets/pngegg.png"
+            width="150px"
+            alt=""
+          />
+        </div>
+        <div class="right-part">
+          <div class="player2">
+            <img
+              src="./mainScreen_assets/2p.png"
+              width="40px"
+              style="float: right; margin-top: 100px;"
+              alt="1p Symbol"
+            />
+            <div onclick="setName(`player2-name`)" class="img2_container">
+              <img
+                name="Ken"
+                class="player2_select"
+                src="./mainScreen_assets/ken_select_flipped.png"
+                alt=""
+              />
+              <img
+                name="Ryu"
+                class="player2_select"
+                src="./mainScreen_assets/ryu_select_flipped.png"
+                alt=""
+              />
+              <img
+                name="Chun Li"
+                class="player2_select"
+                src="./mainScreen_assets/chun_select_flipped.png"
+                alt=""
+              />
+              <img
+                name="Blanka"
+                class="player2_select"
+                src="./mainScreen_assets/blanka_select_flipped.png"
+                alt=""
+              />
+            </div>
+            <h2 id="player2-name" class="player-name">Chun Li</h2>
+          </div>
+        </div>
       </div>
-
-      <div class="container"></div>
+      <div class="instruction-container">
+        <i
+          style="font-size: 25px;"
+          class="fa fa-times cross-icon"
+          aria-hidden="true"
+        ></i>
+        <div class="player1-instruction">
+          <ul>
+            <h3 style="color: red;">Player 1 Moves</h3>
+            <li>Press A to move left, D to move right</li>
+            <li>W to Jump, S to crouch</li>
+            <li>X to Punch, E to block,</li>
+            <li>C to kick</li>
+          </ul>
+        </div>
+        <div class="player2-instruction">
+          <ul>
+            <h3 style="color: yellow;">Player 2 Moves</h3>
+            <li>Press J to move left, L to move Right</li>
+            <li>O to Punch, P to block</li>
+          </ul>
+        </div>
+      </div>
     </div>
+
+    <div class="game">
+      <div class="instruction-container2">
+        <i
+          style="font-size: 25px;"
+          class="fa fa-times cross-icon2"
+          aria-hidden="true"
+        ></i>
+        <div class="player1-instruction">
+          <ul>
+            <h3 style="color: red;">Player 1 Moves</h3>
+            <li>Press A to move left, D to move right</li>
+            <li>W to Jump, S to crouch</li>
+            <li>X to Punch, E to block,</li>
+            <li>C to kick</li>
+          </ul>
+        </div>
+        <div class="player2-instruction">
+          <ul>
+            <h3 style="color: yellow;">Player 2 Moves</h3>
+            <li>Press J to move left, L to move Right</li>
+            <li>O to block, P to punch</li>
+          </ul>
+        </div>
+      </div>
+      <div class="game_buttons">
+        <i
+          class="fa fa-refresh reload_button"
+          style="font-size: 40px;"
+          aria-hidden="true"
+        >
+        </i>
+        <i
+          class="fa fa-info-circle info_button"
+          style="font-size: 40px;"
+          aria-hidden="true"
+        ></i>
+      </div>
+    </div>
+
+    <script>
+      var setName = function (id) {
+        document.getElementById(id).textContent = event.target.name;
+      };
+    </script>
     <script src="./js/background.js"></script>
     <script src="./js/player1.js"></script>
     <script src="./js/player2.js"></script>

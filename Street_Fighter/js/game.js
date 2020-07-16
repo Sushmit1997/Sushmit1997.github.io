@@ -25,7 +25,7 @@ var Game = {
     this.canvas.setAttribute('id', 'mycanvas');
     this.canvas.setAttribute('height', 400);
     this.canvas.setAttribute('width', 1000);
-    var holder = document.getElementsByClassName('container');
+    var holder = document.getElementsByClassName('game');
     holder[0].appendChild(this.canvas);
     this.ctx = this.canvas.getContext(`2d`);
     this.start(this.player1Select, this.player2Select);
@@ -39,7 +39,6 @@ var Game = {
     if (this.showHadouken || this.showKikouken) {
     }
     this.interval = setInterval(() => {
-      // let intervalID = setInterval(() => {
       this.clear();
       this.framesCounter++;
 
