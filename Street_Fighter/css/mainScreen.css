@@ -38,6 +38,7 @@ body {
 
 .img1_container,
 .img2_container {
+  padding: 5px;
   max-width: 280px;
   background-color: rgba(20, 3, 70, 0.801);
   border: 1px solid red;

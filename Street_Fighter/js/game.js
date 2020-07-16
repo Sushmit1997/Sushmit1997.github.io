@@ -14,6 +14,8 @@ var Game = {
     player2block: 80,
     player2punch: 79,
     player2jump: 73,
+    player2crouch: 75,
+    player2kick: 85,
   },
   fullLifeBar: 'blue',
   emptyLifeBar: 'red',
@@ -179,6 +181,12 @@ var Game = {
       if (e.keyCode === this.keys.player1crouch) {
         this.player1.states.crouch = true;
       }
+      if (e.keyCode === this.keys.player2kick) {
+        this.player2.states.kick = true;
+      }
+      if (e.keyCode === this.keys.player2crouch) {
+        this.player2.states.crouch = true;
+      }
 
       if (e.keyCode === this.keys.player2left) {
         this.player2.states.left = true;
@@ -222,6 +230,12 @@ var Game = {
       }
       if (e.keyCode === this.keys.player1crouch) {
         this.player1.states.crouch = false;
+      }
+      if (e.keyCode === this.keys.player2kick) {
+        this.player2.states.kick = false;
+      }
+      if (e.keyCode === this.keys.player2crouch) {
+        this.player2.states.crouch = false;
       }
 
       if (e.keyCode === this.keys.player2jump) {
