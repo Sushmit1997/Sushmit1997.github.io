@@ -27,6 +27,7 @@ preload(
   './images/char_portrait/ken-img.png',
   './images/char_portrait/ryu-img.png',
   './images/char_portrait/blanka-img.png',
+  './images/char_portrait/vs.png',
   './images/bg4.jpg',
   './images/bg3.gif',
   './images/bg5.jpg',
