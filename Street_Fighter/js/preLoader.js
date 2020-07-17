@@ -1,9 +1,18 @@
 let portraitImages = [];
 
+let soundEffects = [];
+
 function preload() {
   for (var i = 0; i < arguments.length - 1; i++) {
     preload.arguments[0][i] = new Image();
     preload.arguments[0][i].src = preload.arguments[i + 1];
+  }
+}
+
+function preloadAudio() {
+  for (var i = 0; i < arguments.lentgh - 1; i++) {
+    preloadAudio.arguments[0][i] = new Audio();
+    preloadAudio.arguments[0][i].src = preloadAudio.arguments[i + 1];
   }
 }
 
@@ -22,4 +31,11 @@ preload(
   './images/bg3.gif',
   './images/bg5.jpg',
   './images/bg2.gif'
+);
+
+preloadAudio(
+  soundEffects,
+  './audio/start.wav',
+  './audio/select.wav',
+  './audio/fight.wav'
 );

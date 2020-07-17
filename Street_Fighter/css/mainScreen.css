@@ -144,3 +144,12 @@ body {
   color: yellow;
   letter-spacing: 4px;
 }
+
+.fight-img {
+  display: none;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

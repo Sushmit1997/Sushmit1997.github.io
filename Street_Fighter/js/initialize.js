@@ -3,8 +3,8 @@ let player2;
 let isInstructionVisible = false;
 
 document.querySelector('.start_button').addEventListener('click', () => {
-  console.log('Clicked');
-  setTimeout(playFight(), 1000);
+  playStart();
+  setTimeout(playFight(), 1500);
   document.querySelector('.game_buttons').style.display = 'block';
   player1 = document.getElementById('player1-name').textContent;
   player2 = document.getElementById('player2-name').textContent;
@@ -14,6 +14,13 @@ document.querySelector('.start_button').addEventListener('click', () => {
   if (player2 === 'Chun Li') {
     player2 = 'chun';
   }
+  // document.querySelector('.fight-img').style.display = 'block';
+  setTimeout(function () {
+    document.querySelector('.fight-img').style.display = 'block';
+    setTimeout(function () {
+      document.querySelector('.fight-img').style.display = 'none';
+    }, 700);
+  }, 500);
   document.querySelector('.startScreen').style.display = 'none';
   Game.init(player1.toLowerCase(), player2.toLowerCase());
   console.log(player1, player2);
@@ -73,6 +80,12 @@ function playFight() {
   let fight = new Audio();
   fight.src = './audio/fight.wav';
   fight.play();
+}
+function playStart() {
+  let start = new Audio();
+  start.src = './audio/start.wav';
+  start.volume = 0.4;
+  start.play();
 }
 
 // document.getElementById('gameStart').onclick = () => {
