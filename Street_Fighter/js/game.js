@@ -72,7 +72,7 @@ var Game = {
   },
 
   reset: function (player1Select, player2Select) {
-    this.background = new Background(this.ctx);
+    this.background = new Background(this.ctx, player1Select);
     this.player1 = new Player1(this.ctx, this.keys, player1Select);
     this.player2 = new Player2(this.ctx, this.keys, player2Select);
     this.healthBar1r = new HealthBarRed(
