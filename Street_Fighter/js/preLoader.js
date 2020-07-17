@@ -17,5 +17,9 @@ preload(
   './images/char_portrait/chun-img.png',
   './images/char_portrait/ken-img.png',
   './images/char_portrait/ryu-img.png',
-  './images/char_portrait/blanka-img.png'
+  './images/char_portrait/blanka-img.png',
+  './images/bg4.jpg',
+  './images/bg3.gif',
+  './images/bg5.jpg',
+  './images/bg2.gif'
 );
