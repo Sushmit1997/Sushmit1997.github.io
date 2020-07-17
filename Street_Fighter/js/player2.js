@@ -1,3 +1,11 @@
+var sound = new Array();
+sound[0] = new Audio(
+  'https://jonkantner.com/experiments/stick_fight/sounds/hit.ogg'
+);
+sound[1] = new Audio(
+  'https://jonkantner.com/experiments/stick_fight/sounds/miss.ogg'
+);
+
 var Player2_source = {
   chun: {
     walk: './images/chunli_assets/chun_walk.png',
@@ -473,6 +481,7 @@ class Player2 {
     } else if (this.states.kick) {
       this.drawKick(framesCounter);
     } else if (this.states.punch) {
+      sound[1].play();
       this.drawPunch(framesCounter);
     } else if (this.states.jump) {
       console.log('jump2');

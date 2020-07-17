@@ -1,3 +1,11 @@
+var sound = new Array();
+sound[0] = new Audio(
+  'https://jonkantner.com/experiments/stick_fight/sounds/hit.ogg'
+);
+sound[1] = new Audio(
+  'https://jonkantner.com/experiments/stick_fight/sounds/miss.ogg'
+);
+
 var Player1_source = {
   ken: {
     walk: './images/ken_assets/ken_walk.png',
@@ -450,6 +458,7 @@ class Player1 {
       //   this.startPointY = 150;
       // }, 400);
     } else if (this.states.punch) {
+      sound[1].play();
       this.drawPunch(framesCounter);
       // setTimeout(() => {
       //   this.states.punch = false;

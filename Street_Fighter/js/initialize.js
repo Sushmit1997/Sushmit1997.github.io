@@ -2,6 +2,21 @@ let player1;
 let player2;
 let isInstructionVisible = false;
 
+// document.querySelectorAll('.player1_select').addEventListener('click', () => {
+//   console.log('clicked');
+//   document.querySelector('.player1_select').display = 'none';
+// });
+
+// var player1Select = document.querySelectorAll('.player1_select');
+// console.log(player1Select);
+
+// player1Select.forEach((element) => {
+//   element.addEventListener('click', () => {
+//     document.querySelectorAll('.player1_select').style.border = '';
+//     element.style.border = '2px solid red';
+//   });
+// });
+
 document.querySelector('.start_button').addEventListener('click', () => {
   console.log('Clicked');
   document.querySelector('.game_buttons').style.display = 'block';

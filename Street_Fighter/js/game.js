@@ -1,3 +1,11 @@
+var sound = new Array();
+sound[0] = new Audio(
+  'https://jonkantner.com/experiments/stick_fight/sounds/hit.ogg'
+);
+sound[1] = new Audio(
+  'https://jonkantner.com/experiments/stick_fight/sounds/miss.ogg'
+);
+
 var Game = {
   fps: 60,
   keys: {
@@ -83,6 +91,9 @@ var Game = {
       100
     );
     this.healthBar2b = new HealthBar(this.ctx, 600, 15, this.fullLifeBar, 100);
+    this.portrait1 = new Portrait1(this.ctx, 600, 15, player1Select);
+    this.portrait2 = new Portrait2(this.ctx, 600, 15, player2Select);
+    this.vsImg = new VsLogo(this.ctx);
     this.OneWinImg = new Player1Wins(this.ctx, player1Select);
     this.TwoWinImg = new Player2Wins(this.ctx, player2Select);
 
@@ -102,6 +113,9 @@ var Game = {
 
     this.healthBar2r.draw();
     this.healthBar2b.draw();
+    this.portrait1.draw();
+    this.portrait2.draw();
+    this.vsImg.draw();
 
     //Punch Impact Conditions
     if (this.player1.detectPunch(this.player1, this.player2)) {
@@ -137,8 +151,8 @@ var Game = {
         console.log('p1 hit');
         this.player2.states.hit = true;
         this.player1.states.kick = false;
-        this.player2.life -= 5;
-        this.healthBar2b.reduceLife(5);
+        this.player2.life -= 10;
+        this.healthBar2b.reduceLife(10);
       }
     }
 
@@ -149,8 +163,8 @@ var Game = {
         console.log(true);
         this.player1.states.hit = true;
         this.player2.states.punch = false;
-        this.player1.life -= 5;
-        this.healthBar1b.reduceLife(5);
+        this.player1.life -= 10;
+        this.healthBar1b.reduceLife(10);
       }
     }
   },
@@ -182,6 +196,7 @@ var Game = {
         this.player1.states.crouch = true;
       }
       if (e.keyCode === this.keys.player2kick) {
+        sound[1].play();
         this.player2.states.kick = true;
       }
       if (e.keyCode === this.keys.player2crouch) {
