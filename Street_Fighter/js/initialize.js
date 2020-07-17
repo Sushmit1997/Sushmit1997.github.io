@@ -2,23 +2,9 @@ let player1;
 let player2;
 let isInstructionVisible = false;
 
-// document.querySelectorAll('.player1_select').addEventListener('click', () => {
-//   console.log('clicked');
-//   document.querySelector('.player1_select').display = 'none';
-// });
-
-// var player1Select = document.querySelectorAll('.player1_select');
-// console.log(player1Select);
-
-// player1Select.forEach((element) => {
-//   element.addEventListener('click', () => {
-//     document.querySelectorAll('.player1_select').style.border = '';
-//     element.style.border = '2px solid red';
-//   });
-// });
-
 document.querySelector('.start_button').addEventListener('click', () => {
   console.log('Clicked');
+  setTimeout(playFight(), 1000);
   document.querySelector('.game_buttons').style.display = 'block';
   player1 = document.getElementById('player1-name').textContent;
   player2 = document.getElementById('player2-name').textContent;
@@ -52,6 +38,42 @@ document.querySelector('.cross-icon2').addEventListener('click', () => {
 document.querySelector('.reload_button').addEventListener('click', () => {
   location.reload();
 });
+
+document
+  .getElementById('player1-container')
+  .addEventListener('click', (event) => {
+    if (event.target.classList.contains('player1_select')) {
+      playSelect();
+      document.querySelectorAll('.player1_select').forEach((el) => {
+        el.classList.remove('player1--selected');
+      });
+      event.target.classList.add('player1--selected');
+    }
+  });
+
+document
+  .getElementById('player2-container')
+  .addEventListener('click', (event) => {
+    if (event.target.classList.contains('player2_select')) {
+      playSelect();
+      document.querySelectorAll('.player2_select').forEach((el) => {
+        el.classList.remove('player2--selected');
+      });
+      event.target.classList.add('player2--selected');
+    }
+  });
+
+function playSelect() {
+  let select = new Audio();
+  select.src = './audio/select.wav';
+  select.play();
+}
+
+function playFight() {
+  let fight = new Audio();
+  fight.src = './audio/fight.wav';
+  fight.play();
+}
 
 // document.getElementById('gameStart').onclick = () => {
 //   document.getElementById('gameStart').style.display = 'none';

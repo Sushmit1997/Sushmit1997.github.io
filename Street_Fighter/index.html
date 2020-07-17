@@ -8,6 +8,10 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
     <title>Street Fighter</title>
   </head>
   <body>
@@ -29,7 +33,11 @@
               style="float: left; margin-top: 100px;"
               alt="1p Symbol"
             />
-            <div onclick="setName(`player1-name`)" class="img1_container">
+            <div
+              id="player1-container"
+              onclick="setName(`player1-name`)"
+              class="img1_container"
+            >
               <img
                 name="Ryu"
                 class="player1_select"
@@ -81,7 +89,11 @@
               style="float: right; margin-top: 100px;"
               alt="1p Symbol"
             />
-            <div onclick="setName(`player2-name`)" class="img2_container">
+            <div
+              id="player2-container"
+              onclick="setName(`player2-name`)"
+              class="img2_container"
+            >
               <img
                 name="Ken"
                 class="player2_select"

@@ -27,8 +27,8 @@ body {
   float: right;
 }
 
-.img1_container img,
-.img2_container img {
+.player1_select,
+.player2_select {
   border: 2px solid rgba(255, 255, 255, 0);
   border-radius: 10px;
   width: 100px;
@@ -36,12 +36,25 @@ body {
   transition: border 0.2s;
 }
 
+.player1--selected,
+.player2--selected {
+  border: 2px solid rgb(240, 7, 7);
+}
+
+/* .img1_container img,
+.img2_container img {
+  border: 2px solid rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  width: 100px;
+  height: 120px;
+  transition: border 0.2s;
+} */
+
 .img1_container,
 .img2_container {
   padding: 5px;
   max-width: 280px;
   background-color: rgba(20, 3, 70, 0.801);
-  border: 1px solid red;
   border-radius: 10px;
 }
 
@@ -123,4 +136,11 @@ body {
 .info_button:hover,
 .reload_button:hover {
   transform: scale(1.3);
+}
+
+.player-name {
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
+  color: yellow;
+  letter-spacing: 4px;
 }
