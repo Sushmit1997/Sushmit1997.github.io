@@ -10,12 +10,12 @@ function preload() {
 // Load player portrait images and canon image which will be used via caching as well
 preload(
   portraitImages,
-  './images/Char_portrait/flipped/chun-img.png',
-  './images/Char_portrait/flipped/ken-img.png',
-  './images/Char_portrait/flipped/ryu-img.png',
-  './images/Char_portrait/flipped/blanka-img.png',
-  './images/Char_portrait/chun-img.png',
-  './images/Char_portrait/ken-img.png',
-  './images/Char_portrait/ryu-img.png',
-  './images/Char_portrait/blanka-img.png'
+  './images/char_portrait/flipped/chun-img.png',
+  './images/char_portrait/flipped/ken-img.png',
+  './images/char_portrait/flipped/ryu-img.png',
+  './images/char_portrait/flipped/blanka-img.png',
+  './images/char_portrait/chun-img.png',
+  './images/char_portrait/ken-img.png',
+  './images/char_portrait/ryu-img.png',
+  './images/char_portrait/blanka-img.png'
 );

@@ -1,8 +1,8 @@
 Portrait1_resource = {
-  chun: './images/Char_portrait/flipped/chun-img.png',
-  ken: './images/Char_portrait/flipped/ken-img.png',
-  ryu: './images/Char_portrait/flipped/ryu-img.png',
-  blanka: './images/Char_portrait/flipped/blanka-img.png',
+  chun: './images/char_portrait/flipped/chun-img.png',
+  ken: './images/char_portrait/flipped/ken-img.png',
+  ryu: './images/char_portrait/flipped/ryu-img.png',
+  blanka: './images/char_portrait/flipped/blanka-img.png',
 };
 
 class Portrait1 {
@@ -21,10 +21,10 @@ class Portrait1 {
 }
 
 Portrait2_resource = {
-  chun: './images/Char_portrait/chun-img.png',
-  ken: './images/Char_portrait/ken-img.png',
-  ryu: './images/Char_portrait/ryu-img.png',
-  blanka: './images/Char_portrait/blanka-img.png',
+  chun: './images/char_portrait/chun-img.png',
+  ken: './images/char_portrait/ken-img.png',
+  ryu: './images/char_portrait/ryu-img.png',
+  blanka: './images/char_portrait/blanka-img.png',
 };
 
 class Portrait2 {
