@@ -451,11 +451,12 @@ class Player1 {
       }, 200);
     } else if (this.states.jump) {
       console.log('jump1');
+      playJump();
       this.drawJump(framesCounter);
       // setTimeout(() => {
       //
       //   this.imgJumpp1.frameIndex = 0;
-      //   this.startPointY = 150;
+      //   this.startPointY = 150;w
       // }, 400);
     } else if (this.states.punch) {
       sound[1].play();
@@ -689,4 +690,20 @@ class Player1 {
     }
     // console.log('for 1', this.startPointX);
   }
+}
+function playJump() {
+  var executed = false;
+  let jump = new Audio('./audio/jump.wav');
+  jump.volume = 0.4;
+  return function () {
+    if (!executed) {
+      executed = true;
+      jump.play();
+    }
+  };
+}
+
+function pauseJump() {
+  let jump = new Audio('./audio/jump.wav');
+  jump.pause();
 }
