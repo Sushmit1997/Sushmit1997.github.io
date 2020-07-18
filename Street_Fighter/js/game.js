@@ -1,11 +1,3 @@
-var sound = new Array();
-sound[0] = new Audio(
-  'https://jonkantner.com/experiments/stick_fight/sounds/hit.ogg'
-);
-sound[1] = new Audio(
-  'https://jonkantner.com/experiments/stick_fight/sounds/miss.ogg'
-);
-
 var Game = {
   fps: 60,
   keys: {
@@ -29,6 +21,8 @@ var Game = {
   },
   fullLifeBar: 'blue',
   emptyLifeBar: 'red',
+  showHadouken: false,
+  showKikouken: false,
 
   init: function (player1Select, player2Select) {
     this.player1Select = player1Select;
@@ -171,16 +165,59 @@ var Game = {
       }
     }
 
-    if (this.player2.detectPunch(this.player1, this.player2)) {
-      if (this.player1.states.block) {
-        this.player2.states.punch = false;
-      } else {
-        console.log(true);
-        this.player1.states.hit = true;
-        this.player2.states.punch = false;
-        this.player1.life -= 10;
-        this.healthBar1b.reduceLife(10);
+    //Haduoken Impact Collision
+
+    if (!this.player1.states.block) {
+      if (this.kikouken.startPointX <= this.player1.startPointX) {
+        if (this.player1.states.jump) {
+          this.player1.states.hit = false;
+          this.showKikouken = false;
+        } else {
+          this.player1.states.hit = true;
+          this.showKikouken = false;
+          this.player1.life -= 20;
+          this.healthBar1b.reduceLife(20);
+        }
       }
+    } else {
+      if (this.kikouken.startPointX <= this.player1.startPointX) {
+        this.player1.states.hit = false;
+        this.showKikouken = false;
+      }
+    }
+
+    if (!this.player2.states.block) {
+      if (this.hadouken.startPointX >= this.player2.startPointX) {
+        if (this.player2.states.jump) {
+          this.player2.states.hit = false;
+          this.showHadouken = false;
+        } else {
+          this.player2.states.hit = true;
+          this.showHadouken = false;
+          this.player2.life -= 20;
+          this.healthBar2b.reduceLife(20);
+        }
+      }
+    } else {
+      if (this.hadouken.startPointX >= this.player2.startPointX) {
+        this.player2.states.hit = false;
+        this.showHadouken = false;
+      }
+    }
+
+    if (this.kikouken.startPointX <= 0) {
+      this.showKikouken = false;
+    }
+
+    if (this.hadouken.startPointX >= 1000) {
+      this.showHadouken = false;
+    }
+
+    if (!this.showHadouken) {
+      this.hadouken.reset(this.player1.startPointX);
+    }
+    if (!this.showKikouken) {
+      this.kikouken.reset(this.player2.startPointX);
     }
   },
 
@@ -235,6 +272,12 @@ var Game = {
       }
       if (e.keyCode === this.keys.player2block) {
         this.player2.states.block = true;
+      }
+      if (e.keyCode === this.keys.player1hadouken) {
+        this.player1.states.hadouken = true;
+      }
+      if (e.keyCode === this.keys.player2hadouken) {
+        this.player2.states.hadouken = true;
       }
 
       if (e.keyCode === this.keys.player1left) {
@@ -297,6 +340,16 @@ var Game = {
       if (e.keyCode === this.keys.player1right) {
         this.player1.states.right = false;
       }
+      if (e.keyCode === this.keys.player1hadouken) {
+        this.player1.states.hadouken = true;
+        this.showHadouken = true;
+      }
+      if (e.keyCode === this.keys.player2hadouken) {
+        if (this.player2Select !== 'ryu') {
+          this.player2.states.hadouken = true;
+          this.showKikouken = true;
+        }
+      }
     });
     if (this.player1.startPointX < 0) {
       this.player1.startPointX = 1;
@@ -311,6 +364,12 @@ var Game = {
     }
     if (this.player2.startPointX > 840) {
       this.player2.startPointX = 840;
+    }
+
+    if (this.player1.states.jump) {
+      this.player1.left = false;
+      this.player1.right = false;
+      this.player1.hadouken = false;
     }
 
     setTimeout(() => {

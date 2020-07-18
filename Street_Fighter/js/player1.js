@@ -404,6 +404,14 @@ class Player1 {
     this.imgHitp1.frames = Player1_source[this.player].values.hit.f;
     this.imgHitp1.frameIndex = 0;
 
+    // Hadouken Image
+    this.imgHadoup1 = new Image();
+    this.imgHadoup1.src = Player1_source[this.player].hadouken;
+    this.kenHadouX = Player1_source[this.player].values.h.x;
+    this.kenHadouY = Player1_source[this.player].values.h.y;
+    this.imgHadoup1.frames = Player1_source[this.player].values.h.f;
+    this.imgHadoup1.frameIndex = 0;
+
     //Kick Image
     this.imgKickp1 = new Image();
     this.imgKickp1.src = Player1_source[this.player].kick;
@@ -457,6 +465,12 @@ class Player1 {
         this.states.idle = true;
         this.states.hit = false;
       }, 200);
+    } else if (this.states.hadouken) {
+      this.drawHadouken(framesCounter);
+      setTimeout(() => {
+        this.states.hadouken = false;
+        this.imgHadoup1.frameIndex = 0;
+      }, 600);
     } else if (this.states.jump) {
       console.log('jump1');
       playJump();

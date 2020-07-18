@@ -118,21 +118,12 @@ class Hadouken {
     this.startPointY = 220;
     this.yFrameAdjuster = 2.5;
 
-    // Idle Image
     this.imgHadou = new Image();
-    this.imgHadou.src = './img/hadouken.png';
+    this.imgHadou.src = './images/ken_assets/hadouken.png';
     this.hadouX = 68;
     this.hadouY = 60;
     this.imgHadou.frames = 2;
     this.imgHadou.frameIndex = 0;
-
-    // Impact Image
-    this.imgHadouImpact = new Image();
-    this.imgHadouImpact.src = './img/hadouken-impact.png';
-    this.hadouImpactX = 84;
-    this.hadouImpactY = 40;
-    this.imgHadouImpact.frames = 4;
-    this.imgHadouImpact.frameIndex = 0;
   }
 
   drawMoving(framesCounter) {
@@ -197,21 +188,12 @@ class Kikouken {
     this.startPointY = 200;
     this.yFrameAdjuster = 2.5;
 
-    // Idle Image
     this.imgKikou = new Image();
-    this.imgKikou.src = './img/kikouken.png';
+    this.imgKikou.src = './images/chunli_assets/kikouken.png';
     this.kikouX = 280;
     this.kikouY = 40;
     this.imgKikou.frames = 7;
     this.imgKikou.frameIndex = 6;
-
-    // Impact Image
-    // this.imgKikouImpact = new Image();
-    // this.imgKikouImpact.src = "./img/kikouken-impact.png";
-    // this.kikouImpactX = 84;
-    // this.kikouImpactY = 40;
-    // this.imgKikouImpact.frames = 4;
-    // this.imgKikouImpact.frameIndex = 0;
   }
 
   drawMoving(framesCounter) {

@@ -64,6 +64,7 @@ var Player2_source = {
         y: 107,
         f: 4,
         frameIndex: 4,
+        offsetStartY: 33,
       },
       j: {
         x: 40,
@@ -387,6 +388,7 @@ class Player2 {
       idle: true,
       crouch: false,
       kick: false,
+      hadouken: false,
     };
 
     this.startPointX = 660;
@@ -439,6 +441,15 @@ class Player2 {
     this.imgBlockp2.frameIndex =
       Player2_source[this.player].values.b.frameIndex;
 
+    // Hadouken Image
+    this.imgHadoup2 = new Image();
+    this.imgHadoup2.src = Player2_source[this.player].haduoken;
+    this.chunHadouX = Player2_source[this.player].values.h.x;
+    this.chunHadouY = Player2_source[this.player].values.h.y;
+    this.imgHadoup2.frames = Player2_source[this.player].values.h.f;
+    this.imgHadoup2.frameIndex =
+      Player2_source[this.player].values.h.frameIndex;
+
     //Hit Image
     this.imgHitp2 = new Image();
     this.imgHitp2.src = Player2_source[this.player].hit;
@@ -480,6 +491,13 @@ class Player2 {
       this.drawWalk(framesCounter);
     } else if (this.states.crouch) {
       this.drawCrouch(framesCounter);
+    } else if (this.states.hadouken) {
+      if (this.player !== 'ryu' && this.player !== 'blanka')
+        this.drawHadouken(framesCounter);
+      setTimeout(() => {
+        this.states.hadouken = false;
+        this.imgHadoup2.frameIndex = 3;
+      }, 630);
     } else if (this.states.kick) {
       this.drawKick(framesCounter);
     } else if (this.states.punch) {
@@ -696,6 +714,31 @@ class Player2 {
       this.imgCrouchp2.frameIndex += 1;
 
       if (this.imgCrouchp2.frameIndex > 0) this.imgCrouchp2.frameIndex = 0;
+    }
+  }
+
+  drawHadouken(framesCounter) {
+    this.ctx.drawImage(
+      this.imgHadoup2,
+      this.imgHadoup2.frameIndex *
+        Math.floor(this.chunHadouX / this.imgHadoup2.frames),
+      0,
+      Math.floor(this.chunHadouX / this.imgHadoup2.frames),
+      this.chunHadouY,
+      this.startPointX,
+      this.startPointY - Player2_source[this.player].values.h.offsetStartY,
+      this.chunHadouX / 1.5,
+      this.chunHadouY * this.yFrameAdjuster
+    );
+
+    this.animateImgHadou(framesCounter);
+  }
+
+  animateImgHadou(framesCounter) {
+    if (framesCounter % 12 === 0) {
+      this.imgHadoup2.frameIndex -= 1;
+
+      if (this.imgHadoup2.frameIndex < 0) this.imgHadoup2.frameIndex = 3;
     }
   }
 
