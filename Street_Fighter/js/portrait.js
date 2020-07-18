@@ -45,10 +45,10 @@ class VsLogo {
   constructor(ctx) {
     this.ctx = ctx;
     this.vsImg = new Image();
-    this.vsImg.src = './images/char_portrait/vs.png';
+    this.vsImg.src = './images/ko.png';
   }
 
   draw() {
-    this.ctx.drawImage(this.vsImg, 0, 0, 500, 300, 460, 25, 1000, 500);
+    this.ctx.drawImage(this.vsImg, 0, 0, 500, 300, 450, 20, 500, 300);
   }
 }

@@ -3,6 +3,19 @@ let player2;
 let isInstructionVisible = false;
 
 document.querySelector('.start_button').addEventListener('click', () => {
+  //Timer
+  var timeleft = 60;
+  var downloadTimer = setInterval(function () {
+    if (timeleft <= 0) {
+      clearInterval(downloadTimer);
+      document.getElementById('countdown').innerHTML = 'Finished';
+    } else {
+      document.getElementById('countdown').innerHTML =
+        `Time Remaining : ` + timeleft;
+    }
+    timeleft -= 1;
+  }, 1000);
+
   playStart();
   setTimeout(playFight(), 1500);
   document.querySelector('.game_buttons').style.display = 'block';

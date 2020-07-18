@@ -16,6 +16,7 @@ var Game = {
     player1jump: 87,
     player1crouch: 83,
     player1kick: 67,
+    player1hadouken: 81,
 
     player2left: 74,
     player2right: 76,
@@ -24,6 +25,7 @@ var Game = {
     player2jump: 73,
     player2crouch: 75,
     player2kick: 85,
+    player2hadouken: 77,
   },
   fullLifeBar: 'blue',
   emptyLifeBar: 'red',
@@ -75,6 +77,8 @@ var Game = {
     this.background = new Background(this.ctx, player1Select);
     this.player1 = new Player1(this.ctx, this.keys, player1Select);
     this.player2 = new Player2(this.ctx, this.keys, player2Select);
+    this.hadouken = new Hadouken(this.ctx, this.player1.startPointX + 90);
+    this.kikouken = new Kikouken(this.ctx, this.player2.startPointX);
     this.healthBar1r = new HealthBarRed(
       this.ctx,
       80,
@@ -116,6 +120,17 @@ var Game = {
     this.portrait1.draw();
     this.portrait2.draw();
     this.vsImg.draw();
+
+    if (this.showHadouken) {
+      // this.hadouken.reset(this.player1.startPointX);
+      if (this.player1Select !== 'blanka' && this.player1Select !== 'ryu')
+        this.hadouken.drawMoving(this.framesCounter);
+    }
+
+    if (this.showKikouken) {
+      if (this.player2Select !== 'blanka' && this.player2Select !== 'ryu')
+        this.kikouken.drawMoving(this.framesCounter);
+    }
 
     //Punch Impact Conditions
     if (this.player1.detectPunch(this.player1, this.player2)) {
@@ -297,15 +312,24 @@ var Game = {
     if (this.player2.startPointX > 840) {
       this.player2.startPointX = 840;
     }
-    // if (this.player1.states.jump) {
-    //   this.player1.states.left = false;
-    //   this.player1.states.right = false;
-    // }
-    // if (this.player2.states.jump) {
-    //   this.player2.left = false;
-    //   this.player2.right = false;
-    //   this.player2.states.idle = false;
-    // }
+
+    setTimeout(() => {
+      if (this.player1.life >= this.player2.life) {
+        console.log('true');
+        this.drawPlayer1Win();
+      } else {
+        console.log('false');
+        this.drawPlayer2Win();
+      }
+      this.player1.states.left = false;
+      this.player1.states.right = false;
+      this.player1.states.punch = false;
+      this.player2.states.punch = false;
+      this.player1.states.hadouken = false;
+      this.player2.states.left = false;
+      this.player2.states.right = false;
+    }, 62000);
+
     if (this.player2.life <= 0) {
       this.player1.states.left = false;
       this.player1.states.right = false;

@@ -16,6 +16,7 @@ var Player1_source = {
     jump: './images/ken_assets/ken_jump2.png',
     kick: './images/ken_assets/ken_kick.png',
     crouch: './images/ken_assets/ken_crouch1.png',
+    hadouken: './images/ken_assets/ken_hadouken.png',
     values: {
       w: {
         x: 235,
@@ -67,6 +68,12 @@ var Player1_source = {
         f: 1,
         offsetStartY: 60,
         offsetX: 0.4,
+      },
+      h: {
+        x: 288,
+        y: 92,
+        f: 4,
+        offsetStartY: 0,
       },
     },
   },
@@ -130,7 +137,7 @@ var Player1_source = {
         x: 65,
         y: 100,
         f: 1,
-        offsetX: 0.6,
+        offsetX: 0.4,
       },
       k: {
         x: 105,
@@ -337,6 +344,7 @@ class Player1 {
       idle: true,
       crouch: false,
       kick: false,
+      hadouken: false,
     };
     this.startPointX = 200;
     this.startPointY = 150;
@@ -668,7 +676,7 @@ class Player1 {
       this.imgHitY,
       this.startPointX,
       this.startPointY,
-      this.imgHitX / 0.8,
+      this.imgHitX / Player1_source[this.player].values.hit.offsetX,
       this.imgHitY * this.yFrameAdjuster
     );
     this.animateHit(framesCounter);
@@ -678,6 +686,31 @@ class Player1 {
     if (framesCounter % 20 === 0) {
       this.imgHitp1.frameIndex += 1;
       if (this.imgHitp1.frameIndex > 2) this.imgHitp1.frameIndex = 0;
+    }
+  }
+
+  drawHadouken(framesCounter) {
+    this.ctx.drawImage(
+      this.imgHadoup1,
+      this.imgHadoup1.frameIndex *
+        Math.floor(this.kenHadouX / this.imgHadoup1.frames),
+      0,
+      Math.floor(this.kenHadouX / this.imgHadoup1.frames),
+      this.kenHadouY,
+      this.startPointX,
+      this.startPointY - Player1_source[this.player].values.h.offsetStartY,
+      this.kenHadouX / 1.5,
+      this.kenHadouY * this.yFrameAdjuster
+    );
+
+    this.animateImgHadou(framesCounter);
+  }
+
+  animateImgHadou(framesCounter) {
+    if (framesCounter % 10 === 0 && this.imgHadoup1.frameIndex < 4) {
+      this.imgHadoup1.frameIndex += 1;
+
+      if (this.imgHadoup1.frameIndex > 3) this.imgHadoup1.frameIndex = 0;
     }
   }
 

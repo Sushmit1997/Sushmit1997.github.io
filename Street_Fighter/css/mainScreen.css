@@ -14,6 +14,7 @@
 }
 
 body {
+  background-image: url('../mainScreen_assets/bg.gif');
   background-repeat: no-repeat;
   background-size: cover;
   background-color: rgb(138, 138, 19);
@@ -156,4 +157,13 @@ body {
 
 .audio {
   display: none;
+}
+
+#countdown {
+  font-family: 'Bangers', cursive;
+  position: absolute;
+  left: 43%;
+  top: 10%;
+  color: yellow;
+  font-size: 30px;
 }

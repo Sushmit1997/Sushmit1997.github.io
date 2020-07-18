@@ -287,6 +287,7 @@ var Player2_source = {
     kick: './images/ryu_assets/flipped/ryu_kick.png',
     crouch: './images/ryu_assets/flipped/ryu_crouch.png',
     jump: './images/ryu_assets/flipped/ryu_jump.png',
+    hit: './images/ryu_assets/flipped/ryu_hit.png',
     values: {
       w: {
         x: 235,
@@ -356,6 +357,7 @@ var Player2_source = {
         y: 91,
         f: 2,
         offsetX: 0.8,
+        offsetStartY: 20,
       },
       j: {
         x: 76,
