@@ -192,6 +192,15 @@
       <img class="fight-img" src="./mainScreen_assets/fight.png" alt="" />
     </div>
 
+    <div class="audio">
+      <audio controls preload="auto">
+        <source src="./audio/start.wav" type="audio/wav" />
+        <source src="./audio/select.wav" type="audio/wav" />
+        <source src="./audio/fight.wav" type="audio/wav" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
     <script>
       var setName = function (id) {
         document.getElementById(id).textContent = event.target.name;
