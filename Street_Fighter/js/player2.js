@@ -492,8 +492,8 @@ class Player2 {
     } else if (this.states.crouch) {
       this.drawCrouch(framesCounter);
     } else if (this.states.hadouken) {
-      if (this.player !== 'ryu' && this.player !== 'blanka')
-        this.drawHadouken(framesCounter);
+      // if (this.player !== 'ryu' && this.player !== 'blanka')
+      this.drawHadouken(framesCounter);
       setTimeout(() => {
         this.states.hadouken = false;
         this.imgHadoup2.frameIndex = 3;
@@ -517,6 +517,15 @@ class Player2 {
     if (
       player2.startPointX - player1.startPointX < 120 &&
       this.states.punch == true
+    ) {
+      return true;
+    }
+  }
+
+  detectKick(player1, player2) {
+    if (
+      player2.startPointX - player1.startPointX < 120 &&
+      this.states.kick == true
     ) {
       return true;
     }

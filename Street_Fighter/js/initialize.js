@@ -2,7 +2,12 @@ let player1;
 let player2;
 let isInstructionVisible = false;
 
+document.querySelector('.sound-off').addEventListener('click', () => {
+  stopMusic();
+});
+
 document.querySelector('.start_button').addEventListener('click', () => {
+  playMusic();
   //Timer
   var timeleft = 60;
   var downloadTimer = setInterval(function () {
@@ -99,6 +104,16 @@ function playStart() {
   start.src = './audio/start.wav';
   start.volume = 0.4;
   start.play();
+}
+
+let kenMusic = new Audio('./audio/ken.mp3');
+function playMusic() {
+  kenMusic.volume = 0.2;
+  kenMusic.play();
+}
+
+function stopMusic() {
+  kenMusic.pause();
 }
 
 // document.getElementById('gameStart').onclick = () => {

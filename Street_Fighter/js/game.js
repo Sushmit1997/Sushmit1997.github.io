@@ -42,9 +42,22 @@ var Game = {
 
     this.reset(player1Select, player2Select);
 
-    if (this.showHadouken || this.showKikouken) {
-    }
     this.interval = setInterval(() => {
+      if (
+        this.player1Select === 'blanka' ||
+        this.player1Select === 'ryu' ||
+        this.player1Select == 'chun'
+      ) {
+        this.player1.states.hadouken = false;
+      }
+
+      if (
+        this.player2Select === 'blanka' ||
+        this.player2Select === 'ryu' ||
+        this.player2Select === 'ken'
+      ) {
+        this.player2.states.hadouken = false;
+      }
       this.clear();
       this.framesCounter++;
 
@@ -116,13 +129,20 @@ var Game = {
     this.vsImg.draw();
 
     if (this.showHadouken) {
-      // this.hadouken.reset(this.player1.startPointX);
-      if (this.player1Select !== 'blanka' && this.player1Select !== 'ryu')
+      if (
+        this.player1Select !== 'blanka' &&
+        this.player1Select !== 'ryu' &&
+        this.player1Select !== 'chun'
+      )
         this.hadouken.drawMoving(this.framesCounter);
     }
 
     if (this.showKikouken) {
-      if (this.player2Select !== 'blanka' && this.player2Select !== 'ryu')
+      if (
+        this.player2Select !== 'blanka' &&
+        this.player2Select !== 'ryu' &&
+        this.player2Select !== 'ken'
+      )
         this.kikouken.drawMoving(this.framesCounter);
     }
 
@@ -165,6 +185,18 @@ var Game = {
       }
     }
 
+    if (this.player2.detectKick(this.player1, this.player2)) {
+      if (this.player1.states.block) {
+        this.player2.states.kick = false;
+      } else {
+        console.log('p1 hit');
+        this.player1.states.hit = true;
+        this.player2.states.kick = false;
+        this.player2.life -= 10;
+        this.healthBar1b.reduceLife(10);
+      }
+    }
+
     //Haduoken Impact Collision
 
     if (!this.player1.states.block) {
@@ -203,6 +235,12 @@ var Game = {
         this.player2.states.hit = false;
         this.showHadouken = false;
       }
+    }
+
+    if (this.kikouken.startPointX === this.hadouken.startPointX) {
+      console.log('true');
+      this.showKikouken = false;
+      this.showHadouken = false;
     }
 
     if (this.kikouken.startPointX <= 0) {
@@ -345,10 +383,8 @@ var Game = {
         this.showHadouken = true;
       }
       if (e.keyCode === this.keys.player2hadouken) {
-        if (this.player2Select !== 'ryu') {
-          this.player2.states.hadouken = true;
-          this.showKikouken = true;
-        }
+        this.player2.states.hadouken = true;
+        this.showKikouken = true;
       }
     });
     if (this.player1.startPointX < 0) {
@@ -395,18 +431,12 @@ var Game = {
       this.player1.states.punch = false;
       this.player2.states.punch = false;
       this.player1.states.hadouken = false;
-      setTimeout(() => {
-        location.reload();
-      }, 4000);
     }
     if (this.player1.life <= 0) {
       this.player2.states.left = false;
       this.player2.states.punch = false;
       this.player2.states.right = false;
       this.player2.states.hadouken = false;
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
     }
     // if (this.player2.lose) {
     //   clearInterval(intervalID);
