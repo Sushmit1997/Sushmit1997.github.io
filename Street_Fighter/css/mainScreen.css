@@ -172,3 +172,10 @@ body {
   font-size: 30px;
   transition: display 0.2s;
 }
+
+.loader {
+  float: left;
+  color: yellow;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 4px;
+}

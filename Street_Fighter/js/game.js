@@ -442,15 +442,8 @@ var Game = {
       this.player2.states.right = false;
       this.player2.states.hadouken = false;
     }
-    // if (this.player2.lose) {
-    //   clearInterval(intervalID);
-    // }
   },
   stop: function () {
     clearInterval(this.interval);
   },
 };
-
-// setTimeout(function () {
-//   Game.init('ken', 'mike');
-// }, 1000);

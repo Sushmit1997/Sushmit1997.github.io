@@ -2,10 +2,13 @@ let portraitImages = [];
 
 let soundEffects = [];
 
-function preload() {
+let noOfImagesLoaded = 0;
+
+function preload(collector) {
   for (var i = 0; i < arguments.length - 1; i++) {
-    preload.arguments[0][i] = new Image();
-    preload.arguments[0][i].src = preload.arguments[i + 1];
+    collector[i] = new Image();
+    collector[i].src = preload.arguments[i + 1];
+    collector[i].onload = imageLoaded;
   }
 }
 
@@ -62,8 +65,74 @@ preload(
   './images/ryu_assets/ryu_jump.png',
   './images/ryu_assets/ryu_hit.png',
   './images/ryu_assets/ryu_kick.png',
-  './images/ryu_assets/ryu_crouch.png'
+  './images/ryu_assets/ryu_crouch.png',
+  './images/chunli_assets/flipped/chun_idle.png',
+  './images/chunli_assets/flipped/chun_walk.png',
+  './images/chunli_assets/flipped/chun_die2.png',
+  './images/chunli_assets/flipped/chun_victory.png',
+  './images/chunli_assets/flipped/chun_hadouken.png',
+  './images/chunli_assets/flipped/chun_punch2.png',
+  './images/chunli_assets/flipped/chun_block.png',
+  './images/chunli_assets/flipped/chun_jump.png',
+  './images/chunli_assets/flipped/chun_hit.png',
+  './images/chunli_assets/flipped/chun_kick.png',
+  './images/chunli_assets/flipped/chun_crouch.png',
+  './images/chunli_assets/chun_walk.png',
+  './images/chunli_assets/chun_idle.png',
+  './images/chunli_assets/chun_punch2.png',
+  './images/chunli_assets/chun_block.png',
+  './images/chunli_assets/chun_hadouken.png',
+  './images/chunli_assets/chun_jump.png',
+  './images/chunli_assets/chun_hit.png',
+  './images/chunli_assets/chun_kick.png',
+  './images/chunli_assets/chun_crouch.png',
+  './images/chunli_assets/chun_die.png',
+  './images/chunli_assets/chun_victory.png',
+  './images/ken_assets/flipped/ken_walk.png',
+  './images/ken_assets/flipped/ken_idle.png',
+  './images/ken_assets/flipped/ken_punch4.png',
+  './images/ken_assets/flipped/ken_block.png',
+  './images/ken_assets/flipped/ken_hadouken.png',
+  './images/ken_assets/flipped/ken_die2.png',
+  './images/ken_assets/flipped/ken_victory.png',
+  './images/ken_assets/flipped/ken_kick.png',
+  './images/ken_assets/flipped/ken_crouch1.png',
+  './images/ken_assets/flipped/ken_jump2.png',
+  './images/ken_assets/flipped/ken_hit.png',
+  './images/blanka_assets/flipped/blanka_walk.png',
+  './images/blanka_assets/flipped/blanka_idle.png',
+  './images/blanka_assets/flipped/blanka_punch.png',
+  './images/blanka_assets/flipped/blanka_block.png',
+  './images/blanka_assets/flipped/ken_hadouken.png',
+  './images/blanka_assets/flipped/blanka_die2.png',
+  './images/blanka_assets/flipped/blanka_victory.png',
+  './images/blanka_assets/flipped/blanka_kick.png',
+  './images/blanka_assets/flipped/blanka_jump.png',
+  './images/blanka_assets/flipped/blanka_crouch.png',
+  './images/blanka_assets/flipped/blanka_hit.png',
+  './images/ryu_assets/flipped/ryu_walk.png',
+  './images/ryu_assets/flipped/ryu_idle.png',
+  './images/ryu_assets/flipped/ryu_punch.png',
+  './images/ryu_assets/flipped/ryu_block.png',
+  './images/ryu_assets/flipped/ryu_hadouken.png',
+  './images/ryu_assets/flipped/ryu_die2.png',
+  './images/ryu_assets/flipped/ryu_victory.png',
+  './images/ryu_assets/flipped/ryu_kick.png',
+  './images/ryu_assets/flipped/ryu_crouch.png',
+  './images/ryu_assets/flipped/ryu_jump.png',
+  './images/ryu_assets/flipped/ryu_hit.png'
 );
+
+function imageLoaded() {
+  noOfImagesLoaded++;
+  if (noOfImagesLoaded == 95) {
+    onLoadFinish();
+  }
+}
+
+function onLoadFinish() {
+  document.querySelector('.loader').innerText = 'Loading Done';
+}
 
 preloadAudio(
   soundEffects,
