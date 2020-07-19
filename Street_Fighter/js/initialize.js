@@ -1,13 +1,14 @@
 let player1;
 let player2;
 let isInstructionVisible = false;
-
-document.querySelector('.sound-off').addEventListener('click', () => {
-  stopMusic();
-});
+let isPaused = false;
+let isPlayWin = false;
 
 document.querySelector('.start_button').addEventListener('click', () => {
+  playSound();
   //Timer
+
+  playMusic();
   var timeleft = 60;
   var downloadTimer = setInterval(function () {
     if (timeleft <= 0) {
@@ -31,7 +32,7 @@ document.querySelector('.start_button').addEventListener('click', () => {
   if (player2 === 'Chun Li') {
     player2 = 'chun';
   }
-  // document.querySelector('.fight-img').style.display = 'block';
+
   setTimeout(function () {
     document.querySelector('.fight-img').style.display = 'block';
     setTimeout(function () {
@@ -41,6 +42,16 @@ document.querySelector('.start_button').addEventListener('click', () => {
   document.querySelector('.startScreen').style.display = 'none';
   Game.init(player1.toLowerCase(), player2.toLowerCase());
   console.log(player1, player2);
+});
+
+document.querySelector('.sound-off').addEventListener('click', () => {
+  if (!isPaused) {
+    stopMusic();
+    isPaused = true;
+  } else {
+    playMusic();
+    isPaused = false;
+  }
 });
 
 document.querySelector('.info-icon').addEventListener('click', () => {
@@ -115,7 +126,15 @@ function stopMusic() {
   kenMusic.pause();
 }
 
-// document.getElementById('gameStart').onclick = () => {
-//   document.getElementById('gameStart').style.display = 'none';
-//   Game.init('ken', 'chun');
-// };
+function surePlay() {
+  if (!isPlayWin) {
+    playWin();
+    isPlayWin = true;
+  }
+}
+
+function playWin() {
+  let win = new Audio('./audio/win.wav');
+  win.volume = 0.4;
+  win.play();
+}

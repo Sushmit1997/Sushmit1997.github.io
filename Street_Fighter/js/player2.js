@@ -541,7 +541,7 @@ class Player2 {
     } else if (this.states.punch) {
       sound[1].play();
       this.drawPunch(framesCounter);
-    } else if (this.life <= 0) {
+    } else if (this.life <= 0 || this.lose) {
       this.drawDie(framesCounter);
       this.lose = true;
     } else if (this.states.jump) {

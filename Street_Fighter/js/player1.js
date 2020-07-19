@@ -543,13 +543,11 @@ class Player1 {
         this.imgHadoup1.frameIndex = 0;
       }, 600);
     } else if (this.states.jump) {
-      console.log('jump1');
-      playJump();
       this.drawJump(framesCounter);
     } else if (this.states.punch) {
       sound[1].play();
       this.drawPunch(framesCounter);
-    } else if (this.life <= 0) {
+    } else if (this.life <= 0 || this.lose) {
       this.drawDie(framesCounter);
     } else if (this.states.block) {
       this.drawBlock(framesCounter);
@@ -864,19 +862,9 @@ class Player1 {
     // console.log('for 1', this.startPointX);
   }
 }
-function playJump() {
-  var executed = false;
-  let jump = new Audio('./audio/jump.wav');
-  jump.volume = 0.4;
-  return function () {
-    if (!executed) {
-      executed = true;
-      jump.play();
-    }
-  };
-}
 
-function pauseJump() {
-  let jump = new Audio('./audio/jump.wav');
-  jump.pause();
+function playWin() {
+  let win = new Audio('./audio/victory.mp3');
+  win.volume = 0.4;
+  win.play();
 }

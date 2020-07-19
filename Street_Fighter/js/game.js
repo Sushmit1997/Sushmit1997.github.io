@@ -42,6 +42,27 @@ var Game = {
 
     this.reset(player1Select, player2Select);
 
+    document.addEventListener('keydown', (e) => {
+      if (e.keyCode === this.keys.player1hadouken) {
+        if (
+          this.player1Select !== 'blanka' &&
+          this.player1Select !== 'ryu' &&
+          this.player1Select !== 'chun'
+        ) {
+          playHadouken();
+        }
+      }
+      if (e.keyCode === this.keys.player2hadouken) {
+        if (
+          this.player2Select !== 'blanka' &&
+          this.player2Select !== 'ryu' &&
+          this.player2Select !== 'ken'
+        ) {
+          playKikouken();
+        }
+      }
+    });
+
     this.interval = setInterval(() => {
       if (
         this.player1Select === 'blanka' ||
@@ -71,7 +92,6 @@ var Game = {
 
       if (this.player2.life <= 0) {
         this.drawPlayer1Win();
-        setTimeout(() => {}, 1000);
       }
       if (this.player1.life <= 0) {
         this.drawPlayer2Win();
@@ -156,6 +176,7 @@ var Game = {
         this.player1.states.punch = false;
         this.player2.life -= 5;
         this.healthBar2b.reduceLife(5);
+        playHit();
       }
     }
 
@@ -168,6 +189,7 @@ var Game = {
         this.player2.states.punch = false;
         this.player1.life -= 5;
         this.healthBar1b.reduceLife(5);
+        playHit();
       }
     }
 
@@ -182,6 +204,7 @@ var Game = {
         this.player1.states.kick = false;
         this.player2.life -= 10;
         this.healthBar2b.reduceLife(10);
+        playHit();
       }
     }
 
@@ -194,6 +217,7 @@ var Game = {
         this.player2.states.kick = false;
         this.player2.life -= 10;
         this.healthBar1b.reduceLife(10);
+        playHit();
       }
     }
 
@@ -209,6 +233,7 @@ var Game = {
           this.showKikouken = false;
           this.player1.life -= 20;
           this.healthBar1b.reduceLife(20);
+          playHit();
         }
       }
     } else {
@@ -228,6 +253,7 @@ var Game = {
           this.showHadouken = false;
           this.player2.life -= 20;
           this.healthBar2b.reduceLife(20);
+          playHit();
         }
       }
     } else {
@@ -286,7 +312,6 @@ var Game = {
         this.player1.states.crouch = true;
       }
       if (e.keyCode === this.keys.player2kick) {
-        sound[1].play();
         this.player2.states.kick = true;
       }
       if (e.keyCode === this.keys.player2crouch) {
@@ -409,12 +434,21 @@ var Game = {
     }
 
     setTimeout(() => {
+      surePlay();
+      stopMusic();
+      setTimeout(() => {
+        document.querySelector('.end-screen').style.display = 'block';
+      }, 5000);
       if (this.player1.life >= this.player2.life) {
         console.log('true');
         this.drawPlayer1Win();
+        this.player1.win = true;
+        this.player2.lose = true;
       } else {
         console.log('false');
         this.drawPlayer2Win();
+        this.player2.win = true;
+        this.player1.lose = true;
       }
       this.player1.states.left = false;
       this.player1.states.right = false;
@@ -426,6 +460,8 @@ var Game = {
     }, 62000);
 
     if (this.player2.life <= 0) {
+      stopMusic();
+      surePlay();
       document.getElementById('countdown').style.display = 'none';
       this.player1.win = true;
       this.player1.states.left = false;
@@ -433,8 +469,13 @@ var Game = {
       this.player1.states.punch = false;
       this.player2.states.punch = false;
       this.player1.states.hadouken = false;
+      setTimeout(() => {
+        document.querySelector('.end-screen').style.display = 'block';
+      }, 5000);
     }
     if (this.player1.life <= 0) {
+      stopMusic();
+      surePlay();
       document.getElementById('countdown').style.display = 'none';
       this.player2.win = true;
       this.player2.states.left = false;
@@ -447,3 +488,42 @@ var Game = {
     clearInterval(this.interval);
   },
 };
+
+function playHadouken() {
+  let hadouSound = new Audio('./audio/hadouken.wav');
+  hadouSound.volume = 0.4;
+  hadouSound.play();
+}
+
+function playKikouken() {
+  let kikouSound = new Audio('./audio/kikuoken.wav');
+  kikouSound.volume = 0.4;
+  kikouSound.play();
+}
+
+function playHit() {
+  let hitSound = new Audio('./audio/hit.mp3');
+  hitSound.volume = 0.4;
+  hitSound.play();
+}
+
+function playSound() {
+  setInterval(() => {
+    chunLetsGo();
+  }, 15000);
+  setInterval(() => {
+    ok();
+  }, 20000);
+}
+
+function chunLetsGo() {
+  let goChun = new Audio('./audio/chun_go.wav');
+  goChun.volume = 0.4;
+  goChun.play();
+}
+
+function ok() {
+  let ok = new Audio('./audio/ok.wav');
+  ok.volume = 0.4;
+  ok.play();
+}

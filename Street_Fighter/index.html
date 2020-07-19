@@ -12,6 +12,10 @@
       href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
     <title>Street Fighter</title>
   </head>
   <body>
@@ -166,6 +170,17 @@
     </div>
 
     <div class="game">
+      <div class="end-screen">
+        <span style="font-family: 'bangers', 'cursive'; color: red;"
+          >Game Over</span
+        >
+        <br />
+        <span style="font-family: 'bangers';">Go to the main Screen?</span>
+
+        <br />
+        <button class="btn btn-success" onclick="location.reload()">Yes</button>
+        <button class="btn btn-danger" onclick="window.close()">No</button>
+      </div>
       <div class="instruction-container2">
         <i
           style="font-size: 25px;"
@@ -174,7 +189,7 @@
         ></i>
         <i
           style="font-size: 25px; color: red;"
-          class="fa fa-volume-off sound-off"
+          class="fa fa-volume-up sound-off"
           aria-hidden="true"
         ></i>
 
