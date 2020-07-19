@@ -7,7 +7,6 @@ document.querySelector('.sound-off').addEventListener('click', () => {
 });
 
 document.querySelector('.start_button').addEventListener('click', () => {
-  playMusic();
   //Timer
   var timeleft = 60;
   var downloadTimer = setInterval(function () {

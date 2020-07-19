@@ -105,7 +105,11 @@ body {
 .info-icon {
   right: 2%;
   position: absolute;
-  width: 45px;
+  transition: transform 0.2s;
+}
+
+.info-icon:hover {
+  transform: scale(1.5);
 }
 
 .cross-icon,
@@ -166,4 +170,5 @@ body {
   top: 10%;
   color: yellow;
   font-size: 30px;
+  transition: display 0.2s;
 }

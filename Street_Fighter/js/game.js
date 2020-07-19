@@ -426,6 +426,8 @@ var Game = {
     }, 62000);
 
     if (this.player2.life <= 0) {
+      document.getElementById('countdown').style.display = 'none';
+      this.player1.win = true;
       this.player1.states.left = false;
       this.player1.states.right = false;
       this.player1.states.punch = false;
@@ -433,6 +435,8 @@ var Game = {
       this.player1.states.hadouken = false;
     }
     if (this.player1.life <= 0) {
+      document.getElementById('countdown').style.display = 'none';
+      this.player2.win = true;
       this.player2.states.left = false;
       this.player2.states.punch = false;
       this.player2.states.right = false;

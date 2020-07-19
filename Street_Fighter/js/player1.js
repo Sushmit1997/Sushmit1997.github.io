@@ -17,6 +17,9 @@ var Player1_source = {
     kick: './images/ken_assets/ken_kick.png',
     crouch: './images/ken_assets/ken_crouch1.png',
     hadouken: './images/ken_assets/ken_hadouken.png',
+    victory: './images/ken_assets/ken_victory.png',
+    die: './images/ken_assets/ken_die.png',
+
     values: {
       w: {
         x: 235,
@@ -30,6 +33,15 @@ var Player1_source = {
         x: 188,
         y: 92,
         f: 4,
+      },
+      d: {
+        x: 468,
+        y: 92,
+        f: 6,
+        frameIndex: 4,
+        finalFrame: 5,
+        offsetX: 2,
+        offsetStartY: 5,
       },
       p: {
         x: 77,
@@ -75,13 +87,22 @@ var Player1_source = {
         f: 4,
         offsetStartY: 0,
       },
+      v: {
+        x: 192,
+        y: 92,
+        f: 4,
+        offsetStartY: 0,
+        offsetX: 1.5,
+        frameIndex: 2,
+        finalFrame: 2,
+      },
     },
   },
   blanka: {
     yFrameAdjuster: 2.5,
     walk: './images/blanka_assets/blanka_walk.png',
     idle: './images/blanka_assets/blanka_idle.png',
-    die: './images/blanka_assets/blanka_die.png',
+    die: './images/blanka_assets/blanka_die2.png',
     victory: './images/blanka_assets/blanka_victory.png',
     hadouken: './images/blanka_assets/ken_hadouken.png',
     punch: './images/blanka_assets/blanka_punch.png',
@@ -105,9 +126,13 @@ var Player1_source = {
         f: 4,
       },
       d: {
-        x: 442,
+        x: 113,
         y: 91,
-        f: 5,
+        f: 1,
+        frameIndex: 0,
+        finalFrame: 0,
+        offsetX: 0.4,
+        offsetStartY: 5,
       },
       h: {
         x: 288,
@@ -150,8 +175,17 @@ var Player1_source = {
         x: 57,
         y: 57,
         f: 1,
-        offsetStartY: 120,
-        offsetX: 0.3,
+        offsetStartY: 130,
+        offsetX: 0.4,
+      },
+      v: {
+        x: 232,
+        y: 142,
+        f: 3,
+        offsetStartY: 100,
+        offsetX: 1.5,
+        frameIndex: 2,
+        finalFrame: 2,
       },
     },
   },
@@ -159,7 +193,7 @@ var Player1_source = {
     yFrameAdjuster: 2.5,
     walk: './images/ryu_assets/ryu_walk.png',
     idle: './images/ryu_assets/ryu_idle.png',
-    die: './images/ryu_assets/ryu_die.png',
+    die: './images/ryu_assets/ryu_die2.png',
     victory: './images/ryu_assets/ryu_victory.png',
     hadouken: './images/ryu_assets/ryu_haduoken.png',
     punch: './images/ryu_assets/ryu_punch.png',
@@ -183,16 +217,22 @@ var Player1_source = {
         f: 4,
       },
       d: {
-        x: 379,
+        x: 76,
         y: 80,
-        f: 5,
+        f: 1,
+        frameIndex: 0,
+        finalFrame: 0,
+        offsetX: 0.4,
+        offsetStartY: 30,
       },
       v: {
         x: 125,
         y: 92,
         f: 3,
         offsetStartY: 0,
-        offsetX: 1.5,
+        offsetX: 0.6,
+        frameIndex: 2,
+        finalFrame: 0,
       },
       h: {
         x: 288,
@@ -244,7 +284,7 @@ var Player1_source = {
     yFrameAdjuster: 2.5,
     idle: './images/chunli_assets/flipped/chun_idle.png',
     walk: './images/chunli_assets/flipped/chun_walk.png',
-    die: './images/chunli_assets/flipped/chun_die.png',
+    die: './images/chunli_assets/flipped/chun_die2.png',
     victory: './images/chunli_assets/flipped/chun_victory.png',
     hadouken: './images/chunli_assets/flipped/chun_hadouken.png',
     punch: './images/chunli_assets/flipped/chun_punch2.png',
@@ -268,16 +308,22 @@ var Player1_source = {
         f: 4,
       },
       d: {
-        x: 415,
+        x: 82,
         y: 92,
-        f: 5,
+        f: 1,
+        frameIndex: 0,
+        finalFrame: 0,
+        offsetX: 0.4,
+        offsetStartY: 5,
       },
       v: {
         x: 988,
-        y: 92,
+        y: 142,
         f: 19,
         offsetStartY: 125,
         offsetX: 6,
+        frameIndex: 0,
+        finalFrame: 18,
       },
       h: {
         x: 288,
@@ -350,7 +396,8 @@ class Player1 {
     this.startPointY = 150;
     this.separator = 65;
     this.yFrameAdjuster = 2.5;
-    this.victory = false;
+    this.win = false;
+    this.lose = false;
 
     if (this.startPointX === 0) {
       this.startPoint += 1;
@@ -371,6 +418,14 @@ class Player1 {
     this.kenWalkY = Player1_source[this.player].values.w.x;
     this.imgWalkp1.frames = Player1_source[this.player].values.w.f;
     this.imgWalkp1.frameIndex = 0;
+
+    // Die Image
+    this.imgDiep1 = new Image();
+    this.imgDiep1.src = Player1_source[this.player].die;
+    this.kenDieX = Player1_source[this.player].values.d.x;
+    this.kenDieY = Player1_source[this.player].values.d.y;
+    this.imgDiep1.frames = Player1_source[this.player].values.d.f;
+    this.imgDiep1.frameIndex = 0;
 
     //Jump Image
     this.imgJumpp1 = new Image();
@@ -427,11 +482,25 @@ class Player1 {
     this.imgCrouchY = Player1_source[this.player].values.c.y;
     this.imgCrouchp1.frames = Player1_source[this.player].values.c.f;
     this.imgCrouchp1.frameIndex = 0;
+
+    // Victory Image
+    this.imgVictoryp1 = new Image();
+    this.imgVictoryp1.src = Player1_source[this.player].victory;
+    this.imgVictoryX = Player1_source[this.player].values.v.x;
+    this.imgVictoryY = Player1_source[this.player].values.v.y;
+    this.imgVictoryp1.frames = Player1_source[this.player].values.v.f;
+    this.imgVictoryp1.frameIndex = 0;
+  }
+
+  blankaoffset() {
+    if (this.player == 'blanka') {
+      return 200;
+    } else return 120;
   }
 
   detectPunch(player1, player2) {
     if (
-      player2.startPointX - player1.startPointX < 120 &&
+      player2.startPointX - player1.startPointX < this.blankaoffset() &&
       this.states.punch == true
     ) {
       return true;
@@ -465,6 +534,8 @@ class Player1 {
         this.states.idle = true;
         this.states.hit = false;
       }, 200);
+    } else if (this.win) {
+      this.drawVictory(framesCounter);
     } else if (this.states.hadouken) {
       this.drawHadouken(framesCounter);
       setTimeout(() => {
@@ -475,24 +546,13 @@ class Player1 {
       console.log('jump1');
       playJump();
       this.drawJump(framesCounter);
-      // setTimeout(() => {
-      //
-      //   this.imgJumpp1.frameIndex = 0;
-      //   this.startPointY = 150;w
-      // }, 400);
     } else if (this.states.punch) {
       sound[1].play();
       this.drawPunch(framesCounter);
-      // setTimeout(() => {
-      //   this.states.punch = false;
-      //   this.imgPunchp1.frameIndex = 0;
-      // }, 300);
+    } else if (this.life <= 0) {
+      this.drawDie(framesCounter);
     } else if (this.states.block) {
       this.drawBlock(framesCounter);
-      // setTimeout(() => {
-      //   this.states.block = false;
-      //   this.imgBlockp1.frameIndex = 0;
-      // }, 200);
     } else if (this.states.idle) {
       this.drawIdle(framesCounter);
     }
@@ -598,6 +658,40 @@ class Player1 {
       this.imgPunchp1.frameIndex += 1;
 
       if (this.imgPunchp1.frameIndex > 0) this.imgPunchp1.frameIndex = 0;
+    }
+  }
+
+  drawDie(framesCounter) {
+    this.ctx.save();
+    this.ctx.drawImage(
+      this.imgDiep1,
+      this.imgDiep1.frameIndex *
+        Math.floor(this.kenDieX / this.imgDiep1.frames),
+      0,
+      Math.floor(this.kenDieX / this.imgDiep1.frames),
+      this.kenDieY,
+      this.startPointX - 150,
+      this.startPointY + Player1_source[this.player].values.d.offsetStartY,
+      this.kenDieX / Player1_source[this.player].values.d.offsetX,
+      this.kenDieY * this.yFrameAdjuster
+    );
+    this.ctx.translate(100, 0);
+    this.ctx.restore();
+    this.animateImgDie(framesCounter);
+  }
+
+  animateImgDie(framesCounter) {
+    if (framesCounter % 30 === 0) {
+      this.imgDiep1.frameIndex += 1;
+
+      // If the frame is the last one, it goes back to the first one
+      if (
+        this.imgDiep1.frameIndex >
+        Player1_source[this.player].values.d.frameIndex
+      ) {
+        this.imgDiep1.frameIndex =
+          Player1_source[this.player].values.d.finalFrame;
+      }
     }
   }
 
@@ -725,6 +819,38 @@ class Player1 {
       this.imgHadoup1.frameIndex += 1;
 
       if (this.imgHadoup1.frameIndex > 3) this.imgHadoup1.frameIndex = 0;
+    }
+  }
+
+  drawVictory(framesCounter) {
+    this.ctx.save();
+    this.ctx.drawImage(
+      this.imgVictoryp1,
+      this.imgVictoryp1.frameIndex *
+        Math.floor(this.imgVictoryX / this.imgVictoryp1.frames),
+      0,
+      Math.floor(this.imgVictoryX / this.imgVictoryp1.frames),
+      this.imgVictoryY,
+      this.startPointX,
+      this.startPointY - Player1_source[this.player].values.v.offsetStartY,
+      this.imgVictoryX / Player1_source[this.player].values.v.offsetX,
+      this.imgVictoryY * this.yFrameAdjuster
+    );
+    this.ctx.restore();
+
+    this.animateImgVictory(framesCounter);
+  }
+
+  animateImgVictory(framesCounter) {
+    if (framesCounter % 10 === 0) {
+      this.imgVictoryp1.frameIndex += 1;
+
+      if (
+        this.imgVictoryp1.frameIndex >
+        Player1_source[this.player].values.v.finalFrame
+      )
+        this.imgVictoryp1.frameIndex =
+          Player1_source[this.player].values.v.frameIndex;
     }
   }
 
