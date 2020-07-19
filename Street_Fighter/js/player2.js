@@ -708,7 +708,7 @@ class Player2 {
       0,
       Math.floor(this.chunDieX / this.imgDiep2.frames),
       this.chunDieY,
-      this.startPointX + 100,
+      this.startPointX + 60,
       this.startPointY + 20,
       this.chunDieX / Player2_source[this.player].values.d.offsetX,
       this.chunDieY * this.yFrameAdjuster
