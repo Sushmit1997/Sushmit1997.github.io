@@ -131,7 +131,7 @@ function imageLoaded() {
 }
 
 function onLoadFinish() {
-  document.querySelector('.loader').innerText = 'Loading Done';
+  document.querySelector('.loader').innerText = 'All Assets Loaded';
 }
 
 preloadAudio(

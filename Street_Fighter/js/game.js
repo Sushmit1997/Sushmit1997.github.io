@@ -434,6 +434,7 @@ var Game = {
     }
 
     setTimeout(() => {
+      stopSound();
       surePlay();
       stopMusic();
       setTimeout(() => {
@@ -457,9 +458,16 @@ var Game = {
       this.player1.states.hadouken = false;
       this.player2.states.left = false;
       this.player2.states.right = false;
+      this.player2.states.crouch = false;
+      this.player2.states.jump = false;
+      this.player2.states.kick = false;
+      this.player1.states.kick = false;
+      this.player1.states.crouch = false;
+      this.player1.states.jump = false;
     }, 62000);
 
     if (this.player2.life <= 0) {
+      stopSound();
       stopMusic();
       surePlay();
       document.getElementById('countdown').style.display = 'none';
@@ -469,11 +477,18 @@ var Game = {
       this.player1.states.punch = false;
       this.player2.states.punch = false;
       this.player1.states.hadouken = false;
+      this.player2.states.crouch = false;
+      this.player2.states.jump = false;
+      this.player2.states.kick = false;
+      this.player1.states.kick = false;
+      this.player1.states.crouch = false;
+      this.player1.states.jump = false;
       setTimeout(() => {
         document.querySelector('.end-screen').style.display = 'block';
       }, 5000);
     }
     if (this.player1.life <= 0) {
+      stopSound();
       stopMusic();
       surePlay();
       document.getElementById('countdown').style.display = 'none';
@@ -482,6 +497,15 @@ var Game = {
       this.player2.states.punch = false;
       this.player2.states.right = false;
       this.player2.states.hadouken = false;
+      this.player2.states.crouch = false;
+      this.player2.states.jump = false;
+      this.player2.states.kick = false;
+      this.player1.states.kick = false;
+      this.player1.states.crouch = false;
+      this.player1.states.jump = false;
+      setTimeout(() => {
+        document.querySelector('.end-screen').style.display = 'block';
+      }, 5000);
     }
   },
   stop: function () {
@@ -512,18 +536,33 @@ function playSound() {
     chunLetsGo();
   }, 15000);
   setInterval(() => {
-    ok();
+    okPlay();
   }, 20000);
 }
 
+function stopSound() {
+  chunStop();
+  okStop();
+}
+
+let goChun = new Audio('./audio/chun_go.wav');
+
 function chunLetsGo() {
-  let goChun = new Audio('./audio/chun_go.wav');
   goChun.volume = 0.4;
   goChun.play();
 }
 
-function ok() {
-  let ok = new Audio('./audio/ok.wav');
+let ok = new Audio('./audio/ok.wav');
+
+function okPlay() {
   ok.volume = 0.4;
   ok.play();
+}
+
+function chunStop() {
+  goChun.pause();
+}
+
+function okStop() {
+  ok.pause();
 }

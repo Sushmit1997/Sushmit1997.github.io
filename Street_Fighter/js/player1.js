@@ -509,7 +509,7 @@ class Player1 {
 
   detectKick(player1, player2) {
     if (
-      player2.startPointX - player1.startPointX < 120 &&
+      player2.startPointX - player1.startPointX < this.blankaoffset() &&
       this.states.kick == true
     ) {
       return true;

@@ -116,7 +116,7 @@ function playStart() {
   start.play();
 }
 
-let kenMusic = new Audio('./audio/ken.mp3');
+let kenMusic = new Audio('./audio/main_theme.mp3');
 function playMusic() {
   kenMusic.volume = 0.2;
   kenMusic.play();
